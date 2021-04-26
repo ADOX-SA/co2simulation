@@ -25,12 +25,21 @@ export default function Simulator() {
 
 function MainContainer() {
   return (
-    <div className="isometric-container">
-      <div className="room">
-        <div className="room-soil soil-shadow">
-          <div className="left-wall wall"></div>
-          <div className="right-wall wall"></div>
-          {/* <div className="student"></div>
+    <>
+      <div className="menu">
+        <h3>Why Is the Risk of Coronavirus Transmission so High Indoors?</h3>
+        <p className="header-text">
+          Whenever people gather in closed spaces, the infection risk climbs.
+          Our interactive tool shows how the coronavirus spreads. Find out how
+          safe your environment is.
+        </p>
+      </div>
+      <div className="wrapper">
+        <div className="room">
+          <div className="room-soil soil-shadow">
+            <div className="left-wall wall"></div>
+            <div className="right-wall wall"></div>
+            {/* <div className="student"></div>
           <div className="student"></div>
           <div className="student"></div>
           <div className="student"></div>
@@ -70,9 +79,10 @@ function MainContainer() {
           <div className="student">
             <img src={Student10} alt="Estudiante 10"></img>
           </div> */}
+          </div>
         </div>
+        <div className="menu">Menu</div>
       </div>
-      <div>Menu</div>
-    </div>
+    </>
   );
 }
