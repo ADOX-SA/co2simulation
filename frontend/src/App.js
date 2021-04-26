@@ -1,4 +1,5 @@
 import "./App.css";
+import "./sass/main.css";
 
 // Imported pages
 import Mainpage from "./pages/Mainpage";
@@ -6,9 +7,9 @@ import Mainpage from "./pages/Mainpage";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <body className="App-header">
         <Mainpage />
-      </header>
+      </body>
     </div>
   );
 }
