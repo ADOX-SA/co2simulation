@@ -1,15 +1,23 @@
 .wrapper {
-  margin-left: 100px;
-  margin-right: 100px;
   color: #727272;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
   gap: 1em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+    margin-right: 40px;
+  }
 }
 
 .menu {
@@ -18,49 +26,87 @@
 
 .menu .header-text {
   font-size: 14px;
-  padding-left: 200px;
-  padding-right: 200px;
 }
 
-.room {
-  width: 400px;
-  height: 300px;
+.room-container .room {
+  padding-top: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.room-soil {
+.room-container .room .room-soil {
   background-color: white;
-  -webkit-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
-          transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
+  transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-transform-origin: left top;
-          transform-origin: left top;
-  position: relative;
-  top: 60%;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
+  -webkit-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
+  -moz-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
+  -ms-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
+  -o-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
 }
 
-.room-grid {
+@media only screen and (min-width: 768px) {
+  .room-container .room .room-soil {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+.room-container .room .room-grid {
+  height: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: minmax(auto, 100%);
-      grid-template-rows: minmax(auto, 100%);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
   gap: 1em;
 }
 
-.iso-element {
+.room-container .room .iso-element {
   background-color: #ecf0f1;
 }
 
-.soil-shadow {
+.room-container .room .iso-element .student-box {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  height: 80px;
+  width: 80px;
+}
+
+.room-container .room .iso-element .student-wrapper {
+  transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transform: rotate(45deg) rotateX(-90deg);
+  -moz-transform: rotate(45deg) rotateX(-90deg);
+  -ms-transform: rotate(45deg) rotateX(-90deg);
+  -o-transform: rotate(45deg) rotateX(-90deg);
+}
+
+.room-container .room .soil-shadow {
   -webkit-box-shadow: -100px 100px 80px rgba(0, 0, 0, 0.07), -41.8px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), -22.34px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), -12.6px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), -2.8px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
           box-shadow: -100px 100px 80px rgba(0, 0, 0, 0.07), -41.8px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), -22.34px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), -12.6px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), -2.8px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
 }
 
-.wall {
+.room-container .room .wall {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,31 +130,46 @@
   -o-transform: translateZ(0);
 }
 
-.left-wall {
+.room-container .room .left-wall {
   background: #d9d9d9;
   transform: rotateX(-90deg);
   -webkit-transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   -ms-transform: rotateX(-90deg);
   -o-transform: rotateX(-90deg);
-  height: 80px;
-  width: 250px;
+  height: 60px;
+  width: 200px;
 }
 
-.right-wall {
+@media only screen and (min-width: 768px) {
+  .room-container .room .left-wall {
+    height: 80px;
+    width: 300px;
+  }
+}
+
+.room-container .room .right-wall {
   background: #e7e7e7;
   transform: rotate(90deg) rotateX(-90deg);
   -webkit-transform: rotate(90deg) rotateX(-90deg);
   -moz-transform: rotate(90deg) rotateX(-90deg);
   -ms-transform: rotate(90deg) rotateX(-90deg);
   -o-transform: rotate(90deg) rotateX(-90deg);
-  height: 80px;
-  width: 250px;
-  left: 250px;
+  height: 60px;
+  width: 200px;
+  left: 200px;
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .right-wall {
+    height: 80px;
+    width: 300px;
+    left: 300px;
+  }
 }
 
 .room-parameters {
-  background: #c4c4c4;
+  background: #ecf0f1;
   -webkit-box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
           box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
   background-color: #ecf0f1;
@@ -135,13 +196,4 @@
   margin: 0;
   padding: 10px;
 }
-
-/* .student {
-  background-color: $secondary;
-  transform: rotate(115deg) skewX(-20deg) skewY(15deg) scale(0.5);
-  -webkit-transform: rotate(115deg) skewX(-20deg) skewY(15deg) scale(0.5);
-  -moz-transform: rotate(115deg) skewX(-20deg) skewY(15deg) scale(0.5);
-  -ms-transform: rotate(115deg) skewX(-20deg) skewY(15deg) scale(0.5);
-  -o-transform: rotate(115deg) skewX(-20deg) skewY(15deg) scale(0.5);
-} */
 /*# sourceMappingURL=main.css.map */
