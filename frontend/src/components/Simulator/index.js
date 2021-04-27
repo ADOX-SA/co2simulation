@@ -48,7 +48,7 @@ function Room() {
   return (
     <div className="room-container">
       <div className="room">
-        <div className="room-soil soil-shadow">
+        <div className="room-floor floor-shadow">
           <div className="room-grid">
             <div className="iso-element">Hi</div>
             <div className="iso-element">I'm</div>
@@ -63,7 +63,48 @@ function Room() {
             <div className="iso-element">Hi</div>
             <div className="iso-element">I'm</div>
             <div className="iso-element">an</div>
-            <div className="iso-element">element</div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
+            <div className="iso-element">
+              <div className="student-box">
+                <div className="student-wrapper">
+                  <img src={Student2} alt="Estudiante" />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="left-wall wall"></div>
           <div className="right-wall wall"></div>
@@ -82,3 +123,5 @@ function Menu() {
     </div>
   );
 }
+
+// Personas ============================================
