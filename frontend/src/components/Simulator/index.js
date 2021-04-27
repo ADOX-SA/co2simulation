@@ -35,54 +35,40 @@ function MainContainer() {
         </p>
       </div>
       <div className="wrapper">
-        <div className="room">
-          <div className="room-soil soil-shadow">
-            <div className="left-wall wall"></div>
-            <div className="right-wall wall"></div>
-            {/* <div className="student"></div>
-          <div className="student"></div>
-          <div className="student"></div>
-          <div className="student"></div>
-          <div className="student">
-            <img src={Student9} alt="Estudiante 9"></img>
-          </div>
-          <div className="student">
-            <img src={Student10} alt="Estudiante 10"></img>
-          </div>
-          <div className="student">
-            <img src={Student1} alt="Estudiante 1"></img>
-          </div>
-          <div className="student">
-            <img src={Student2} alt="Estudiante 2"></img>
-          </div>
-          <div className="student">
-            <img src={Student3} alt="Estudiante 3"></img>
-          </div>
-          <div className="student">
-            <img src={Student4} alt="Estudiante 4"></img>
-          </div>
-          <div className="student">
-            <img src={Student5} alt="Estudiante 5"></img>
-          </div>
-          <div className="student">
-            <img src={Student6} alt="Estudiante 6"></img>
-          </div>
-          <div className="student">
-            <img src={Student7} alt="Estudiante 7"></img>
-          </div>
-          <div className="student">
-            <img src={Student8} alt="Estudiante 8"></img>
-          </div>
-          <div className="student">
-            <img src={Student9} alt="Estudiante 9"></img>
-          </div>
-          <div className="student">
-            <img src={Student10} alt="Estudiante 10"></img>
-          </div> */}
-          </div>
-        </div>
-        <div className="menu">Menu</div>
+        <Room />
+        <Menu />
       </div>
     </>
+  );
+}
+
+function Menu() {
+  return (
+    <div className="room-parameters">
+      <div className="parameters-header">
+        <h5 className="parameters-title">Room parameters</h5>
+      </div>
+    </div>
+  );
+}
+
+function Room() {
+  return (
+    <div className="room">
+      <div className="room-soil soil-shadow">
+        <div className="room-grid">
+          <div className="iso-element">Hi</div>
+          <div className="iso-element">I'm</div>
+          <div className="iso-element">an</div>
+          <div className="iso-element">element</div>
+          <div className="iso-element">Hi</div>
+          <div className="iso-element">I'm</div>
+          <div className="iso-element">an</div>
+          <div className="iso-element">element</div>
+        </div>
+        <div className="left-wall wall"></div>
+        <div className="right-wall wall"></div>
+      </div>
+    </div>
   );
 }
