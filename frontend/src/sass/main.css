@@ -72,11 +72,17 @@
   gap: 1em;
 }
 
+.room-container .room .doble {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2/4;
+}
+
 .room-container .room .iso-element {
   background-color: #ecf0f1;
 }
 
-.room-container .room .iso-element .student-box {
+.room-container .room .iso-element .iso-box {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -97,8 +103,8 @@
   position: relative;
   width: 0;
   height: 0;
-  left: 0px;
-  top: 25px;
+  left: -4px;
+  top: 27px;
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, transform 0.3s;
@@ -134,6 +140,146 @@
 @media only screen and (min-width: 768px) {
   .room-container .room .iso-element .student-wrapper {
     top: 40px;
+  }
+}
+
+.room-container .room .iso-element .shelf-wrapper {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  width: 0;
+  height: 0;
+  left: 0px;
+  top: 15px;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotate(45deg) rotateX(-90deg);
+  -moz-transform: rotate(45deg) rotateX(-90deg);
+  -ms-transform: rotate(45deg) rotateX(-90deg);
+  -o-transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  -moz-transition: opacity 0.3s, transform 0.3s;
+  -ms-transition: opacity 0.3s, transform 0.3s;
+  -o-transition: opacity 0.3s, transform 0.3s;
+}
+
+.room-container .room .iso-element .shelf-wrapper img {
+  max-width: 36px;
+  transform: translate(-25%, -100%);
+  -webkit-transform: translate(-25%, -100%);
+  -moz-transform: translate(-25%, -100%);
+  -ms-transform: translate(-25%, -100%);
+  -o-transform: translate(-25%, -100%);
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .shelf-wrapper img {
+    max-width: 55px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .shelf-wrapper {
+    top: 25px;
+  }
+}
+
+.room-container .room .iso-element .desk-wrapper {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  width: 0;
+  height: 0;
+  left: -10px;
+  top: 15px;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotate(45deg) rotateX(-90deg);
+  -moz-transform: rotate(45deg) rotateX(-90deg);
+  -ms-transform: rotate(45deg) rotateX(-90deg);
+  -o-transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  -moz-transition: opacity 0.3s, transform 0.3s;
+  -ms-transition: opacity 0.3s, transform 0.3s;
+  -o-transition: opacity 0.3s, transform 0.3s;
+}
+
+.room-container .room .iso-element .desk-wrapper img {
+  max-width: 55px;
+  transform: translate(-25%, -100%);
+  -webkit-transform: translate(-25%, -100%);
+  -moz-transform: translate(-25%, -100%);
+  -ms-transform: translate(-25%, -100%);
+  -o-transform: translate(-25%, -100%);
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .desk-wrapper img {
+    max-width: 85px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .desk-wrapper {
+    top: 25px;
+    left: -15px;
+  }
+}
+
+.room-container .room .iso-element .people-wrapper {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  width: 0;
+  height: 0;
+  left: 10px;
+  top: 40px;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotate(45deg) rotateX(-90deg);
+  -moz-transform: rotate(45deg) rotateX(-90deg);
+  -ms-transform: rotate(45deg) rotateX(-90deg);
+  -o-transform: rotate(45deg) rotateX(-90deg);
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  -moz-transition: opacity 0.3s, transform 0.3s;
+  -ms-transition: opacity 0.3s, transform 0.3s;
+  -o-transition: opacity 0.3s, transform 0.3s;
+}
+
+.room-container .room .iso-element .people-wrapper img {
+  max-width: 20px;
+  transform: translate(-25%, -100%);
+  -webkit-transform: translate(-25%, -100%);
+  -moz-transform: translate(-25%, -100%);
+  -ms-transform: translate(-25%, -100%);
+  -o-transform: translate(-25%, -100%);
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .people-wrapper img {
+    max-width: 35px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .room-container .room .iso-element .people-wrapper {
+    top: 65px;
+    left: 15px;
   }
 }
 
