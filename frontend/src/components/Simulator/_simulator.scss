@@ -7,7 +7,7 @@
   margin-right: 10px;
   margin-left: 10px;
 
-  @include tablet {
+  @include desktop {
     grid-template-columns: 2fr 1fr;
     margin-right: 40px;
   }
@@ -17,15 +17,23 @@
   color: $text;
 
   .header-text {
-    font-size: 14px;
+    font-size: 1.125rem;
+
+    @include desktop {
+      margin-left: 60px;
+      margin-right: 60px;
+    }
   }
 }
 
 // Room styles ==============================================
 
 .room-container {
+  @include desktop {
+    zoom: 1.4;
+  }
   .room {
-    padding-top: 80px;
+    padding-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +49,7 @@
       -ms-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
       -o-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
 
-      @include tablet {
+      @include desktop {
         height: 300px;
         width: 300px;
       }
@@ -79,8 +87,8 @@
           -ms-transform: translate(-25%, -100%);
           -o-transform: translate(-25%, -100%);
 
-          @include tablet {
-            max-width: 60px;
+          @include desktop {
+            max-width: 59px;
           }
         }
         transform-style: preserve-3d;
@@ -101,7 +109,7 @@
         -ms-transition: opacity 0.3s, transform 0.3s;
         -o-transition: opacity 0.3s, transform 0.3s;
 
-        @include tablet {
+        @include desktop {
           top: 40px;
         }
       }
@@ -115,7 +123,7 @@
           -ms-transform: translate(-25%, -100%);
           -o-transform: translate(-25%, -100%);
 
-          @include tablet {
+          @include desktop {
             max-width: 55px;
           }
         }
@@ -137,7 +145,7 @@
         -ms-transition: opacity 0.3s, transform 0.3s;
         -o-transition: opacity 0.3s, transform 0.3s;
 
-        @include tablet {
+        @include desktop {
           top: 25px;
         }
       }
@@ -150,7 +158,7 @@
           -ms-transform: translate(-25%, -100%);
           -o-transform: translate(-25%, -100%);
 
-          @include tablet {
+          @include desktop {
             max-width: 85px;
           }
         }
@@ -172,7 +180,7 @@
         -ms-transition: opacity 0.3s, transform 0.3s;
         -o-transition: opacity 0.3s, transform 0.3s;
 
-        @include tablet {
+        @include desktop {
           top: 25px;
           left: -15px;
         }
@@ -187,7 +195,7 @@
           -ms-transform: translate(-25%, -100%);
           -o-transform: translate(-25%, -100%);
 
-          @include tablet {
+          @include desktop {
             max-width: 35px;
           }
         }
@@ -209,7 +217,7 @@
         -ms-transition: opacity 0.3s, transform 0.3s;
         -o-transition: opacity 0.3s, transform 0.3s;
 
-        @include tablet {
+        @include desktop {
           top: 65px;
           left: 15px;
         }
@@ -252,7 +260,7 @@
       height: 60px;
       width: 200px;
 
-      @include tablet {
+      @include desktop {
         height: 80px;
         width: 300px;
       }
@@ -269,7 +277,7 @@
       width: 200px;
       left: 200px;
 
-      @include tablet {
+      @include desktop {
         height: 80px;
         width: 300px;
         left: 300px;

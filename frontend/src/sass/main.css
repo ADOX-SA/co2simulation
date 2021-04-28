@@ -12,7 +12,7 @@
   margin-left: 10px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .wrapper {
     -ms-grid-columns: 2fr 1fr;
         grid-template-columns: 2fr 1fr;
@@ -25,11 +25,24 @@
 }
 
 .menu .header-text {
-  font-size: 14px;
+  font-size: 1.125rem;
+}
+
+@media only screen and (min-width: 992px) {
+  .menu .header-text {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container {
+    zoom: 1.4;
+  }
 }
 
 .room-container .room {
-  padding-top: 80px;
+  padding-top: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,7 +67,7 @@
   -o-transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .room-floor {
     height: 300px;
     width: 300px;
@@ -131,13 +144,13 @@
   -o-transform: translate(-25%, -100%);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .student-wrapper img {
-    max-width: 60px;
+    max-width: 59px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .student-wrapper {
     top: 40px;
   }
@@ -177,13 +190,13 @@
   -o-transform: translate(-25%, -100%);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .shelf-wrapper img {
     max-width: 55px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .shelf-wrapper {
     top: 25px;
   }
@@ -223,13 +236,13 @@
   -o-transform: translate(-25%, -100%);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .desk-wrapper img {
     max-width: 85px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .desk-wrapper {
     top: 25px;
     left: -15px;
@@ -270,13 +283,13 @@
   -o-transform: translate(-25%, -100%);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .people-wrapper img {
     max-width: 35px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .iso-element .people-wrapper {
     top: 65px;
     left: 15px;
@@ -323,7 +336,7 @@
   width: 200px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .left-wall {
     height: 80px;
     width: 300px;
@@ -342,7 +355,7 @@
   left: 200px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .room-container .room .right-wall {
     height: 80px;
     width: 300px;

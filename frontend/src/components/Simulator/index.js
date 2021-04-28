@@ -23,7 +23,7 @@ export default function Simulator() {
   return (
     <div>
       <div className="menu">
-        <h2>Why Is the Risk of Coronavirus Transmission so High Indoors?</h2>
+        <h1>Why Is the Risk of Coronavirus Transmission so High Indoors?</h1>
         <p className="header-text">
           Whenever people gather in closed spaces, the infection risk climbs.
           Our interactive tool shows how the coronavirus spreads. Find out how
