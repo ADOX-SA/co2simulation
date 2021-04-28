@@ -49,11 +49,14 @@ function MainContainer() {
 }
 
 function Room() {
+  // Lista de estudiantes
+  const studentsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2];
+
   return (
     <div className="room-container">
       <div className="room">
         <div className="room-floor floor-shadow">
-          <Grid />
+          <Grid studentsList={studentsList} />
           <Walls />
         </div>
       </div>
@@ -61,7 +64,7 @@ function Room() {
   );
 }
 
-function Grid() {
+function Grid({ studentsList }) {
   return (
     <div className="room-grid">
       <Shelf />
