@@ -2,7 +2,7 @@ import React from "react";
 
 // Imported assets ========================
 
-import Student10 from "../../../assets/students/Estudiante10.svg";
+/* import Student10 from "../../../assets/students/Estudiante10.svg";
 import Student9 from "../../../assets/students/Estudiante9.svg";
 import Student8 from "../../../assets/students/Estudiante8.svg";
 import Student7 from "../../../assets/students/Estudiante7.svg";
@@ -11,7 +11,7 @@ import Student5 from "../../../assets/students/Estudiante5.svg";
 import Student4 from "../../../assets/students/Estudiante4.svg";
 import Student3 from "../../../assets/students/Estudiante3.svg";
 import Student2 from "../../../assets/students/Estudiante2.svg";
-import Student1 from "../../../assets/students/Estudiante1.svg";
+import Student1 from "../../../assets/students/Estudiante1.svg"; */
 import Student0 from "../../../assets/students/Estudiante0.svg";
 import Profesora from "../../../assets/people/Teacher.svg";
 import EscritorioProfesora from "../../../assets/furniture/TeacherDesk.svg";
