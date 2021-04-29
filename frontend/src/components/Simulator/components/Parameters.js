@@ -37,7 +37,7 @@ function Slider() {
           value={valor.value}
           onChange={handleOnChange}
         />
-        <div className="value right">200</div>
+        <div className="value right">12</div>
       </div>
     </div>
   );

@@ -446,6 +446,7 @@
   width: 45px;
   color: #ecf0f1;
   font-weight: 500;
+  left: 50%;
   top: -40px;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
