@@ -436,17 +436,27 @@
   cursor: pointer;
 }
 
-.range .slider-value {
+.range .slider-info {
   position: relative;
   width: 100%;
 }
 
-.range .slider-value span {
+.range .slider-info .slider-value {
   position: absolute;
   color: #727272;
   font-weight: 600;
   left: 100%;
-  top: 25px;
+  top: 15px;
+  z-index: 2;
+}
+
+.range .slider-info .slider-label {
+  position: absolute;
+  color: #727272;
+  font-weight: 500;
+  font-size: 15px;
+  left: 100%;
+  top: 40px;
   z-index: 2;
 }
 

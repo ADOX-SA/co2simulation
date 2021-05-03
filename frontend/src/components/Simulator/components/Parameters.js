@@ -7,7 +7,6 @@ export default function Parameters() {
         <h5 className="parameters-title">Room parameters</h5>
       </div>
       <div className="controllers-div">
-        D
         <Slider min={1} max={12} label="people" />
         <Slider min={1} max={12} label="people" unit="hr" />
       </div>

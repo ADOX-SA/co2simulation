@@ -10,8 +10,8 @@ import Student6 from "../../../assets/students/Estudiante6.svg";
 import Student5 from "../../../assets/students/Estudiante5.svg";
 import Student4 from "../../../assets/students/Estudiante4.svg";
 import Student3 from "../../../assets/students/Estudiante3.svg";
-import Student2 from "../../../assets/students/Estudiante2.svg";
-import Student1 from "../../../assets/students/Estudiante1.svg"; */
+import Student2 from "../../../assets/students/Estudiante2.svg"; */
+import Student1 from "../../../assets/students/Estudiante1.svg";
 import Student0 from "../../../assets/students/Estudiante0.svg";
 import Profesora from "../../../assets/people/Teacher.svg";
 import EscritorioProfesora from "../../../assets/furniture/TeacherDesk.svg";

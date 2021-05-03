@@ -117,16 +117,25 @@
       }
     }
   }
-  .slider-value {
+  .slider-info {
     position: relative;
     width: 100%;
 
-    span {
+    .slider-value {
       position: absolute;
       color: $text;
       font-weight: 600;
       left: 100%;
-      top: 25px;
+      top: 15px;
+      z-index: 2;
+    }
+    .slider-label {
+      position: absolute;
+      color: $text;
+      font-weight: 500;
+      font-size: 15px;
+      left: 100%;
+      top: 40px;
       z-index: 2;
     }
   }
