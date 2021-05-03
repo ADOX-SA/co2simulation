@@ -29,7 +29,6 @@ function Slider() {
         <span>{valor.value}</span>
       </div>
       <div className="field">
-        <div className="value left">0</div>
         <input
           type="range"
           min="0"
@@ -37,7 +36,6 @@ function Slider() {
           value={valor.value}
           onChange={handleOnChange}
         />
-        <div className="value right">12</div>
       </div>
     </div>
   );

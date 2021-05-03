@@ -67,6 +67,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    left: -10%;
 
     .value {
       position: absolute;
@@ -104,14 +105,14 @@
           0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
           0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
         background: $secondary;
-        height: 20px;
+        height: 35px;
         width: 20px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        border: 1px sold $primary;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        border: 5px solid $primary;
         cursor: pointer;
       }
     }
@@ -122,38 +123,11 @@
 
     span {
       position: absolute;
-      height: 45px;
-      width: 45px;
-      color: $primary;
-      font-weight: 500;
-      left: 50%;
-      top: -40px;
-      transform: translateX(-50%);
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      line-height: 55px;
+      color: $text;
+      font-weight: 600;
+      left: 100%;
+      top: 25px;
       z-index: 2;
-
-      &::after {
-        position: absolute;
-        content: "";
-        height: 45px;
-        width: 45px;
-        background: $secondary;
-        left: 50%;
-        transform: translateX(-50%) rotate(45deg);
-        -webkit-transform: translateX(-50%) rotate(45deg);
-        -moz-transform: translateX(-50%) rotate(45deg);
-        -ms-transform: translateX(-50%) rotate(45deg);
-        -o-transform: translateX(-50%) rotate(45deg);
-        border: 3px solid $primary;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
-        border-bottom-left-radius: 50%;
-        z-index: -1;
-      }
     }
   }
 }
