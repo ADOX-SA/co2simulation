@@ -8,7 +8,7 @@ export default function Parameters() {
       </div>
       <div className="controllers-div">
         <Slider min={1} max={12} label="people" />
-        <Slider min={1} max={12} label="duration" unit="hr" />
+        <Slider min={1} max={9} label="duration" unit="hr" />
       </div>
     </div>
   );

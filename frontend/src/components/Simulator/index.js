@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Imported components
 import Room from "./components/Room";
@@ -21,12 +21,14 @@ export default function Simulator() {
 }
 
 function MainContainer() {
+  const [room, setRoom] = useState({ teachers: 1, students: 0 });
+
   return (
     <>
       <div>
         <div className="wrapper">
-          <Room />
-          <Parameters />
+          <Room room={room} setRoom={setRoom} />
+          <Parameters room={room} setRoom={setRoom} />
         </div>
       </div>
     </>
