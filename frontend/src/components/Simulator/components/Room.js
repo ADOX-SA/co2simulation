@@ -11,8 +11,8 @@ import Student5 from "../../../assets/students/Estudiante5.svg";
 import Student4 from "../../../assets/students/Estudiante4.svg";
 import Student3 from "../../../assets/students/Estudiante3.svg";
 import Student2 from "../../../assets/students/Estudiante2.svg"; */
-//import Student1 from "../../../assets/students/Estudiante1.svg";
-import Student0 from "../../../assets/students/Estudiante0.svg";
+import Student1 from "../../../assets/students/Estudiante1.svg";
+//import Student0 from "../../../assets/students/Estudiante0.svg";
 import Profesora from "../../../assets/people/Teacher.svg";
 import EscritorioProfesora from "../../../assets/furniture/TeacherDesk.svg";
 import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
@@ -84,8 +84,8 @@ function StudentDesk() {
     <div className="iso-element">
       <div className="iso-box">
         <div className="student-wrapper">
-          <img src={Student0} alt="Estudiante" />
-          <Mask maskType={2} />
+          <Mask maskType={3} />
+          <img src={Student1} alt="Estudiante" />
         </div>
       </div>
     </div>
@@ -95,21 +95,23 @@ function StudentDesk() {
 function Mask(maskType) {
   const mask = maskType;
 
-  function getMaskType() {
-    switch (mask) {
+  function getMaskType(maskType) {
+    switch (maskType) {
       case 1:
-        return <img src={BarbijoDeTela} alt="Barbijo"></img>;
+        return <img className="mask" src={BarbijoDeTela} alt="Barbijo"></img>;
       case 2:
-        return <img src={BarbijoQuirurgico} alt="Barbijo"></img>;
+        return (
+          <img className="mask" src={BarbijoQuirurgico} alt="Barbijo"></img>
+        );
       case 3:
-        return <img src={BarbijoKN95} alt="Barbijo"></img>;
+        return <img className="mask" src={BarbijoKN95} alt="Barbijo"></img>;
       case 0:
       default:
         return <></>;
     }
   }
 
-  return getMaskType(mask);
+  return getMaskType(1);
 }
 
 function Teacher() {

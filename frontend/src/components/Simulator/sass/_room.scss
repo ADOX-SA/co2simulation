@@ -63,6 +63,19 @@
             max-width: 59px;
           }
         }
+
+        .mask {
+          z-index: 3;
+          position: absolute;
+          zoom: 0.7;
+          top: -70px;
+          left: 25px;
+
+          @include desktop {
+            zoom: 1;
+          }
+        }
+
         transform-style: preserve-3d;
         position: relative;
         width: 0;
