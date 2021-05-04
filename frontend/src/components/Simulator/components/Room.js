@@ -19,6 +19,7 @@ import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
 import BarbijoDeTela from "../../../assets/masks/BarbijoDeTela.svg";
 import BarbijoQuirurgico from "../../../assets/masks/BarbijoQuirurgico.svg";
 import BarbijoKN95 from "../../../assets/masks/BarbijoKN95.svg";
+import { SimplePlane } from "@pixi/mesh-extras";
 
 // ========================================
 
@@ -84,7 +85,7 @@ function StudentDesk() {
     <div className="iso-element">
       <div className="iso-box">
         <div className="student-wrapper">
-          <Mask maskType={3} />
+          <Mask maskType={0} />
           <img src={Student1} alt="Estudiante" />
         </div>
       </div>
@@ -93,7 +94,7 @@ function StudentDesk() {
 }
 
 function Mask(maskType) {
-  const mask = maskType;
+  console.log(maskType);
 
   function getMaskType(maskType) {
     switch (maskType) {
@@ -110,8 +111,7 @@ function Mask(maskType) {
         return <></>;
     }
   }
-
-  return getMaskType(1);
+  return getMaskType(maskType.maskType);
 }
 
 function Teacher() {
