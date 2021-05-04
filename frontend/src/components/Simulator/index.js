@@ -21,7 +21,13 @@ export default function Simulator() {
 }
 
 function MainContainer() {
-  const [room, setRoom] = useState({ teachers: 1, students: 0 });
+  // Propiedades del ambiente
+  const [room, setRoom] = useState({
+    teachers: 1,
+    students: 0,
+    infecteds: 0,
+    masks: 0,
+  });
 
   return (
     <>
