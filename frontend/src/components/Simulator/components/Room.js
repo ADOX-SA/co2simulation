@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Imported assets ========================
 
@@ -19,19 +19,15 @@ import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
 import BarbijoDeTela from "../../../assets/masks/BarbijoDeTela.svg";
 import BarbijoQuirurgico from "../../../assets/masks/BarbijoQuirurgico.svg";
 import BarbijoKN95 from "../../../assets/masks/BarbijoKN95.svg";
-import { SimplePlane } from "@pixi/mesh-extras";
 
 // ========================================
 
-export default function Room(room, setRoom) {
-  // Lista de estudiantes
-  const studentsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2];
-
+export default function Room(room) {
   return (
     <div className="room-container">
       <div className="room">
         <div className="room-floor floor-shadow">
-          <Grid studentsList={studentsList} />
+          <Grid room={room} />
           <Walls />
         </div>
       </div>
@@ -39,7 +35,7 @@ export default function Room(room, setRoom) {
   );
 }
 
-function Grid({ studentsList }) {
+function Grid(room) {
   return (
     <div className="room-grid">
       <Shelf />

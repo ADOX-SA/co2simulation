@@ -7,9 +7,9 @@ import Mainpage from "./pages/Mainpage";
 function App() {
   return (
     <div className="App">
-      <body className="App-header">
+      <div className="App-header">
         <Mainpage />
-      </body>
+      </div>
     </div>
   );
 }
