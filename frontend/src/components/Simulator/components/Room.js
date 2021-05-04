@@ -90,8 +90,6 @@ function StudentDesk() {
 }
 
 function Mask(maskType) {
-  console.log(maskType);
-
   function getMaskType(maskType) {
     switch (maskType) {
       case 1:

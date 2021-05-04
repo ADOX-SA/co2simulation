@@ -1,6 +1,12 @@
 import React from "react";
 import { useRoom } from "../../../context/room-context";
 
+// Imported assets
+import SelBarbijoNO from "../../../assets/masks/SelBarbijoNO.svg";
+import SelBarbijoTela from "../../../assets/masks/SelBarbijoTela.svg";
+import SelBarbijoQuirurgico from "../../../assets/masks/SelBarbijoQuirurgico.svg";
+import SelBarbijoKN95 from "../../../assets/masks/SelBarbijoKN95.svg";
+
 export default function Parameters() {
   return (
     <div className="room-parameters">
@@ -10,6 +16,7 @@ export default function Parameters() {
       <div className="controllers-div">
         <PeopleSlider min={1} max={12} label="people" />
         <DurationSlider min={1} max={9} label="duration" unit="hr" />
+        <MaskSelector />
       </div>
     </div>
   );
@@ -70,5 +77,24 @@ function DurationSlider({ min, max, label, unit }) {
         />
       </div>
     </div>
+  );
+}
+
+function MaskSelector() {
+  return (
+    <div>
+      <MaskBtn src={SelBarbijoNO} />
+      <MaskBtn src={SelBarbijoTela} />
+      <MaskBtn src={SelBarbijoQuirurgico} />
+      <MaskBtn src={SelBarbijoKN95} />
+    </div>
+  );
+}
+
+function MaskBtn(src) {
+  return (
+    <button className="mask-selector-btn">
+      <img src={src.src} alt="Selector de barbijo"></img>
+    </button>
   );
 }
