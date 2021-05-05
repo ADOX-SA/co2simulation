@@ -27,14 +27,10 @@ export default function Simulator() {
 
 function MainContainer() {
   return (
-    <>
-      <div>
-        <div className="wrapper">
-          <Room />
-          <Parameters />
-        </div>
-      </div>
-    </>
+    <div className="wrapper">
+      <Room />
+      <Parameters />
+    </div>
   );
 }
 

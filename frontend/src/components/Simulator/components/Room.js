@@ -1,4 +1,5 @@
 import React from "react";
+import { useRoom } from "../../../context/room-context";
 
 // Imported assets ========================
 
@@ -77,11 +78,13 @@ function Shelf() {
 }
 
 function StudentDesk() {
+  const { room } = useRoom();
+
   return (
     <div className="iso-element">
       <div className="iso-box">
         <div className="student-wrapper">
-          <Mask maskType={0} />
+          <Mask maskType={room.masks} />
           <img src={Student1} alt="Estudiante" />
         </div>
       </div>

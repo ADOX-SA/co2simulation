@@ -82,19 +82,36 @@ function DurationSlider({ min, max, label, unit }) {
 
 function MaskSelector() {
   return (
-    <div>
-      <MaskBtn src={SelBarbijoNO} />
-      <MaskBtn src={SelBarbijoTela} />
-      <MaskBtn src={SelBarbijoQuirurgico} />
-      <MaskBtn src={SelBarbijoKN95} />
+    <div className="mask-selector-div">
+      <ol>
+        <li>
+          <MaskBtn src={SelBarbijoNO} label="Ninguno" masks={0} />
+        </li>
+        <li>
+          <MaskBtn src={SelBarbijoTela} label="De tela" masks={1} />
+        </li>
+        <li>
+          <MaskBtn src={SelBarbijoQuirurgico} label="Quirúrgico" masks={2} />
+        </li>
+        <li>
+          <MaskBtn src={SelBarbijoKN95} label="KN95" masks={3} />
+        </li>
+      </ol>
     </div>
   );
 }
 
-function MaskBtn(src) {
+function MaskBtn(props) {
+  const { room, setRoom } = useRoom();
+
+  const changeMasks = (m) => {
+    setRoom({ ...room, masks: m });
+  };
+
   return (
-    <button className="mask-selector-btn">
-      <img src={src.src} alt="Selector de barbijo"></img>
-    </button>
+    <div className="mask-selector-btn" onClick={() => changeMasks(props.masks)}>
+      <img src={props.src} alt="Selector de barbijo"></img>
+      <p>{props.label}</p>
+    </div>
   );
 }

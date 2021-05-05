@@ -7,8 +7,6 @@
   grid-template-columns: 1fr;
   gap: 1em;
   align-items: center;
-  margin-right: 10px;
-  margin-left: 10px;
 
   @include desktop {
     grid-template-columns: 2fr 1fr;
@@ -18,9 +16,13 @@
 
 .menu {
   color: $text;
+  padding-left: 20px;
+  padding-right: 20px;
 
   .header-text {
     font-size: 1.125rem;
+    padding-left: 20px;
+    padding-right: 20px;
 
     @include desktop {
       margin-left: 60px;
