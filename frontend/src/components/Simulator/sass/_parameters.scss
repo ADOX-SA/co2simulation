@@ -43,7 +43,11 @@
 // Controllers div ==========================================
 
 .controllers-div {
-  margin: 15px;
+  margin: 5px;
+
+  @include tablet {
+    margin: 15px;
+  }
 }
 
 .shadow {

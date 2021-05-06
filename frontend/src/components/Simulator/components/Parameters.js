@@ -11,7 +11,7 @@ export default function Parameters() {
   return (
     <div className="room-parameters">
       <div className="parameters-header">
-        <h5 className="parameters-title">Room parameters</h5>
+        <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
         <PeopleSlider min={1} max={12} label="people" />
@@ -91,6 +91,7 @@ function MaskSelector() {
 
   return (
     <div className="mask-selector-div">
+      <h5>Selector de barbijo:</h5>
       <ol>
         <li
           className={0 === active ? "btn-selected" : null}
