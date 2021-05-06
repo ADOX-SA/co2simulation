@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRoom } from "../../../context/room-context";
 
 // Imported assets
@@ -81,20 +81,40 @@ function DurationSlider({ min, max, label, unit }) {
 }
 
 function MaskSelector() {
+  const [active, setActive] = useState(0);
+  const { room, setRoom } = useRoom();
+
+  const handleClick = (id) => {
+    setActive(id);
+    setRoom({ ...room, masks: id });
+  };
+
   return (
     <div className="mask-selector-div">
       <ol>
-        <li>
-          <MaskBtn src={SelBarbijoNO} label="Ninguno" masks={0} />
+        <li
+          className={0 === active ? "btn-selected" : null}
+          onClick={() => handleClick(0)}
+        >
+          <MaskBtn src={SelBarbijoNO} label="Ninguno" id={0} />
         </li>
-        <li>
-          <MaskBtn src={SelBarbijoTela} label="De tela" masks={1} />
+        <li
+          className={1 === active ? "btn-selected" : null}
+          onClick={() => handleClick(1)}
+        >
+          <MaskBtn src={SelBarbijoTela} label="De tela" id={1} />
         </li>
-        <li>
-          <MaskBtn src={SelBarbijoQuirurgico} label="Quirúrgico" masks={2} />
+        <li
+          className={2 === active ? "btn-selected" : null}
+          onClick={() => handleClick(2)}
+        >
+          <MaskBtn src={SelBarbijoQuirurgico} label="Quirúrgico" id={2} />
         </li>
-        <li>
-          <MaskBtn src={SelBarbijoKN95} label="KN95" masks={3} />
+        <li
+          className={3 === active ? "btn-selected" : null}
+          onClick={() => handleClick(3)}
+        >
+          <MaskBtn src={SelBarbijoKN95} label="KN95" id={3} />
         </li>
       </ol>
     </div>
@@ -102,14 +122,8 @@ function MaskSelector() {
 }
 
 function MaskBtn(props) {
-  const { room, setRoom } = useRoom();
-
-  const changeMasks = (m) => {
-    setRoom({ ...room, masks: m });
-  };
-
   return (
-    <div className="mask-selector-btn" onClick={() => changeMasks(props.masks)}>
+    <div>
       <img src={props.src} alt="Selector de barbijo"></img>
       <p>{props.label}</p>
     </div>
