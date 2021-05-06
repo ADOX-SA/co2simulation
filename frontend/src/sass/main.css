@@ -309,13 +309,13 @@
   -moz-transform: rotateX(-90deg);
   -ms-transform: rotateX(-90deg);
   -o-transform: rotateX(-90deg);
-  height: 60px;
+  height: 80px;
   width: 200px;
 }
 
 @media only screen and (min-width: 992px) {
   .room-container .room .left-wall {
-    height: 80px;
+    height: 120px;
     width: 300px;
   }
 }
@@ -327,14 +327,14 @@
   -moz-transform: rotate(90deg) rotateX(-90deg);
   -ms-transform: rotate(90deg) rotateX(-90deg);
   -o-transform: rotate(90deg) rotateX(-90deg);
-  height: 60px;
+  height: 80px;
   width: 200px;
   left: 200px;
 }
 
 @media only screen and (min-width: 992px) {
   .room-container .room .right-wall {
-    height: 80px;
+    height: 120px;
     width: 300px;
     left: 300px;
   }
