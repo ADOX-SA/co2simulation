@@ -10,7 +10,6 @@
     0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
   background-color: $primary;
   color: $text;
-  max-width: 100%;
   margin: 0;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -33,7 +32,7 @@
     padding: 10px;
   }
 
-  @include desktop {
+  @include tablet {
     max-width: 100%;
   }
 }
@@ -61,14 +60,14 @@
 
 .range {
   margin-bottom: 20px;
-  height: 80px;
+  height: 60px;
   background-color: $primary;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  padding: 0 65px 0 45px;
+  padding: 0 90px 0 20px;
 
   .field {
     position: relative;
@@ -76,7 +75,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    left: -10%;
+    left: 0;
 
     .value {
       position: absolute;
@@ -125,17 +124,22 @@
         cursor: pointer;
       }
     }
+
+    @include desktop {
+    }
   }
   .slider-info {
     position: relative;
     width: 100%;
+    margin-left: 10px;
 
     .slider-value {
       position: absolute;
       color: $text;
       font-weight: 600;
+      font-size: 1.4rem;
       left: 100%;
-      top: 15px;
+      top: 10px;
       z-index: 2;
     }
     .slider-label {
@@ -144,7 +148,7 @@
       font-weight: 500;
       font-size: 15px;
       left: 100%;
-      top: 40px;
+      top: 30px;
       z-index: 2;
     }
   }
