@@ -246,7 +246,7 @@
       width: 200px;
 
       @include desktop {
-        height: 120px;
+        height: 140px;
         width: 300px;
       }
     }
@@ -263,10 +263,21 @@
       left: 200px;
 
       @include desktop {
-        height: 120px;
+        height: 140px;
         width: 300px;
         left: 300px;
       }
+    }
+
+    .window-container {
+      transform-style: preserve-3d;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .window-wrapper {
+      top: 0;
+      transform-origin: left top;
     }
   }
 }

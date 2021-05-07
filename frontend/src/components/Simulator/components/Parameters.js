@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { useRoom } from "../../../context/room-context";
 
 // Imported assets
+// Barbijos
 import SelBarbijoNO from "../../../assets/masks/SelBarbijoNO.svg";
 import SelBarbijoTela from "../../../assets/masks/SelBarbijoTela.svg";
 import SelBarbijoQuirurgico from "../../../assets/masks/SelBarbijoQuirurgico.svg";
 import SelBarbijoKN95 from "../../../assets/masks/SelBarbijoKN95.svg";
+// ventilación
+import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
+import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
+import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
+import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
 
 export default function Parameters() {
   return (
@@ -14,9 +20,10 @@ export default function Parameters() {
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        <PeopleSlider min={1} max={12} label="people" />
-        <DurationSlider min={1} max={9} label="duration" unit="hr" />
+        <PeopleSlider min={1} max={12} label="personas" />
+        <DurationSlider min={1} max={9} label="duración" unit="hr" />
         <MaskSelector />
+        <VentilationSelector />
       </div>
     </div>
   );
@@ -126,6 +133,57 @@ function MaskBtn(props) {
   return (
     <div>
       <img src={props.src} alt="Selector de barbijo"></img>
+      <p>{props.label}</p>
+    </div>
+  );
+}
+
+function VentilationSelector() {
+  const [active, setActive] = useState(0);
+  const { room, setRoom } = useRoom();
+
+  const handleClick = (id) => {
+    setActive(id);
+    setRoom({ ...room, ventilation: id });
+  };
+
+  return (
+    <div className="mask-selector-div">
+      <h5>Selector de ventilación:</h5>
+      <ol>
+        <li
+          className={0 === active ? "btn-selected" : null}
+          onClick={() => handleClick(0)}
+        >
+          <VentBtn src={SelVentCerrada} label="Ninguna" id={0} />
+        </li>
+        <li
+          className={1 === active ? "btn-selected" : null}
+          onClick={() => handleClick(1)}
+        >
+          <VentBtn src={SelVentParcial} label="Parcial" id={1} />
+        </li>
+        <li
+          className={2 === active ? "btn-selected" : null}
+          onClick={() => handleClick(2)}
+        >
+          <VentBtn src={SelVentAbierta} label="Total" id={2} />
+        </li>
+        <li
+          className={3 === active ? "btn-selected" : null}
+          onClick={() => handleClick(3)}
+        >
+          <VentBtn src={SelVentSystem} label="Sistema" id={3} />
+        </li>
+      </ol>
+    </div>
+  );
+}
+
+function VentBtn(props) {
+  return (
+    <div>
+      <img src={props.src} alt="Selector de ventilación"></img>
       <p>{props.label}</p>
     </div>
   );

@@ -10,6 +10,7 @@ export function RoomProvider(props) {
     infecteds: 0,
     masks: 0,
     duration: 1,
+    ventilation: 0,
   });
 
   // Valor de retorno

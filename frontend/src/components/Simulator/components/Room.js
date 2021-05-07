@@ -20,6 +20,10 @@ import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
 import BarbijoDeTela from "../../../assets/masks/BarbijoDeTela.svg";
 import BarbijoQuirurgico from "../../../assets/masks/BarbijoQuirurgico.svg";
 import BarbijoKN95 from "../../../assets/masks/BarbijoKN95.svg";
+import VentCerradaI from "../../../assets/ventilation/VentCerradaI.svg";
+import VentParcialI from "../../../assets/ventilation/VentParcialI.svg";
+import VentAbiertaI from "../../../assets/ventilation/VentAbiertaI.svg";
+import VentSystemI from "../../../assets/ventilation/VentSystemI.svg";
 
 // ========================================
 
@@ -59,11 +63,36 @@ function Grid(room) {
 }
 
 function Walls() {
+  const { room } = useRoom();
+
   return (
     <>
-      <div className="left-wall wall"></div>
+      <div className="left-wall wall">
+        <Vent vent={room.ventilation} />
+      </div>
       <div className="right-wall wall"></div>
     </>
+  );
+}
+
+function Vent(props) {
+  function getVentType(ventType) {
+    switch (ventType) {
+      default:
+      case 0:
+        return <img className="window" src={VentCerradaI} alt=""></img>;
+      case 1:
+        return <img className="window" src={VentParcialI} alt=""></img>;
+      case 2:
+        return <img className="window" src={VentAbiertaI} alt=""></img>;
+      case 3:
+        return <img className="window" src={VentSystemI} alt=""></img>;
+    }
+  }
+  return (
+    <div className="window-container window-wrapper">
+      <div>{getVentType(props.vent)}</div>
+    </div>
   );
 }
 

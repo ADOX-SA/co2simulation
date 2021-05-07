@@ -340,7 +340,7 @@
 
 @media only screen and (min-width: 992px) {
   .room-container .room .left-wall {
-    height: 120px;
+    height: 140px;
     width: 300px;
   }
 }
@@ -359,10 +359,23 @@
 
 @media only screen and (min-width: 992px) {
   .room-container .room .right-wall {
-    height: 120px;
+    height: 140px;
     width: 300px;
     left: 300px;
   }
+}
+
+.room-container .room .window-container {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: absolute;
+  z-index: 2;
+}
+
+.room-container .room .window-wrapper {
+  top: 0;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
 }
 
 .room-parameters {
