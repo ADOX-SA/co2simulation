@@ -373,9 +373,71 @@
 }
 
 .room-container .room .window-wrapper {
-  top: 0;
   -webkit-transform-origin: left top;
           transform-origin: left top;
+  transform: rotateX(0deg) rotateY(135deg) translate(-100%, -100%) translateY(-26.3983px);
+  -webkit-transform: rotateX(0deg) rotateY(135deg) translate(-100%, -100%) translateY(-26.3983px);
+  -moz-transform: rotateX(0deg) rotateY(135deg) translate(-100%, -100%) translateY(-26.3983px);
+  -ms-transform: rotateX(0deg) rotateY(135deg) translate(-100%, -100%) translateY(-26.3983px);
+  -o-transform: rotateX(0deg) rotateY(135deg) translate(-100%, -100%) translateY(-26.3983px);
+}
+
+.room-container .room .window-wrapper img.window-closed {
+  width: 23px;
+  position: relative;
+  top: 66px;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room .window-wrapper img.window-closed {
+    top: 100px;
+    width: 40px;
+  }
+}
+
+.room-container .room .window-wrapper img.window-parcial {
+  width: 27px;
+  position: relative;
+  top: 65px;
+  left: -3px;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room .window-wrapper img.window-parcial {
+    width: 48px;
+    top: 100px;
+    left: -3px;
+  }
+}
+
+.room-container .room .window-wrapper img.window-open {
+  width: 38px;
+  position: relative;
+  top: 58px;
+  left: -10px;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room .window-wrapper img.window-open {
+    width: 68px;
+    top: 93px;
+    left: -10px;
+  }
+}
+
+.room-container .room .window-wrapper img.window-system {
+  width: 20px;
+  position: relative;
+  top: 45px;
+  left: 0px;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room .window-wrapper img.window-system {
+    width: 40px;
+    top: 60px;
+    left: 0px;
+  }
 }
 
 .room-parameters {

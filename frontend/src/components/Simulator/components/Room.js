@@ -24,6 +24,10 @@ import VentCerradaI from "../../../assets/ventilation/VentCerradaI.svg";
 import VentParcialI from "../../../assets/ventilation/VentParcialI.svg";
 import VentAbiertaI from "../../../assets/ventilation/VentAbiertaI.svg";
 import VentSystemI from "../../../assets/ventilation/VentSystemI.svg";
+import VentCerradaD from "../../../assets/ventilation/VentCerradaD.svg";
+import VentParcialD from "../../../assets/ventilation/VentParcialD.svg";
+import VentAbiertaD from "../../../assets/ventilation/VentAbiertaD.svg";
+import VentSystemD from "../../../assets/ventilation/VentSystemD.svg";
 
 // ========================================
 
@@ -68,34 +72,57 @@ function Walls() {
   return (
     <>
       <div className="left-wall wall">
-        <Vent vent={room.ventilation} />
+        <VentI vent={room.ventilation} />
       </div>
-      <div className="right-wall wall"></div>
+      <div className="right-wall wall">
+        <VentD vent={room.ventilacion} />
+      </div>
     </>
   );
 }
 
-function Vent(props) {
+function VentI(props) {
   function getVentType(ventType) {
     switch (ventType) {
       default:
       case 0:
-        return <img className="window" src={VentCerradaI} alt=""></img>;
+        return <img className="window-closed" src={VentCerradaD} alt=""></img>;
       case 1:
-        return <img className="window" src={VentParcialI} alt=""></img>;
+        return <img className="window-parcial" src={VentParcialD} alt=""></img>;
       case 2:
-        return <img className="window" src={VentAbiertaI} alt=""></img>;
+        return <img className="window-open" src={VentAbiertaD} alt=""></img>;
       case 3:
-        return <img className="window" src={VentSystemI} alt=""></img>;
+        return <img className="window-system" src={VentSystemD} alt=""></img>;
     }
   }
   return (
     <div className="window-container window-wrapper">
-      <div>{getVentType(props.vent)}</div>
+      {getVentType(props.vent)}
     </div>
   );
 }
 
+function VentD(props) {
+  function getVentType(ventType) {
+    switch (ventType) {
+      default:
+      case 0:
+        return <img className="window-closed" src={VentCerradaI} alt=""></img>;
+      case 1:
+        return <img className="window-parcial" src={VentParcialI} alt=""></img>;
+      case 2:
+        return <img className="window-open" src={VentAbiertaI} alt=""></img>;
+      case 3:
+        return <img className="window-system" src={VentSystemI} alt=""></img>;
+    }
+  }
+
+  return (
+    <div className="window-container window-wrapper">
+      {getVentType(props.vent)}
+    </div>
+  );
+}
 function Shelf() {
   return (
     <div className="iso-element">
