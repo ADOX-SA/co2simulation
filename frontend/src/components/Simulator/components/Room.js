@@ -3,7 +3,7 @@ import { useRoom } from "../../../context/room-context";
 
 // Imported assets ========================
 
-/* import Student10 from "../../../assets/students/Estudiante10.svg";
+import Student10 from "../../../assets/students/Estudiante10.svg";
 import Student9 from "../../../assets/students/Estudiante9.svg";
 import Student8 from "../../../assets/students/Estudiante8.svg";
 import Student7 from "../../../assets/students/Estudiante7.svg";
@@ -11,9 +11,9 @@ import Student6 from "../../../assets/students/Estudiante6.svg";
 import Student5 from "../../../assets/students/Estudiante5.svg";
 import Student4 from "../../../assets/students/Estudiante4.svg";
 import Student3 from "../../../assets/students/Estudiante3.svg";
-import Student2 from "../../../assets/students/Estudiante2.svg"; */
+import Student2 from "../../../assets/students/Estudiante2.svg";
 import Student1 from "../../../assets/students/Estudiante1.svg";
-//import Student0 from "../../../assets/students/Estudiante0.svg";
+import Student0 from "../../../assets/students/Estudiante0.svg";
 import Profesora from "../../../assets/people/Teacher.svg";
 import EscritorioProfesora from "../../../assets/furniture/TeacherDesk.svg";
 import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
@@ -44,20 +44,20 @@ function Grid(room) {
   return (
     <div className="room-grid">
       <Shelf />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
+      <StudentDesk tipo={Student6} />
+      <StudentDesk tipo={Student2} />
+      <StudentDesk tipo={Student3} />
       <Teacher />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
+      <StudentDesk tipo={Student4} />
+      <StudentDesk tipo={Student5} />
+      <StudentDesk tipo={Student6} />
+      <StudentDesk tipo={Student7} />
+      <StudentDesk tipo={Student8} />
+      <StudentDesk tipo={Student3} />
       <TeacherDesk />
-      <StudentDesk />
-      <StudentDesk />
-      <StudentDesk />
+      <StudentDesk tipo={Student10} />
+      <StudentDesk tipo={Student2} />
+      <StudentDesk tipo={Student5} />
     </div>
   );
 }
@@ -106,7 +106,7 @@ function Shelf() {
   );
 }
 
-function StudentDesk() {
+function StudentDesk(props) {
   const { room } = useRoom();
 
   return (
@@ -114,7 +114,7 @@ function StudentDesk() {
       <div className="iso-box">
         <div className="student-wrapper">
           <Mask maskType={room.masks} />
-          <img src={Student1} alt="Estudiante" />
+          <img src={props.tipo} alt="Estudiante" />
         </div>
       </div>
     </div>
