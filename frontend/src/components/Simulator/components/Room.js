@@ -20,10 +20,6 @@ import Biblioteca from "../../../assets/furniture/Bookshelf.svg";
 import BarbijoDeTela from "../../../assets/masks/BarbijoDeTela.svg";
 import BarbijoQuirurgico from "../../../assets/masks/BarbijoQuirurgico.svg";
 import BarbijoKN95 from "../../../assets/masks/BarbijoKN95.svg";
-import VentCerradaI from "../../../assets/ventilation/VentCerradaI.svg";
-import VentParcialI from "../../../assets/ventilation/VentParcialI.svg";
-import VentAbiertaI from "../../../assets/ventilation/VentAbiertaI.svg";
-import VentSystemI from "../../../assets/ventilation/VentSystemI.svg";
 import VentCerradaD from "../../../assets/ventilation/VentCerradaD.svg";
 import VentParcialD from "../../../assets/ventilation/VentParcialD.svg";
 import VentAbiertaD from "../../../assets/ventilation/VentAbiertaD.svg";
@@ -72,16 +68,14 @@ function Walls() {
   return (
     <>
       <div className="left-wall wall">
-        <VentI vent={room.ventilation} />
+        <Vent vent={room.ventilation} />
       </div>
-      <div className="right-wall wall">
-        <VentD vent={room.ventilacion} />
-      </div>
+      <div className="right-wall wall"></div>
     </>
   );
 }
 
-function VentI(props) {
+function Vent(props) {
   function getVentType(ventType) {
     switch (ventType) {
       default:
@@ -102,27 +96,6 @@ function VentI(props) {
   );
 }
 
-function VentD(props) {
-  function getVentType(ventType) {
-    switch (ventType) {
-      default:
-      case 0:
-        return <img className="window-closed" src={VentCerradaI} alt=""></img>;
-      case 1:
-        return <img className="window-parcial" src={VentParcialI} alt=""></img>;
-      case 2:
-        return <img className="window-open" src={VentAbiertaI} alt=""></img>;
-      case 3:
-        return <img className="window-system" src={VentSystemI} alt=""></img>;
-    }
-  }
-
-  return (
-    <div className="window-container window-wrapper">
-      {getVentType(props.vent)}
-    </div>
-  );
-}
 function Shelf() {
   return (
     <div className="iso-element">
