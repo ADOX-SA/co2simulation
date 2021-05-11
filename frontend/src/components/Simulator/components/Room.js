@@ -52,7 +52,7 @@ function Grid(room) {
       <StudentDesk tipo={Student5} />
       <StudentDesk tipo={Student6} />
       <StudentDesk tipo={Student7} />
-      <StudentDesk tipo={Student8} />
+      <StudentDesk tipo={Student8} inf={1} />
       <StudentDesk tipo={Student3} />
       <TeacherDesk />
       <StudentDesk tipo={Student10} />
@@ -110,7 +110,9 @@ function StudentDesk(props) {
   const { room } = useRoom();
 
   return (
-    <div className="iso-element">
+    <div
+      className={props.inf === 1 ? "iso-element iso-infected" : "iso-element"}
+    >
       <div className="iso-box">
         <div className="student-wrapper">
           <Mask maskType={room.masks} />

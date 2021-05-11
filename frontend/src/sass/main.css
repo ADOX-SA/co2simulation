@@ -80,7 +80,12 @@
 }
 
 .room-container .room .iso-element {
+  border-radius: 20px;
   background-color: #ecf0f1;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .room-container .room .iso-element .iso-box {
@@ -296,6 +301,10 @@
     top: 65px;
     left: 15px;
   }
+}
+
+.room-container .room .iso-infected {
+  background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
 }
 
 .room-container .room .floor-shadow {
