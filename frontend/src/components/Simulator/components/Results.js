@@ -18,7 +18,7 @@ export default function Results() {
           <h5>Resultados</h5>
         </div>
         <div className="sensor-div">
-          <img className="sensor-img" src={sensorPeligro} alt="Sensor" />
+          <img className="sensor-img" src={sensorAlto} alt="Sensor" />
           <h4>
             Medidor de CO<sub>2</sub>
           </h4>

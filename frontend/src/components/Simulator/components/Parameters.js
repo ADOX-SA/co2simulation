@@ -125,7 +125,7 @@ function MaskSelector() {
           className={3 === active ? "btn-selected" : null}
           onClick={() => handleClick(3)}
         >
-          <MaskBtn src={SelBarbijoKN95} label="KN95" id={3} />
+          <MaskBtn src={SelBarbijoKN95} label="N95" id={3} />
         </li>
       </ol>
     </div>
