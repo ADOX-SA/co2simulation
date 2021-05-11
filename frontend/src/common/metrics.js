@@ -44,5 +44,10 @@ var updateRoom = (function () {
       var totalCO2ExhaladoPMinuto = totalCO2Exhalado / 60;
       return totalCO2ExhaladoPMinuto;
     },
+
+    totalCO2ppm: function () {
+        var totalCO2ppm = 
+    }
+
   };
 })();
