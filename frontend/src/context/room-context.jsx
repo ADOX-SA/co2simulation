@@ -7,7 +7,7 @@ export function RoomProvider(props) {
   const [room, setRoom] = useState({
     teachers: 1,
     people: 0,
-    infecteds: 0,
+    infecteds: 1,
     masks: 0,
     duration: 1,
     ventilation: 0,
