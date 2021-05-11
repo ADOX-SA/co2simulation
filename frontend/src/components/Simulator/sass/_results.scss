@@ -17,7 +17,7 @@
   margin-top: 30px;
 
   .results-header {
-    background-color: $secondary;
+    @include gradient;
     color: $primary;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;

@@ -18,7 +18,7 @@
   -o-border-radius: 5px;
 
   .parameters-header {
-    background-color: $secondary;
+    @include gradient;
     color: $primary;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
@@ -118,7 +118,7 @@
           0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
           0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
           0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
-        background: $secondary;
+        @include gradient;
         height: 35px;
         width: 20px;
         border-radius: 5px;
@@ -161,7 +161,7 @@
 }
 
 .btn-selected {
-  background-color: $secondary;
+  @include gradient;
   color: $primary;
 }
 
