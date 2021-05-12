@@ -115,7 +115,7 @@ function StudentDesk(props) {
     >
       <div className="iso-box">
         <div className="student-wrapper">
-          <Mask maskType={room.masks} />
+          <Mask maskType={room.maskEfficiency} />
           <img src={props.tipo} alt="Estudiante" />
         </div>
       </div>
@@ -126,13 +126,13 @@ function StudentDesk(props) {
 function Mask(maskType) {
   function getMaskType(maskType) {
     switch (maskType) {
-      case 1:
+      case 0.5:
         return <img className="mask" src={BarbijoDeTela} alt="Barbijo"></img>;
-      case 2:
+      case 0.65:
         return (
           <img className="mask" src={BarbijoQuirurgico} alt="Barbijo"></img>
         );
-      case 3:
+      case 0.9:
         return <img className="mask" src={BarbijoKN95} alt="Barbijo"></img>;
       case 0:
       default:

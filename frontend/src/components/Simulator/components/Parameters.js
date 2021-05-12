@@ -29,7 +29,7 @@ export default function Parameters() {
   );
 }
 
-function PeopleSlider({ min, max, label, unit }) {
+/* function PeopleSlider({ min, max, label, unit }) {
   const { room, setRoom } = useRoom();
 
   const handleOnChange = (e) => {
@@ -56,7 +56,7 @@ function PeopleSlider({ min, max, label, unit }) {
       </div>
     </div>
   );
-}
+} */
 
 function DurationSlider({ min, max, label, unit }) {
   const { room, setRoom } = useRoom();
@@ -96,7 +96,21 @@ function MaskSelector() {
 
   const handleClick = (id) => {
     setActive(id);
-    setRoom({ ...room, masks: id });
+    switch (id) {
+      default:
+      case 0:
+        setRoom({ ...room, maskEfficiency: 0 });
+        break;
+      case 1:
+        setRoom({ ...room, maskEfficiency: 0.5 });
+        break;
+      case 2:
+        setRoom({ ...room, maskEfficiency: 0.65 });
+        break;
+      case 3:
+        setRoom({ ...room, maskEfficiency: 0.9 });
+        break;
+    }
   };
 
   return (
