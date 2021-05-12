@@ -59,10 +59,10 @@ export default function Parameters() {
 } */
 
 function DurationSlider({ min, max, label, unit }) {
-  const { room, setRoom } = useRoom();
+  const { room, updateAvrConcentrationOfQuantasDURATION } = useRoom();
 
   const handleOnChange = (e) => {
-    setRoom({ ...room, duration: e.target.value });
+    updateAvrConcentrationOfQuantasDURATION(e.target.value);
   };
 
   return (
@@ -167,25 +167,12 @@ function MaskBtn(props) {
 
 function VentilationSelector() {
   const [active, setActive] = useState(0);
-  const { room, setRoom } = useRoom();
+  const { updateAvrConcentrationOfQuantasVENT } = useRoom();
 
   const handleClick = (ventRate) => {
-    const { netEmissionRate, roomVolumeM3, duration } = room;
-    const NEWfirstOrderLoss = ventRate + 0.92; // ? Averiguar si esto está bien
-
-    const avrConcentrationOfQuantas =
-      (netEmissionRate / NEWfirstOrderLoss / roomVolumeM3) *
-      (1 -
-        (1 / NEWfirstOrderLoss / duration) *
-          (1 - Math.exp(-NEWfirstOrderLoss * duration)));
+    updateAvrConcentrationOfQuantasVENT(ventRate);
 
     setActive(ventRate);
-    setRoom({
-      ...room,
-      ventilation: ventRate,
-      avrConcentrationOfQuantas: avrConcentrationOfQuantas,
-      firstOrderLoss: NEWfirstOrderLoss,
-    });
   };
 
   return (

@@ -45,10 +45,46 @@ export function RoomProvider(props) {
     avrConcentrationOfQuantas: 0.06800508279, // Concentración media de quantas
   });
 
+  function updateAvrConcentrationOfQuantasVENT(ventRate) {
+    const { netEmissionRate, roomVolumeM3, duration } = room;
+    const NEWfirstOrderLoss = ventRate + 0.92; // ? Averiguar si esto está bien
+
+    const avrConcentrationOfQuantas =
+      (netEmissionRate / NEWfirstOrderLoss / roomVolumeM3) *
+      (1 -
+        (1 / NEWfirstOrderLoss / duration) *
+          (1 - Math.exp(-NEWfirstOrderLoss * duration)));
+
+    setRoom({
+      ...room,
+      ventilation: ventRate,
+      avrConcentrationOfQuantas: avrConcentrationOfQuantas,
+      firstOrderLoss: NEWfirstOrderLoss,
+    });
+  }
+
+  function updateAvrConcentrationOfQuantasDURATION(newDuration) {
+    const { netEmissionRate, roomVolumeM3, firstOrderLoss } = room;
+
+    const avrConcentrationOfQuantas =
+      (netEmissionRate / firstOrderLoss / roomVolumeM3) *
+      (1 -
+        (1 / firstOrderLoss / newDuration) *
+          (1 - Math.exp(-firstOrderLoss * newDuration)));
+
+    setRoom({
+      ...room,
+      avrConcentrationOfQuantas: avrConcentrationOfQuantas,
+      duration: newDuration,
+    });
+  }
+
   // Valor de retorno
   const value = {
     room,
     setRoom,
+    updateAvrConcentrationOfQuantasVENT,
+    updateAvrConcentrationOfQuantasDURATION,
   };
 
   useEffect(() => {
