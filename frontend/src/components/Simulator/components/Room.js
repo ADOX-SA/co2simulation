@@ -79,14 +79,38 @@ function Vent(props) {
   function getVentType(ventType) {
     switch (ventType) {
       default:
-      case 0:
-        return <img className="window-closed" src={VentCerradaD} alt=""></img>;
-      case 1:
-        return <img className="window-parcial" src={VentParcialD} alt=""></img>;
-      case 2:
-        return <img className="window-open" src={VentAbiertaD} alt=""></img>;
+      case 0.1:
+        return (
+          <img
+            className="window-closed"
+            src={VentCerradaD}
+            alt="Ventilación"
+          ></img>
+        );
       case 3:
-        return <img className="window-system" src={VentSystemD} alt=""></img>;
+        return (
+          <img
+            className="window-parcial"
+            src={VentParcialD}
+            alt="Ventilación"
+          ></img>
+        );
+      case 5:
+        return (
+          <img
+            className="window-open"
+            src={VentAbiertaD}
+            alt="Ventilación"
+          ></img>
+        );
+      case 7:
+        return (
+          <img
+            className="window-system"
+            src={VentSystemD}
+            alt="Ventilación"
+          ></img>
+        );
     }
   }
   return (
@@ -123,7 +147,7 @@ function StudentDesk(props) {
   );
 }
 
-function Mask(maskType) {
+function Mask(props) {
   function getMaskType(maskType) {
     switch (maskType) {
       case 0.5:
@@ -139,7 +163,7 @@ function Mask(maskType) {
         return <></>;
     }
   }
-  return getMaskType(maskType.maskType);
+  return getMaskType(props.maskType);
 }
 
 function Teacher() {

@@ -169,26 +169,26 @@ function VentilationSelector() {
       <h5>Selector de ventilación:</h5>
       <ol>
         <li
-          className={0 === active ? "btn-selected" : null}
-          onClick={() => handleClick(0)}
+          className={0.1 === active ? "btn-selected" : null}
+          onClick={() => handleClick(0.1)}
         >
           <VentBtn src={SelVentCerrada} label="Ninguna" id={0} />
         </li>
         <li
-          className={1 === active ? "btn-selected" : null}
-          onClick={() => handleClick(1)}
+          className={3 === active ? "btn-selected" : null}
+          onClick={() => handleClick(3)}
         >
           <VentBtn src={SelVentParcial} label="Parcial" id={1} />
         </li>
         <li
-          className={2 === active ? "btn-selected" : null}
-          onClick={() => handleClick(2)}
+          className={5 === active ? "btn-selected" : null}
+          onClick={() => handleClick(5)}
         >
           <VentBtn src={SelVentAbierta} label="Total" id={2} />
         </li>
         <li
-          className={3 === active ? "btn-selected" : null}
-          onClick={() => handleClick(3)}
+          className={7 === active ? "btn-selected" : null}
+          onClick={() => handleClick(7)}
         >
           <VentBtn src={SelVentSystem} label="Sistema" id={3} />
         </li>
