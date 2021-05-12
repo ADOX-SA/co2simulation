@@ -29,10 +29,19 @@ export function RoomProvider(props) {
     teachers: 1,
     people: 12,
     infecteds: 1,
-    maskEfficiency: 0.1,
+    maskEfficiency: 0, // 0 | 0.5 | 0.65 | 0.9
+    maskPopulation: 1, // Fracción de personas con máscara. Asumimos un 100%
     duration: 1,
     ventilation: 0.1,
-    totalCO2ExhaladoPMinuto: 3.32444,
+    firstOrderLoss: 5.92, // ventilation + 0.92 // ? Averiguar esto
+    totalCO2ExhaladoPMinuto: 3.32444, // teachers * 0.36812 + people * 0.24636
+    roomHeight: 2.4,
+    roomWidth: 6,
+    roomLarge: 10,
+    roomVolumeM3: 144, // Volumen en metros cúbicos
+    co2Exterior: 415, // Calibración exterior
+    infectedExhalation: 60, // Tasa de exhalación sentado y hablando fuerte
+    netEmissionRate: 0,
   });
 
   // Valor de retorno

@@ -95,22 +95,32 @@ function MaskSelector() {
   const { room, setRoom } = useRoom();
 
   const handleClick = (id) => {
+    const { infecteds, infectedExhalation, maskPopulation } = room;
+    var maskEff;
+
     setActive(id);
     switch (id) {
       default:
       case 0:
-        setRoom({ ...room, maskEfficiency: 0 });
+        maskEff = 0;
         break;
       case 1:
-        setRoom({ ...room, maskEfficiency: 0.5 });
+        maskEff = 0.5;
         break;
       case 2:
-        setRoom({ ...room, maskEfficiency: 0.65 });
+        maskEff = 0.65;
         break;
       case 3:
-        setRoom({ ...room, maskEfficiency: 0.9 });
+        maskEff = 0.9;
         break;
     }
+    const netEmissionRate =
+      infectedExhalation * (1 - maskEff * maskPopulation) * infecteds;
+    setRoom({
+      ...room,
+      netEmissionRate: netEmissionRate,
+      maskEfficiency: maskEff,
+    });
   };
 
   return (
