@@ -93,12 +93,7 @@ export function RoomProvider(props) {
         (1 / firstOrderLoss / newDuration) *
           (1 - Math.exp(-firstOrderLoss * newDuration)));
 
-    setRoom({
-      ...room,
-      avrConcentrationOfQuantas: avrConcentrationOfQuantas,
-      duration: newDuration,
-    });
-    // updateInhaledQuantasByPerson(avrConcentrationOfQuantas);
+    updateInhaledQuantasByPerson(avrConcentrationOfQuantas, newDuration);
   }
 
   // Actualización por cambio de máscara
@@ -118,13 +113,28 @@ export function RoomProvider(props) {
 
   // FUNCIONES PARA CALCULAR QUANTAS INHALADAS POR PERSONA
   // Actualización por cambio de ACQ
-  function updateInhaledQuantasByPerson(newACQ) {
+  function updateInhaledQuantasByPerson(newACQ, newDuration) {
     const { duration, maskEfficiency, maskPopulation } = room;
 
-    const newInhaledQuantasByPerson =
-      newACQ * 0.52 * duration * (1 - maskEfficiency * maskPopulation);
+    if (newDuration) {
+      const newInhaledQuantasByPerson =
+        newACQ * 0.52 * newDuration * (1 - maskEfficiency * maskPopulation);
 
-    setRoom({ ...room, InhaledQuantasByPerson: newInhaledQuantasByPerson });
+      setRoom({
+        ...room,
+        InhaledQuantasByPerson: newInhaledQuantasByPerson,
+        duration: newDuration,
+        avrConcentrationOfQuantas: newACQ,
+      });
+    } else {
+      const newInhaledQuantasByPerson =
+        newACQ * 0.52 * duration * (1 - maskEfficiency * maskPopulation);
+      setRoom({
+        ...room,
+        InhaledQuantasByPerson: newInhaledQuantasByPerson,
+        avrConcentrationOfQuantas: newACQ,
+      });
+    }
   }
 
   // FUNCIONES PARA ACTUALIZAR TOTAL CO2 EN AMBIENTE
