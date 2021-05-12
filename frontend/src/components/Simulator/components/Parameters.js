@@ -92,10 +92,9 @@ function DurationSlider({ min, max, label, unit }) {
 
 function MaskSelector() {
   const [active, setActive] = useState(0);
-  const { room, setRoom } = useRoom();
+  const { updateNetEmissionRateMASK } = useRoom();
 
   const handleClick = (id) => {
-    const { infecteds, infectedExhalation, maskPopulation } = room;
     var maskEff;
 
     setActive(id);
@@ -114,13 +113,7 @@ function MaskSelector() {
         maskEff = 0.9;
         break;
     }
-    const netEmissionRate =
-      infectedExhalation * (1 - maskEff * maskPopulation) * infecteds;
-    setRoom({
-      ...room,
-      netEmissionRate: netEmissionRate,
-      maskEfficiency: maskEff,
-    });
+    updateNetEmissionRateMASK(maskEff);
   };
 
   return (

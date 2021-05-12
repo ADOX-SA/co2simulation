@@ -63,6 +63,23 @@ export function RoomProvider(props) {
     });
   }
 
+  // FUNCIONES PARA ACTUALIZAR LA CONCENTRACIÓN MEDIA DE QUANTAS
+  // Actualización gral.
+  function updateAvrConcentrationOfQuantasNER(newNER) {
+    const { roomVolumeM3, firstOrderLoss, duration } = room;
+    const newACQ =
+      (newNER / firstOrderLoss / roomVolumeM3) *
+      (1 -
+        (1 / firstOrderLoss / duration) *
+          (1 - Math.exp(-firstOrderLoss * duration)));
+
+    setRoom({
+      ...room,
+      avrConcentrationOfQuantas: newACQ,
+    });
+  }
+
+  // Actualización por cambio de duración
   function updateAvrConcentrationOfQuantasDURATION(newDuration) {
     const { netEmissionRate, roomVolumeM3, firstOrderLoss } = room;
 
@@ -79,12 +96,29 @@ export function RoomProvider(props) {
     });
   }
 
+  // Actualización por cambio de máscara
+  function updateNetEmissionRateMASK(newMask) {
+    const { infectedExhalation, maskPopulation, infecteds } = room;
+
+    const netEmissionRate =
+      infectedExhalation * (1 - newMask * maskPopulation) * infecteds;
+    setRoom({
+      ...room,
+      netEmissionRate: netEmissionRate,
+      maskEfficiency: newMask,
+    });
+
+    updateAvrConcentrationOfQuantasNER(netEmissionRate);
+  }
+
   // Valor de retorno
   const value = {
     room,
     setRoom,
+    updateAvrConcentrationOfQuantasNER,
     updateAvrConcentrationOfQuantasVENT,
     updateAvrConcentrationOfQuantasDURATION,
+    updateNetEmissionRateMASK,
   };
 
   useEffect(() => {
