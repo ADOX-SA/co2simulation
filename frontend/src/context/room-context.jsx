@@ -32,7 +32,7 @@ export function RoomProvider(props) {
     maskEfficiency: 0, // 0 | 0.5 | 0.65 | 0.9
     maskPopulation: 1, // Fracción de personas con máscara. Asumimos un 100%
     duration: 1,
-    ventilation: 0.1,
+    ventilation: 0.1, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
     firstOrderLoss: 5.92, // ventilation + 0.92 // ? Averiguar esto
     totalCO2ExhaladoPMinuto: 3.32444, // teachers * 0.36812 + people * 0.24636
     roomHeight: 2.4,
@@ -41,7 +41,8 @@ export function RoomProvider(props) {
     roomVolumeM3: 144, // Volumen en metros cúbicos
     co2Exterior: 415, // Calibración exterior
     infectedExhalation: 60, // Tasa de exhalación sentado y hablando fuerte
-    netEmissionRate: 0,
+    netEmissionRate: 60, // Tasa de emisión neta
+    avrConcentrationOfQuantas: 0.06800508279, // Concentración media de quantas
   });
 
   // Valor de retorno
@@ -51,7 +52,7 @@ export function RoomProvider(props) {
   };
 
   useEffect(() => {
-    console.log(room);
+    console.log(room.avrConcentrationOfQuantas);
   });
 
   return <RoomContext.Provider value={value} {...props} />;

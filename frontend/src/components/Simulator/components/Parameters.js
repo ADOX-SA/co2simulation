@@ -169,9 +169,23 @@ function VentilationSelector() {
   const [active, setActive] = useState(0);
   const { room, setRoom } = useRoom();
 
-  const handleClick = (id) => {
-    setActive(id);
-    setRoom({ ...room, ventilation: id });
+  const handleClick = (ventRate) => {
+    const { netEmissionRate, roomVolumeM3, duration } = room;
+    const NEWfirstOrderLoss = ventRate + 0.92; // ? Averiguar si esto está bien
+
+    const avrConcentrationOfQuantas =
+      (netEmissionRate / NEWfirstOrderLoss / roomVolumeM3) *
+      (1 -
+        (1 / NEWfirstOrderLoss / duration) *
+          (1 - Math.exp(-NEWfirstOrderLoss * duration)));
+
+    setActive(ventRate);
+    setRoom({
+      ...room,
+      ventilation: ventRate,
+      avrConcentrationOfQuantas: avrConcentrationOfQuantas,
+      firstOrderLoss: NEWfirstOrderLoss,
+    });
   };
 
   return (
