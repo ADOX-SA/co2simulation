@@ -770,6 +770,18 @@
   }
 }
 
+.results-card .ppmOK {
+  color: #20c527;
+}
+
+.results-card .ppmAlto {
+  color: #eca622;
+}
+
+.results-card .ppmPeligro {
+  color: #c61f1f;
+}
+
 @media only screen and (min-width: 992px) {
   .results-card {
     margin-top: 60px;

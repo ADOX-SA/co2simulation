@@ -65,6 +65,18 @@
     }
   }
 
+  .ppmOK {
+    color: $ppmOK;
+  }
+
+  .ppmAlto {
+    color: $ppmAlto;
+  }
+
+  .ppmPeligro {
+    color: $ppmPeligro;
+  }
+
   @include desktop {
     margin-top: 60px;
     margin-left: 10%;
