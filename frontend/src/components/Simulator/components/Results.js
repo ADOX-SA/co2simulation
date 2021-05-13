@@ -17,20 +17,38 @@ export default function Results() {
       </div>
       <div className="results-wrapper">
         <div>
-          <h5>
-            Total CO<sub>2</sub> presente en el ambiente (partes por millón)
-          </h5>
-          <h1
-            className={
-              room.totalCO2Ambiente < 800
-                ? "ppmOK"
-                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-                ? "ppmAlto"
-                : "ppmPeligro"
-            }
-          >
-            {parseInt(room.totalCO2Ambiente)} ppm
-          </h1>
+          <div className="ppm-card">
+            <h5 className="results-subtitle">
+              Total CO<sub>2</sub> presente en el ambiente (partes por millón):
+            </h5>
+            <h1
+              className={
+                room.totalCO2Ambiente < 800
+                  ? "ppmOK results-ppm"
+                  : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                  ? "ppmAlto results-ppm"
+                  : "ppmPeligro results-ppm"
+              }
+            >
+              {parseInt(room.totalCO2Ambiente)} ppm
+            </h1>
+          </div>
+          <div className="ppm-card">
+            <h5 className="results-subtitle">
+              Probabilidad de contagio por persona (%):
+            </h5>
+            <h1
+              className={
+                room.totalCO2Ambiente < 800
+                  ? "ppmOK results-ppm"
+                  : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                  ? "ppmAlto results-ppm"
+                  : "ppmPeligro results-ppm"
+              }
+            >
+              {parseInt(room.infectionProbability)} %
+            </h1>
+          </div>
         </div>
         <Sensor />
       </div>
