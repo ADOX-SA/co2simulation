@@ -37,16 +37,8 @@ export default function Results() {
             <h5 className="results-subtitle">
               Probabilidad de contagio por persona (%):
             </h5>
-            <h1
-              className={
-                room.totalCO2Ambiente < 800
-                  ? "ppmOK results-ppm"
-                  : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-                  ? "ppmAlto results-ppm"
-                  : "ppmPeligro results-ppm"
-              }
-            >
-              {parseInt(room.infectionProbability)} %
+            <h1 className="results-ppm">
+              {parseFloat(room.infectionProbability).toFixed(2)} %
             </h1>
           </div>
         </div>
@@ -85,6 +77,9 @@ function Sensor() {
 
   return (
     <div className="sensor-div">
+      <span className="screen-result">
+        {parseInt(room.totalCO2Ambiente)} ppm
+      </span>
       {cambiarMedidor(room.totalCO2Ambiente)}
       <h4>
         Medidor de CO<sub>2</sub>

@@ -46,7 +46,7 @@ export function RoomProvider(props) {
     netEmissionRate: 60, // Tasa de emisión neta
     avrConcentrationOfQuantas: 0.1524233228, // Concentración media de quantas
     InhaledQuantasByPerson: 0.07926012787, // Quantas inhaladas por persona
-    infectionProbability: 57.47,
+    infectionProbability: 7.52,
   });
 
   // ============================ FUNCIONES PARA REALIZACIÓN DE CÁLCULOS ======================
@@ -125,6 +125,8 @@ export function RoomProvider(props) {
     if (newDuration) {
       const newInhaledQuantasByPerson =
         newACQ * 0.52 * newDuration * (1 - maskEfficiency * maskPopulation);
+      const infectionProbability =
+        (1 - Math.exp(-newInhaledQuantasByPerson)) * 100;
 
       const totalCO2 = updateTotalCO2AmbienteDURATION(newDuration);
 
@@ -133,15 +135,21 @@ export function RoomProvider(props) {
         InhaledQuantasByPerson: newInhaledQuantasByPerson,
         duration: newDuration,
         avrConcentrationOfQuantas: newACQ,
+        infectionProbability: infectionProbability,
         totalCO2Ambiente: totalCO2,
       });
     } else {
       const newInhaledQuantasByPerson =
         newACQ * 0.52 * duration * (1 - maskEfficiency * maskPopulation);
+
+      const infectionProbability =
+        (1 - Math.exp(-newInhaledQuantasByPerson)) * 100;
+
       setRoom({
         ...room,
         InhaledQuantasByPerson: newInhaledQuantasByPerson,
         avrConcentrationOfQuantas: newACQ,
+        infectionProbability: infectionProbability,
       });
     }
   }
