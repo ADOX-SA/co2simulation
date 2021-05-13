@@ -834,13 +834,15 @@
 .results-card .screen-result {
   position: relative;
   font-size: 0.875rem;
-  left: 0px;
+  left: 150px;
   color: #ecf0f1;
+  top: -190px;
 }
 
 @media only screen and (min-width: 992px) {
   .results-card .screen-result {
     font-size: 0.875rem;
+    left: 0;
     top: 65px;
   }
 }

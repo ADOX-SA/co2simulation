@@ -129,11 +129,13 @@
   .screen-result {
     position: relative;
     font-size: 0.875rem;
-    left: 0px;
+    left: 150px;
     color: $primary;
+    top: -190px;
 
     @include desktop {
       font-size: 0.875rem;
+      left: 0;
       top: 65px;
     }
   }
