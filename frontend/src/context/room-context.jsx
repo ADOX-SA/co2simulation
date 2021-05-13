@@ -33,10 +33,10 @@ export function RoomProvider(props) {
     maskPopulation: 1, // Fracción de personas con máscara. Asumimos un 100%
     duration: 1,
     ventilation: 0.1, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
-    firstOrderLoss: 5.92, // ventilation + 0.92 // ? Averiguar esto
+    firstOrderLoss: 1.02, // ventilation + 0.92 // ? Averiguar esto
     totalCO2ExhaladoPMinuto: 3.32444, // teachers * 0.36812 + people * 0.24636
     totalCO2ExhaladoPSegundo: 0.05540733333, // anterior pero en litros por segundo
-    totalCO2Ambiente: 3366,
+    totalCO2Ambiente: 1085,
     roomHeight: 2.4,
     roomWidth: 6,
     roomLarge: 10,
@@ -44,8 +44,8 @@ export function RoomProvider(props) {
     co2Exterior: 415, // Calibración exterior
     infectedExhalation: 60, // Tasa de exhalación sentado y hablando fuerte
     netEmissionRate: 60, // Tasa de emisión neta
-    avrConcentrationOfQuantas: 0.06800508279, // Concentración media de quantas
-    InhaledQuantasByPerson: 0.8551079345, // Quantas inhaladas por persona
+    avrConcentrationOfQuantas: 0.1524233228, // Concentración media de quantas
+    InhaledQuantasByPerson: 0.07926012787, // Quantas inhaladas por persona
     infectionProbability: 57.47,
   });
 

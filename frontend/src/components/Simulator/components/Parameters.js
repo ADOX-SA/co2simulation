@@ -159,7 +159,7 @@ function MaskBtn(props) {
 }
 
 function VentilationSelector() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(0.1);
   const { updateAvrConcentrationOfQuantasVENT } = useRoom();
 
   const handleClick = (ventRate) => {

@@ -3,7 +3,6 @@ import { useRoom } from "../../../context/room-context";
 
 // Imported assets
 import sensor from "../../../assets/sensor/Sensor.svg";
-import sensorConectando from "../../../assets/sensor/SensorConectando.svg";
 import sensorNormal from "../../../assets/sensor/SensorNormal.svg";
 import sensorAlto from "../../../assets/sensor/SensorAlto.svg";
 import sensorPeligro from "../../../assets/sensor/SensorPeligro.svg";
@@ -33,13 +32,45 @@ export default function Results() {
             {parseInt(room.totalCO2Ambiente)} ppm
           </h1>
         </div>
-        <div className="sensor-div">
-          <img className="sensor-img" src={sensorAlto} alt="Sensor" />
-          <h4>
-            Medidor de CO<sub>2</sub>
-          </h4>
-        </div>
+        <Sensor />
       </div>
+    </div>
+  );
+}
+
+function Sensor() {
+  const { room } = useRoom();
+
+  function cambiarMedidor(ppm) {
+    var selector = 0;
+    ppm < 800
+      ? (selector = 0)
+      : ppm >= 800 && ppm < 1400
+      ? (selector = 1)
+      : (selector = 2);
+
+    switch (selector) {
+      case 0:
+        return (
+          <img className="sensor-img" src={sensorNormal} alt="Sensor"></img>
+        );
+      case 1:
+        return <img className="sensor-img" src={sensorAlto} alt="Sensor"></img>;
+      case 2:
+        return (
+          <img className="sensor-img" src={sensorPeligro} alt="Sensor"></img>
+        );
+      default:
+        return <img className="sensor-img" src={sensor} alt="Sensor"></img>;
+    }
+  }
+
+  return (
+    <div className="sensor-div">
+      {cambiarMedidor(room.totalCO2Ambiente)}
+      <h4>
+        Medidor de CO<sub>2</sub>
+      </h4>
     </div>
   );
 }
