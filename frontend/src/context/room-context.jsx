@@ -73,7 +73,7 @@ export function RoomProvider(props) {
 
   // FUNCIONES PARA ACTUALIZAR LA CONCENTRACIÓN MEDIA DE QUANTAS //////////////////
   // Actualización gral.
-  function updateAvrConcentrationOfQuantasNER(newNER) {
+  function updateAvrConcentrationOfQuantasNER(newNER, newMask) {
     const { roomVolumeM3, firstOrderLoss, duration } = room;
     const newACQ =
       (newNER / firstOrderLoss / roomVolumeM3) *
@@ -81,11 +81,13 @@ export function RoomProvider(props) {
         (1 / firstOrderLoss / duration) *
           (1 - Math.exp(-firstOrderLoss * duration)));
 
+    console.log(newMask);
+
     setRoom({
       ...room,
       avrConcentrationOfQuantas: newACQ,
     });
-    updateInhaledQuantasByPerson(newACQ);
+    updateInhaledQuantasByPerson(newACQ, duration, newNER, newMask);
   }
 
   // Actualización por cambio de duración
@@ -108,18 +110,13 @@ export function RoomProvider(props) {
 
     const netEmissionRate =
       infectedExhalation * (1 - newMask * maskPopulation) * infecteds;
-    setRoom({
-      ...room,
-      netEmissionRate: netEmissionRate,
-      maskEfficiency: newMask,
-    });
 
-    updateAvrConcentrationOfQuantasNER(netEmissionRate);
+    updateAvrConcentrationOfQuantasNER(netEmissionRate, newMask);
   }
 
   // FUNCIONES PARA CALCULAR QUANTAS INHALADAS POR PERSONA ///////////////////////
   // Actualización por cambio de ACQ
-  function updateInhaledQuantasByPerson(newACQ, newDuration) {
+  function updateInhaledQuantasByPerson(newACQ, newDuration, newNER, newMask) {
     const { duration, maskEfficiency, maskPopulation } = room;
 
     if (newDuration) {
@@ -137,6 +134,8 @@ export function RoomProvider(props) {
         avrConcentrationOfQuantas: newACQ,
         infectionProbability: infectionProbability,
         totalCO2Ambiente: totalCO2,
+        netEmissionRate: newNER,
+        maskEfficiency: newMask,
       });
     } else {
       const newInhaledQuantasByPerson =
@@ -152,16 +151,6 @@ export function RoomProvider(props) {
         infectionProbability: infectionProbability,
       });
     }
-  }
-
-  // FUNCIONES PARA CALCULAR PROBABILIDAD DE INFECCIÓN POR PERSONA ///////////////
-  // Probabilidad de infección
-  function updateInfectionProbability() {
-    const { InhaledQuantasByPerson } = room;
-
-    const infectionProbability = (1 - Math.exp(-InhaledQuantasByPerson)) * 100;
-
-    setRoom({ ...room, infectionProbability: infectionProbability });
   }
 
   // FUNCIONES PARA ACTUALIZAR TOTAL CO2 EN AMBIENTE /////////////////////////////
@@ -207,7 +196,7 @@ export function RoomProvider(props) {
   };
 
   useEffect(() => {
-    console.log(room.totalCO2Ambiente);
+    console.log(room);
   });
 
   return <RoomContext.Provider value={value} {...props} />;
