@@ -87,7 +87,8 @@ export function RoomProvider(props) {
       ...room,
       avrConcentrationOfQuantas: newACQ,
     });
-    updateInhaledQuantasByPerson(newACQ, duration, newNER, newMask);
+    var _ = undefined;
+    updateInhaledQuantasByPerson(newACQ, _, newNER, newMask);
   }
 
   // Actualización por cambio de duración
@@ -120,6 +121,7 @@ export function RoomProvider(props) {
     const { duration, maskEfficiency, maskPopulation } = room;
 
     if (newDuration) {
+      console.log("Existe duracion");
       const newInhaledQuantasByPerson =
         newACQ * 0.52 * newDuration * (1 - maskEfficiency * maskPopulation);
       const infectionProbability =
@@ -134,12 +136,12 @@ export function RoomProvider(props) {
         avrConcentrationOfQuantas: newACQ,
         infectionProbability: infectionProbability,
         totalCO2Ambiente: totalCO2,
-        netEmissionRate: newNER,
-        maskEfficiency: newMask,
       });
     } else {
+      console.log("NO existe duracion");
+
       const newInhaledQuantasByPerson =
-        newACQ * 0.52 * duration * (1 - maskEfficiency * maskPopulation);
+        newACQ * 0.52 * duration * (1 - newMask * maskPopulation);
 
       const infectionProbability =
         (1 - Math.exp(-newInhaledQuantasByPerson)) * 100;
@@ -149,6 +151,8 @@ export function RoomProvider(props) {
         InhaledQuantasByPerson: newInhaledQuantasByPerson,
         avrConcentrationOfQuantas: newACQ,
         infectionProbability: infectionProbability,
+        netEmissionRate: newNER,
+        maskEfficiency: newMask,
       });
     }
   }
