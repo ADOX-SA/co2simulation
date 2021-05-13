@@ -168,7 +168,7 @@ export function RoomProvider(props) {
         1000000 +
       co2Exterior;
 
-    setRoom({ ...room, totalCO2Ambiente: totalCO2 });
+    setRoom({ ...room, totalCO2Ambiente: totalCO2, ventilation: ventRate });
   }
 
   // Actualización por cambio de duracion
