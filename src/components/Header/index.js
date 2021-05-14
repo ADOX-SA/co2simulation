@@ -7,9 +7,8 @@ export default function Header() {
         Simulador de riesgo de contagio por aerosoles en ambientes cerrados
       </h1>
       <p className="header-text">
-        Siempre que las personas se reúnen en espacios cerrados, el riesgo de
-        infección aumenta. Nuestra herramienta interactiva muestra cómo se
-        propaga el <b>COVID-19</b>.
+        El veneno está en la dosis. Bajo tiempo de exposición a concentraciones
+        bajas de CO2 exhalado son el marco de un <b>AMBIENTE SALUDABLE</b>.
       </p>
     </div>
   );
