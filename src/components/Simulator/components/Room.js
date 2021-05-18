@@ -149,7 +149,6 @@ function StudentDesk(props) {
 
 function Mask(props) {
   function getTipoDeBarbijo(tipoDeBarbijo) {
-    console.log(tipoDeBarbijo);
     switch (tipoDeBarbijo) {
       case 0.5:
         return <img className="mask" src={BarbijoDeTela} alt="Barbijo"></img>;

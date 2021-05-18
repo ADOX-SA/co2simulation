@@ -110,7 +110,6 @@ export function RoomProvider(props) {
     const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
       nuevaCuantasInhaladasPorPersona
     );
-    console.log("Probabilidad de infeccion", nuevaProbabilidadDeInfeccion);
 
     const nuevaTotalCO2 = totalCO2Ambiente(duracion, _);
 
@@ -148,7 +147,6 @@ export function RoomProvider(props) {
     const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
       nuevaCuantasInhaladasPorPersona
     );
-    console.log("Probabilidad de infeccion", nuevaProbabilidadDeInfeccion);
 
     const nuevaTotalCO2 = totalCO2Ambiente(_, ventilacion);
 
@@ -320,10 +318,6 @@ export function RoomProvider(props) {
     cambioDuracion,
     cambioVentilacion,
   };
-
-  useEffect(() => {
-    console.log(room);
-  });
 
   return <RoomContext.Provider value={value} {...props} />;
 }
