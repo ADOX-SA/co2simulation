@@ -82,8 +82,8 @@
   .results-subtitle {
     font-size: 0.875rem;
     margin-bottom: 0;
-    padding-top: 15px;
     @include desktop {
+      margin-top: 10px;
     }
   }
 
@@ -91,7 +91,6 @@
     font-size: 4rem;
     margin-bottom: 0;
     margin-top: 0;
-    padding-bottom: 15px;
 
     @include desktop {
       font-size: 5rem;
@@ -111,6 +110,7 @@
     background-color: $primary;
     color: $text;
     margin: 0;
+    margin-top: 5px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -120,9 +120,9 @@
     @include desktop {
       margin-left: 10%;
       margin-right: 10%;
-      margin-bottom: 20px;
+      margin-top: 10px;
       padding-top: 1px;
-      padding-bottom: 20px;
+      padding-bottom: 5px;
     }
   }
 

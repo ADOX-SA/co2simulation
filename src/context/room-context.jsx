@@ -5,7 +5,7 @@ const RoomContext = React.createContext();
 export function RoomProvider(props) {
   // Propiedades del ambiente
   const [room, setRoom] = useState({
-    teachers: 1,
+    profesores: 1,
     alumnos: 12,
     infectados: 1,
     eficienciaDeBarbijo: 0, // 0 | 0.5 | 0.65 | 0.9
@@ -20,6 +20,7 @@ export function RoomProvider(props) {
     anchoHabitacion: 6,
     largoHabitacion: 10,
     volumenHabitacion: 144, // Volumen en metros cúbicos
+    separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
     exhalacionDeInfectado: 60, // Tasa de exhalación sentado y hablando fuerte
     tasaDeEmisionNeta: 60, // Tasa de emisión neta

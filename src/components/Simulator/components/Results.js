@@ -19,6 +19,25 @@ export default function Results() {
         <div>
           <div className="ppm-card">
             <h5 className="results-subtitle">
+              Parámetros del ambiente utilizados para la simulación:
+            </h5>
+            <p className="results-subtitle">
+              Cantidad de personas: {room.profesores + room.alumnos}
+            </p>
+            <p className="results-subtitle">
+              Infectados (paciente cero): {room.infectados}
+            </p>
+            <p className="results-subtitle">
+              Habitación: {room.alturaHabitacion}m (alto),{" "}
+              {room.anchoHabitacion}m (ancho), {room.largoHabitacion}m (largo),{" "}
+              {room.volumenHabitacion}m<sup>3</sup>
+            </p>
+            <p className="results-subtitle">
+              Separación entre personas: {room.separacionEntrePersonas}
+            </p>
+          </div>
+          <div className="ppm-card">
+            <h5 className="results-subtitle">
               Total CO<sub>2</sub> presente en el ambiente (partes por millón):
             </h5>
             <h1

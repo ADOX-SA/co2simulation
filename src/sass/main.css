@@ -789,14 +789,18 @@
 .results-card .results-subtitle {
   font-size: 0.875rem;
   margin-bottom: 0;
-  padding-top: 15px;
+}
+
+@media only screen and (min-width: 992px) {
+  .results-card .results-subtitle {
+    margin-top: 10px;
+  }
 }
 
 .results-card .results-ppm {
   font-size: 4rem;
   margin-bottom: 0;
   margin-top: 0;
-  padding-bottom: 15px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -814,6 +818,7 @@
   background-color: #ecf0f1;
   color: #727272;
   margin: 0;
+  margin-top: 5px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -825,9 +830,9 @@
   .results-card .ppm-card {
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 20px;
+    margin-top: 10px;
     padding-top: 1px;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
   }
 }
 
