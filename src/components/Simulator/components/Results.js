@@ -38,7 +38,7 @@ export default function Results() {
               Probabilidad de contagio por persona (%):
             </h5>
             <h1 className="results-ppm">
-              {parseFloat(room.infectionProbability).toFixed(2)} %
+              {parseFloat(room.probabilidadDeInfeccion).toFixed(2)} %
             </h1>
           </div>
         </div>

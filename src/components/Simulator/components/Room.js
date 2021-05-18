@@ -27,12 +27,12 @@ import VentSystemD from "../../../assets/ventilation/VentSystemD.svg";
 
 // ========================================
 
-export default function Room(room) {
+export default function Room() {
   return (
     <div className="room-container">
       <div className="room">
         <div className="room-floor floor-shadow">
-          <Grid room={room} />
+          <Grid />
           <Walls />
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function Room(room) {
   );
 }
 
-function Grid(room) {
+function Grid() {
   return (
     <div className="room-grid">
       <Shelf />
@@ -68,7 +68,7 @@ function Walls() {
   return (
     <>
       <div className="left-wall wall">
-        <Vent vent={room.ventilation} />
+        <Vent vent={room.ventilacion} />
       </div>
       <div className="right-wall wall"></div>
     </>
@@ -76,8 +76,8 @@ function Walls() {
 }
 
 function Vent(props) {
-  function getVentType(ventType) {
-    switch (ventType) {
+  function getTipoDeVentilacion(tipoVentilacion) {
+    switch (tipoVentilacion) {
       default:
       case 0.1:
         return (
@@ -115,7 +115,7 @@ function Vent(props) {
   }
   return (
     <div className="window-container window-wrapper">
-      {getVentType(props.vent)}
+      {getTipoDeVentilacion(props.vent)}
     </div>
   );
 }
@@ -139,7 +139,7 @@ function StudentDesk(props) {
     >
       <div className="iso-box">
         <div className="student-wrapper">
-          <Mask maskType={room.maskEfficiency} />
+          <Mask eficienciaDeBarbijo={room.eficienciaDeBarbijo} />
           <img src={props.tipo} alt="Estudiante" />
         </div>
       </div>
@@ -148,8 +148,8 @@ function StudentDesk(props) {
 }
 
 function Mask(props) {
-  function getMaskType(maskType) {
-    switch (maskType) {
+  function getTipoDeBarbijo(tipoDeBarbijo) {
+    switch (tipoDeBarbijo) {
       case 0.5:
         return <img className="mask" src={BarbijoDeTela} alt="Barbijo"></img>;
       case 0.65:
@@ -163,7 +163,7 @@ function Mask(props) {
         return <></>;
     }
   }
-  return getMaskType(props.maskType);
+  return getTipoDeBarbijo(props.eficienciaDeBarbijo);
 }
 
 function Teacher() {

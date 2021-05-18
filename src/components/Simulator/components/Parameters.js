@@ -59,10 +59,10 @@ export default function Parameters() {
 } */
 
 function DurationSlider({ min, max, label, unit }) {
-  const { room, updateAvrConcentrationOfQuantasDURATION } = useRoom();
+  const { room, cambioDuracion } = useRoom();
 
   const handleOnChange = (e) => {
-    updateAvrConcentrationOfQuantasDURATION(e.target.value);
+    cambioDuracion(e.target.value);
   };
 
   return (
@@ -71,7 +71,7 @@ function DurationSlider({ min, max, label, unit }) {
       <div className="range shadow">
         <div className="slider-info">
           <span className="slider-value">
-            {room.duration}
+            {room.duracion}
             {unit}
           </span>
           <span className="slider-label">{label}</span>
@@ -81,7 +81,7 @@ function DurationSlider({ min, max, label, unit }) {
             type="range"
             min={min}
             max={max}
-            value={room.duration}
+            value={room.duracion}
             onChange={handleOnChange}
           />
         </div>
@@ -92,28 +92,28 @@ function DurationSlider({ min, max, label, unit }) {
 
 function MaskSelector() {
   const [active, setActive] = useState(0);
-  const { updateNetEmissionRateMASK } = useRoom();
+  const { cambioBarbijo } = useRoom();
 
   const handleClick = (id) => {
-    var maskEff;
+    var eficienciaDeBarbijo;
 
     setActive(id);
     switch (id) {
       default:
       case 0:
-        maskEff = 0;
+        eficienciaDeBarbijo = 0;
         break;
       case 1:
-        maskEff = 0.5;
+        eficienciaDeBarbijo = 0.5;
         break;
       case 2:
-        maskEff = 0.65;
+        eficienciaDeBarbijo = 0.65;
         break;
       case 3:
-        maskEff = 0.9;
+        eficienciaDeBarbijo = 0.9;
         break;
     }
-    updateNetEmissionRateMASK(maskEff);
+    cambioBarbijo(eficienciaDeBarbijo);
   };
 
   return (
@@ -160,12 +160,11 @@ function MaskBtn(props) {
 
 function VentilationSelector() {
   const [active, setActive] = useState(0.1);
-  const { updateAvrConcentrationOfQuantasVENT } = useRoom();
+  const { cambioVentilacion } = useRoom();
 
   const handleClick = (ventRate) => {
-    updateAvrConcentrationOfQuantasVENT(ventRate);
-
     setActive(ventRate);
+    cambioVentilacion(ventRate);
   };
 
   return (
