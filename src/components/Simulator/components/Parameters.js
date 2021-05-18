@@ -21,7 +21,7 @@ export default function Parameters() {
       </div>
       <div className="controllers-div">
         {/* <PeopleSlider min={1} max={12} label="personas" /> */}
-        <DurationSlider min={1} max={9} label="duración" unit="hr" />
+        <DurationSlider min={1} max={36} label="duración" unit="hr" />
         <MaskSelector />
         <VentilationSelector />
       </div>
@@ -71,8 +71,8 @@ function DurationSlider({ min, max, label, unit }) {
       <div className="range shadow">
         <div className="slider-info">
           <span className="slider-value">
-            {room.duracion}
-            {unit}
+            {room.duracion < 1 ? room.duracion * 60 : room.duracion}
+            {room.duracion < 1 ? "min" : "hr"}
           </span>
           <span className="slider-label">{label}</span>
         </div>
@@ -81,7 +81,7 @@ function DurationSlider({ min, max, label, unit }) {
             type="range"
             min={min}
             max={max}
-            value={room.duracion}
+            value={room.duracion * 4}
             onChange={handleOnChange}
           />
         </div>

@@ -72,17 +72,19 @@ export function RoomProvider(props) {
    * @param duracion requerido
    */
   const cambioDuracion = (duracion) => {
+    const nuevaDuracion = duracion / 4;
+
     const _ = undefined;
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
-      duracion,
+      nuevaDuracion,
       _
     );
 
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
       nuevaConcentracionMediaDeCuantas,
       _,
-      duracion,
+      nuevaDuracion,
       _
     );
 
@@ -90,11 +92,11 @@ export function RoomProvider(props) {
       nuevaCuantasInhaladasPorPersona
     );
 
-    const nuevaTotalCO2 = totalCO2Ambiente(duracion, _);
+    const nuevaTotalCO2 = totalCO2Ambiente(nuevaDuracion, _);
 
     setRoom({
       ...room,
-      duracion: duracion,
+      duracion: nuevaDuracion,
       concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
       cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
       probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
