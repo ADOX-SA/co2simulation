@@ -64,6 +64,12 @@ export default function Results() {
         </div>
         <Sensor />
       </div>
+      <div className="results-footer">
+        <p className="info-text">
+          Versión de prototipo, cualquier observación por favor contáctese vía
+          mail a teo@adox.com.ar
+        </p>
+      </div>
     </div>
   );
 }
