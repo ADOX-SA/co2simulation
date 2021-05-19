@@ -1,0 +1,36 @@
+.info-container {
+  margin-top: 80px;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: $text;
+
+  @include tablet {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+.post-container {
+  margin-bottom: 80px;
+  text-align: left;
+  justify-content: start;
+
+  .post-header {
+    .post-subtitle {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .post-title {
+      margin-top: 0;
+      font-size: 1.7rem;
+    }
+  }
+
+  .post-content {
+    .post-content-text {
+      font-size: 1.125rem;
+    }
+  }
+}
