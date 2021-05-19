@@ -21,19 +21,20 @@ export default function Results() {
             <h5 className="results-subtitle">
               Parámetros del ambiente utilizados para la simulación:
             </h5>
-            <p className="results-subtitle">
+            <p className="results-def">
               Cantidad de personas: {room.profesores + room.alumnos}
             </p>
-            <p className="results-subtitle">
+            <p className="results-def">
               Infectados (paciente cero): {room.infectados}
             </p>
-            <p className="results-subtitle">
+            <p className="results-def">
               Habitación: {room.alturaHabitacion}m (alto),{" "}
               {room.anchoHabitacion}m (ancho), {room.largoHabitacion}m (largo),{" "}
               {room.volumenHabitacion}m<sup>3</sup>
             </p>
-            <p className="results-subtitle">
-              Separación entre personas: {room.separacionEntrePersonas}
+            <p className="results-def">
+              Separación entre personas: Distribuidas por toda la superficie de
+              forma equivalente.
             </p>
           </div>
           <div className="ppm-card">

@@ -83,7 +83,15 @@
     font-size: 0.875rem;
     margin-bottom: 0;
     @include desktop {
-      margin-top: 10px;
+      margin-top: 15px;
+    }
+  }
+
+  .results-def {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    @include desktop {
+      margin-top: 5px;
     }
   }
 
@@ -122,7 +130,7 @@
       margin-right: 10%;
       margin-top: 10px;
       padding-top: 1px;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
     }
   }
 
