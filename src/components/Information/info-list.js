@@ -2,7 +2,7 @@ export const infoList = [
   {
     subtitle: "IMPORTANTE",
     title: "¿POR QUÉ ES IMPORTANTE MEDIR LOS NIVELES DE CO2?",
-    image: "#",
+    image: "https://i.ibb.co/1MdjRcT/adox-ac.png",
     cName: "post",
     texts: [
       "El control sobre la concentración de CO2 tiene dos beneficios.",
@@ -16,7 +16,8 @@ export const infoList = [
   {
     subtitle: "RECOMENDACIONES PARA VENTILACIÓN",
     title: "¿CÓMO VENTILAR APROPIADAMENTE?",
-    image: "#",
+    image:
+      "https://i.ibb.co/qRw5yj2/White-classroom-in-education-university-with-blue-chairs.jpg",
     cName: "post",
     texts: [
       "1) La ventilación cruzada (dos aperturas opuestas evitando zonas con aire estancado) como la de mayor eficacia con mucha diferencia sobre las de sólo ventanas o sólo puertas. Esta ventilación debe ser continua.",
@@ -34,7 +35,7 @@ export const infoList = [
   {
     subtitle: "BIBLIOGRAFIA RECOMENDADA",
     title: "¿QUERÉS CONOCER MÁS SOBRE ESTO?",
-    image: "#",
+    image: "",
     cName: "post",
     texts: [
       "1) Normativa: ASTM D6245 − 18 Standard Guide for Using Indoor Carbon Dioxid Concentrations to Evaluate Indoor Air Quality and Ventilation.",

@@ -33,6 +33,16 @@ function PostHeader(props) {
 function PostContent(props) {
   return (
     <div className="post-content">
+      {props.content.image !== "" ? (
+        <img
+          className="post-content-image"
+          src={props.content.image}
+          alt=""
+        ></img>
+      ) : (
+        <></>
+      )}
+
       {props.content.texts.map((text) => {
         return (
           <p className="post-content-text" key={text}>
