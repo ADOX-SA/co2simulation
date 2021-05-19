@@ -17,5 +17,6 @@
 }
 
 @mixin gradient {
+  z-index: 5;
   background: linear-gradient(315deg, $secondary 0%, $third 100%) !important;
 }

@@ -1,4 +1,75 @@
+.navbar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 1.5rem 10px 1.5rem;
+  align-items: center;
+  z-index: 9;
+  position: fixed;
+  width: 100%;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  background-color: #ecf0f1;
+  -webkit-box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+          box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+}
+
+.navbar-container .logo {
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+}
+
+.navbar-container .logo:hover {
+  opacity: 0.7;
+}
+
+.navbar-container.scrolled {
+  background-color: #ecf0f1;
+  -webkit-box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+          box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+  padding: 5px 25px 5px 25px;
+}
+
+.navbar-container .link-container {
+  width: 33vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-container .link-container a {
+  font-weight: 600;
+}
+
+.navbar-container .link-container a:hover {
+  opacity: 0.7;
+}
+
+.navbar-container .link-container.left {
+  padding-right: 3rem;
+}
+
+.navbar-container .link-container.right {
+  padding-left: 3rem;
+}
+
 .menu {
+  margin-top: 60px;
   color: #727272;
   padding-left: 20px;
   padding-right: 20px;
@@ -304,6 +375,7 @@
 }
 
 .room-container .room .iso-infected {
+  z-index: 5;
   background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
 }
 
@@ -464,6 +536,7 @@
 }
 
 .room-parameters .parameters-header {
+  z-index: 5;
   background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
   color: #ecf0f1;
   border-radius: 5px 5px 0 0;
@@ -561,6 +634,7 @@
   -webkit-appearance: none;
   -webkit-box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
           box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+  z-index: 5;
   background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
   height: 35px;
   width: 20px;
@@ -600,6 +674,7 @@
 }
 
 .btn-selected {
+  z-index: 5;
   background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
   color: #ecf0f1;
 }
@@ -719,6 +794,7 @@
 
 .results-card .results-header {
   z-index: 3;
+  z-index: 5;
   background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
   color: #ecf0f1;
   border-radius: 5px 5px 0 0;
