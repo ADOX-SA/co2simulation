@@ -21,6 +21,7 @@ export default function Parameters() {
       </div>
       <div className="controllers-div">
         <PeopleSlider min={1} max={26} label="personas" />
+        <InfectedSlider min={1} max={5} label="infectados" />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
         <MaskSelector />
         <VentilationSelector />
@@ -55,6 +56,37 @@ function PeopleSlider({ min, max, label, unit }) {
             min={min}
             max={max}
             value={room.alumnos + room.profesores}
+            onChange={handleOnChange}
+          />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function InfectedSlider({ min, max, label, unit }) {
+  const { room, cambioInfectados } = useRoom();
+
+  const handleOnChange = (e) => {
+    cambioInfectados(e.target.value);
+  };
+
+  return (
+    <>
+      <h5 className="slider-title">Cantidad de personas infectadas:</h5>
+      <div className="range shadow">
+        <div className="slider-info">
+          <span className="slider-value">{room.infectados}</span>
+          <span className="slider-label">
+            {room.infectados < 2 ? "infectado" : "infectados"}
+          </span>
+        </div>
+        <div className="field">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={room.infectados}
             onChange={handleOnChange}
           />
         </div>

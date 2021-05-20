@@ -25,7 +25,7 @@ export function RoomProvider(props) {
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
     exhalacionDeInfectado: 60, // Tasa de exhalación sentado y hablando fuerte
-    tasaDeEmisionNeta: 60, // Tasa de emisión neta
+    tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
     concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
     cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
     probabilidadDeInfeccion: 7.62,
@@ -163,20 +163,70 @@ export function RoomProvider(props) {
     });
   };
 
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas infectadas
+   * @param infectados requerido
+   */
+  const cambioInfectados = (infectados) => {
+    const _ = undefined;
+
+    const nuevaTasaDeEmisionNeta = tasaDeEmisionNeta(_, infectados);
+
+    const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
+      nuevaTasaDeEmisionNeta,
+      _,
+      _
+    );
+
+    const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
+      nuevaConcentracionMediaDeCuantas,
+      _,
+      _,
+      _
+    );
+
+    const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
+      nuevaCuantasInhaladasPorPersona
+    );
+
+    setRoom({
+      ...room,
+      infectados: infectados,
+      tasaDeEmisionNeta: nuevaTasaDeEmisionNeta,
+      concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
+      cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
+      probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+    });
+  };
+
   // Funciones privadas de cálculos secundarios --------------------------------
 
   /**
    * Calcula la tasa de emisión neta
-   * @param eficienciaDeBarbijo requerido
+   * @param nuevaEficienciaDeBarbijo opcional
+   * @param nuevoInfectados opcional
    * @returns tasaDeEmisionNeta
    */
-  const tasaDeEmisionNeta = (eficienciaDeBarbijo) => {
-    const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
-    return (
-      exhalacionDeInfectado *
-      (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
-      infectados
-    );
+  const tasaDeEmisionNeta = (nuevaEficienciaDeBarbijo, nuevoInfectados) => {
+    if (nuevaEficienciaDeBarbijo) {
+      const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
+      return (
+        exhalacionDeInfectado *
+        (1 - nuevaEficienciaDeBarbijo * poblacionConBarbijo) *
+        infectados
+      );
+    } else if (nuevoInfectados) {
+      const {
+        exhalacionDeInfectado,
+        eficienciaDeBarbijo,
+        poblacionConBarbijo,
+      } = room;
+      return (
+        exhalacionDeInfectado *
+        (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
+        nuevoInfectados
+      );
+    }
   };
 
   /**
@@ -251,6 +301,14 @@ export function RoomProvider(props) {
         (1 - eficienciaDeBarbijo * poblacionConBarbijo)
       );
     } else if (nuevaVentilacion) {
+      const { duracion, eficienciaDeBarbijo, poblacionConBarbijo } = room;
+      return (
+        concentracionMediaDeCuantas *
+        0.52 *
+        duracion *
+        (1 - eficienciaDeBarbijo * poblacionConBarbijo)
+      );
+    } else {
       const { duracion, eficienciaDeBarbijo, poblacionConBarbijo } = room;
       return (
         concentracionMediaDeCuantas *
@@ -344,6 +402,7 @@ export function RoomProvider(props) {
     cambioDuracion,
     cambioVentilacion,
     cambioPersonas,
+    cambioInfectados,
   };
 
   return <RoomContext.Provider value={value} {...props} />;
