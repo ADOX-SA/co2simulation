@@ -46,7 +46,8 @@ function PostContent(props) {
       {props.content.texts.map((text) => {
         return (
           <p className="post-content-text" key={text}>
-            {text}
+            {text.text}
+            {text.url !== "" || text.url ? <a href={text.url}> Link</a> : <></>}
           </p>
         );
       })}
