@@ -14,6 +14,8 @@ import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
 
 export default function Parameters() {
+  const { room } = useRoom();
+
   return (
     <div className="room-parameters">
       <div className="parameters-header">
@@ -21,8 +23,13 @@ export default function Parameters() {
       </div>
       <div className="controllers-div">
         <PeopleSlider min={1} max={26} label="personas" />
-        <InfectedSlider min={1} max={5} label="infectados" />
+        <InfectedSlider
+          min={1}
+          max={Math.floor(room.totalPersonas / 2)}
+          label="infectados"
+        />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
+        <SurfaceSlider min={10} max={100} label="superficie" unit="m2" />
         <MaskSelector />
         <VentilationSelector />
       </div>
@@ -119,6 +126,40 @@ function DurationSlider({ min, max, label, unit }) {
             min={min}
             max={max}
             value={room.duracion * 4}
+            onChange={handleOnChange}
+          />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function SurfaceSlider({ min, max, label, unit }) {
+  const { room, cambioSuperficie } = useRoom();
+
+  const handleOnChange = (e) => {
+    cambioSuperficie(e.target.value);
+  };
+
+  return (
+    <>
+      <h5 className="slider-title">
+        Superficie del ambiente en metros cuadrados:
+      </h5>
+      <div className="range shadow">
+        <div className="slider-info">
+          <span className="slider-value">
+            {room.superficie}
+            {unit}
+          </span>
+          <span className="slider-label">{label}</span>
+        </div>
+        <div className="field">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={room.superficie}
             onChange={handleOnChange}
           />
         </div>

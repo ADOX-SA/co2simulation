@@ -46,6 +46,7 @@ export function RoomProvider(props) {
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       nuevaTasaDeEmisionNeta,
       _,
+      _,
       _
     );
 
@@ -81,6 +82,7 @@ export function RoomProvider(props) {
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
       nuevaDuracion,
+      _,
       _
     );
 
@@ -118,7 +120,8 @@ export function RoomProvider(props) {
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
       _,
-      ventilacion
+      ventilacion,
+      _
     );
 
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
@@ -175,6 +178,7 @@ export function RoomProvider(props) {
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       nuevaTasaDeEmisionNeta,
       _,
+      _,
       _
     );
 
@@ -193,6 +197,43 @@ export function RoomProvider(props) {
       ...room,
       infectados: infectados,
       tasaDeEmisionNeta: nuevaTasaDeEmisionNeta,
+      concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
+      cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
+      probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+    });
+  };
+
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas infectadas
+   * @param superficie requerido
+   */
+  const cambioSuperficie = (superficie) => {
+    const _ = undefined;
+
+    const nuevoVolumen = room.alturaHabitacion * superficie;
+
+    const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
+      _,
+      _,
+      _,
+      nuevoVolumen
+    );
+
+    const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
+      nuevaConcentracionMediaDeCuantas,
+      _,
+      _,
+      _
+    );
+
+    const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
+      nuevaCuantasInhaladasPorPersona
+    );
+
+    setRoom({
+      ...room,
+      superficie: superficie,
+      volumenHabitacion: nuevoVolumen,
       concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
       cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
       probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
@@ -234,12 +275,14 @@ export function RoomProvider(props) {
    * @param nuevaTasaDeEmisionNeta opcional
    * @param nuevaDuracion opcional
    * @param nuevaVentilacion opcional
+   * @param nuevoVolumen opcional
    * @returns concentracionMediaDeCuantas
    */
   const concentracionMediaDeCuantas = (
     nuevaTasaDeEmisionNeta,
     nuevaDuracion,
-    nuevaVentilacion
+    nuevaVentilacion,
+    nuevoVolumen
   ) => {
     if (nuevaTasaDeEmisionNeta) {
       const { perdidaDePrimerOrden, duracion, volumenHabitacion } = room;
@@ -266,6 +309,14 @@ export function RoomProvider(props) {
         (1 -
           (1 / nuevaPerdidaDePrimerOrden / duracion) *
             (1 - Math.exp(-nuevaPerdidaDePrimerOrden * duracion)))
+      );
+    } else if (nuevoVolumen) {
+      const { duracion, perdidaDePrimerOrden, tasaDeEmisionNeta } = room;
+      return (
+        (tasaDeEmisionNeta / perdidaDePrimerOrden / nuevoVolumen) *
+        (1 -
+          (1 / perdidaDePrimerOrden / duracion) *
+            (1 - Math.exp(-perdidaDePrimerOrden * duracion)))
       );
     }
   };
@@ -403,6 +454,7 @@ export function RoomProvider(props) {
     cambioVentilacion,
     cambioPersonas,
     cambioInfectados,
+    cambioSuperficie,
   };
 
   return <RoomContext.Provider value={value} {...props} />;
