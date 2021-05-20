@@ -20,7 +20,7 @@ export default function Parameters() {
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        {/* <PeopleSlider min={1} max={12} label="personas" /> */}
+        <PeopleSlider min={1} max={26} label="personas" />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
         <MaskSelector />
         <VentilationSelector />
@@ -29,34 +29,39 @@ export default function Parameters() {
   );
 }
 
-/* function PeopleSlider({ min, max, label, unit }) {
-  const { room, setRoom } = useRoom();
+function PeopleSlider({ min, max, label, unit }) {
+  const { room, cambioPersonas } = useRoom();
 
   const handleOnChange = (e) => {
-    setRoom({ ...room, people: e.target.value });
+    cambioPersonas(e.target.value);
   };
 
   return (
-    <div className="range shadow">
-      <div className="slider-info">
-        <span className="slider-value">
-          {room.people}
-          {unit}
-        </span>
-        <span className="slider-label">{label}</span>
+    <>
+      <h5 className="slider-title">
+        Cantidad de personas (1 profesor + {room.alumnos} estudiantes):
+      </h5>
+      <div className="range shadow">
+        <div className="slider-info">
+          <span className="slider-value">
+            {room.totalPersonas}
+            {unit}
+          </span>
+          <span className="slider-label">{label}</span>
+        </div>
+        <div className="field">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={room.alumnos + room.profesores}
+            onChange={handleOnChange}
+          />
+        </div>
       </div>
-      <div className="field">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={room.people}
-          onChange={handleOnChange}
-        />
-      </div>
-    </div>
+    </>
   );
-} */
+}
 
 function DurationSlider({ min, max, label, unit }) {
   const { room, cambioDuracion } = useRoom();

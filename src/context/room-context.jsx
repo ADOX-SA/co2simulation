@@ -7,18 +7,20 @@ export function RoomProvider(props) {
   const [room, setRoom] = useState({
     profesores: 1,
     alumnos: 12,
+    totalPersonas: 13,
     infectados: 1,
     eficienciaDeBarbijo: 0, // 0 | 0.5 | 0.65 | 0.9
     poblacionConBarbijo: 1, // Fracción de personas con máscara. Asumimos un 100%
     duracion: 1,
     ventilacion: 0.1, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
     perdidaDePrimerOrden: 1.02, // ventilation + 0.92 // ? Averiguar esto
-    totalCO2ExhaladoPMinuto: 3.32444, // teachers * 0.36812 + people * 0.24636
-    totalCO2ExhaladoPSegundo: 0.05540733333, // anterior pero en litros por segundo
-    totalCO2Ambiente: 1085,
+    tasaEmisionCO2PPersona: 0.005,
+    totalCO2ExhaladoPSegundo: 0.07343083133, // anterior pero en litros por segundo
+    totalCO2Ambiente: 1303,
     alturaHabitacion: 2.4,
     anchoHabitacion: 6,
     largoHabitacion: 10,
+    superficie: 60,
     volumenHabitacion: 144, // Volumen en metros cúbicos
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
@@ -143,6 +145,24 @@ export function RoomProvider(props) {
     });
   };
 
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas
+   * @param personas requerido
+   */
+  const cambioPersonas = (personas) => {
+    const _ = undefined;
+    const totalesCO2 = totalCO2Ambiente(_, _, personas);
+
+    setRoom({
+      ...room,
+      profesores: 1,
+      alumnos: personas - 1,
+      totalPersonas: personas,
+      totalCO2ExhaladoPSegundo: totalesCO2[0],
+      totalCO2Ambiente: totalesCO2[1],
+    });
+  };
+
   // Funciones privadas de cálculos secundarios --------------------------------
 
   /**
@@ -256,7 +276,7 @@ export function RoomProvider(props) {
    * @param nuevaVentilacion opcional
    * @returns totalCO2Ambiente
    */
-  const totalCO2Ambiente = (nuevaDuracion, nuevaVentilacion) => {
+  const totalCO2Ambiente = (nuevaDuracion, nuevaVentilacion, nuevaPersonas) => {
     if (nuevaDuracion) {
       const {
         totalCO2ExhaladoPSegundo,
@@ -289,6 +309,30 @@ export function RoomProvider(props) {
           1000000 +
         co2Exterior
       );
+    } else if (nuevaPersonas) {
+      const {
+        tasaEmisionCO2PPersona,
+        volumenHabitacion,
+        duracion,
+        co2Exterior,
+        ventilacion,
+      } = room;
+
+      const nuevoTotalCO2ExhaladoPSegundo =
+        (tasaEmisionCO2PPersona * nuevaPersonas * (1 / 0.95) * (273.15 + 20)) /
+        273.15;
+
+      const nuevoTotalCO2Ambiente =
+        ((nuevoTotalCO2ExhaladoPSegundo * 3.6) /
+          ventilacion /
+          volumenHabitacion) *
+          (1 -
+            (1 / ventilacion / duracion) *
+              (1 - Math.exp(-ventilacion * duracion))) *
+          1000000 +
+        co2Exterior;
+
+      return [nuevoTotalCO2ExhaladoPSegundo, nuevoTotalCO2Ambiente];
     }
   };
 
@@ -299,6 +343,7 @@ export function RoomProvider(props) {
     cambioBarbijo,
     cambioDuracion,
     cambioVentilacion,
+    cambioPersonas,
   };
 
   return <RoomContext.Provider value={value} {...props} />;
