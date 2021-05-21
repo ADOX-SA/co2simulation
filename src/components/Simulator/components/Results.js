@@ -28,13 +28,17 @@ export default function Results() {
               Infectados (paciente cero): {room.infectados}
             </p>
             <p className="results-def">
-              Habitación: {room.alturaHabitacion}m (alto),{" "}
-              {room.anchoHabitacion}m (ancho), {room.largoHabitacion}m (largo),{" "}
-              {room.volumenHabitacion}m<sup>3</sup>
+              Habitación: {room.alturaHabitacion}m (alto), {room.superficie}m
+              <sup>2</sup> (superficie), {room.volumenHabitacion}m<sup>3</sup>{" "}
+              (volumen total).
             </p>
             <p className="results-def">
               Separación entre personas: Distribuidas por toda la superficie de
-              forma equivalente.
+              manera equidistante.
+            </p>
+            <p className="results-def">
+              Se considera que las personas se encuentran sentadas y hablando
+              con volumen alto.
             </p>
           </div>
           <div className="ppm-card">

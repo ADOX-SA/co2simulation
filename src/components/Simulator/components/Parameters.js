@@ -22,10 +22,10 @@ export default function Parameters() {
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        <PeopleSlider min={1} max={26} label="personas" />
+        <PeopleSlider min={room.infectados} max={26} label="personas" />
         <InfectedSlider
           min={1}
-          max={Math.floor(room.totalPersonas / 2)}
+          max={room.totalPersonas - 1}
           label="infectados"
         />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
@@ -80,7 +80,9 @@ function InfectedSlider({ min, max, label, unit }) {
 
   return (
     <>
-      <h5 className="slider-title">Cantidad de personas infectadas:</h5>
+      <h5 className="slider-title">
+        Cantidad de personas infectadas (paciente cero):
+      </h5>
       <div className="range shadow">
         <div className="slider-info">
           <span className="slider-value">{room.infectados}</span>
