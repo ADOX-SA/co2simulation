@@ -41,21 +41,23 @@ export default function Room() {
 }
 
 function Grid() {
+  const { room } = useRoom();
+
   return (
     <div className="room-grid">
       <Shelf />
       <StudentDesk tipo={Student6} />
       <StudentDesk tipo={Student2} />
-      <StudentDesk tipo={Student3} />
+      <StudentDesk tipo={Student3} inf={room.infectados > 3 ? 1 : 0} />
       <Teacher />
-      <StudentDesk tipo={Student4} />
+      <StudentDesk tipo={Student4} inf={room.infectados > 1 ? 1 : 0} />
       <StudentDesk tipo={Student5} />
-      <StudentDesk tipo={Student6} />
+      <StudentDesk tipo={Student6} inf={room.infectados > 5 ? 1 : 0} />
       <StudentDesk tipo={Student7} />
       <StudentDesk tipo={Student8} inf={1} />
-      <StudentDesk tipo={Student3} />
+      <StudentDesk tipo={Student3} inf={room.infectados > 2 ? 1 : 0} />
       <TeacherDesk />
-      <StudentDesk tipo={Student10} />
+      <StudentDesk tipo={Student10} inf={room.infectados > 4 ? 1 : 0} />
       <StudentDesk tipo={Student2} />
       <StudentDesk tipo={Student5} />
     </div>

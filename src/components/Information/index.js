@@ -47,7 +47,7 @@ function PostContent(props) {
         return (
           <p className="post-content-text" key={text}>
             {text.text}
-            {text.url !== "" || text.url ? <a href={text.url}> Link</a> : <></>}
+            {text.url ? <a href={text.url}> Link</a> : <></>}
           </p>
         );
       })}

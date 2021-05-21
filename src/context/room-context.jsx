@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const RoomContext = React.createContext();
 
@@ -97,7 +97,7 @@ export function RoomProvider(props) {
       nuevaCuantasInhaladasPorPersona
     );
 
-    const nuevaTotalCO2 = totalCO2Ambiente(nuevaDuracion, _);
+    const nuevaTotalCO2 = totalCO2Ambiente(nuevaDuracion, _, _, _);
 
     setRoom({
       ...room,
@@ -135,7 +135,7 @@ export function RoomProvider(props) {
       nuevaCuantasInhaladasPorPersona
     );
 
-    const nuevaTotalCO2 = totalCO2Ambiente(_, ventilacion);
+    const nuevaTotalCO2 = totalCO2Ambiente(_, ventilacion, _, _);
 
     setRoom({
       ...room,
@@ -154,7 +154,7 @@ export function RoomProvider(props) {
    */
   const cambioPersonas = (personas) => {
     const _ = undefined;
-    const totalesCO2 = totalCO2Ambiente(_, _, personas);
+    const totalesCO2 = totalCO2Ambiente(_, _, personas, _);
 
     setRoom({
       ...room,
@@ -230,6 +230,8 @@ export function RoomProvider(props) {
       nuevaCuantasInhaladasPorPersona
     );
 
+    const nuevoTotalCO2Ambiente = totalCO2Ambiente(_, _, _, nuevoVolumen);
+
     setRoom({
       ...room,
       superficie: superficie,
@@ -237,6 +239,7 @@ export function RoomProvider(props) {
       concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
       cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
       probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+      totalCO2Ambiente: nuevoTotalCO2Ambiente,
     });
   };
 
@@ -249,7 +252,7 @@ export function RoomProvider(props) {
    * @returns tasaDeEmisionNeta
    */
   const tasaDeEmisionNeta = (nuevaEficienciaDeBarbijo, nuevoInfectados) => {
-    if (nuevaEficienciaDeBarbijo) {
+    if (nuevaEficienciaDeBarbijo || nuevaEficienciaDeBarbijo === 0) {
       const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
       return (
         exhalacionDeInfectado *
@@ -383,9 +386,16 @@ export function RoomProvider(props) {
    * Calcula el total de CO2 presente en el ambiente en partes por millón
    * @param nuevaDuracion opcional
    * @param nuevaVentilacion opcional
+   * @param nuevaPersonas opcional
+   * @param nuevoVolumen opcional
    * @returns totalCO2Ambiente
    */
-  const totalCO2Ambiente = (nuevaDuracion, nuevaVentilacion, nuevaPersonas) => {
+  const totalCO2Ambiente = (
+    nuevaDuracion,
+    nuevaVentilacion,
+    nuevaPersonas,
+    nuevoVolumen
+  ) => {
     if (nuevaDuracion) {
       const {
         totalCO2ExhaladoPSegundo,
@@ -442,6 +452,17 @@ export function RoomProvider(props) {
         co2Exterior;
 
       return [nuevoTotalCO2ExhaladoPSegundo, nuevoTotalCO2Ambiente];
+    } else if (nuevoVolumen) {
+      const { totalCO2ExhaladoPSegundo, duracion, co2Exterior, ventilacion } =
+        room;
+      return (
+        ((totalCO2ExhaladoPSegundo * 3.6) / ventilacion / nuevoVolumen) *
+          (1 -
+            (1 / ventilacion / duracion) *
+              (1 - Math.exp(-ventilacion * duracion))) *
+          1000000 +
+        co2Exterior
+      );
     }
   };
 
@@ -456,6 +477,10 @@ export function RoomProvider(props) {
     cambioInfectados,
     cambioSuperficie,
   };
+
+  useEffect(() => {
+    console.log(room);
+  });
 
   return <RoomContext.Provider value={value} {...props} />;
 }

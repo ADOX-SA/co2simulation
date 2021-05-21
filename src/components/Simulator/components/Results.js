@@ -40,6 +40,14 @@ export default function Results() {
               Se considera que las personas se encuentran sentadas y hablando
               con volumen alto.
             </p>
+            <p className="results-def">
+              Todos los cálculos se basan en el{" "}
+              <a href="https://cires.colorado.edu/news/covid-19-airborne-transmission-tool-available">
+                modelo de estimación de CIRES
+              </a>
+              .
+            </p>
+            <p className="results-def">El sensor mide hasta 5000ppm.</p>
           </div>
           <div className="ppm-card">
             <h5 className="results-subtitle">
@@ -70,8 +78,8 @@ export default function Results() {
       </div>
       <div className="results-footer">
         <p className="info-text">
-          Versión de prototipo, cualquier observación por favor contáctese vía
-          mail a teo@adox.com.ar
+          Versión prototipo (1.2), cualquier observación por favor contáctese
+          vía mail a <a href="mailto:co2@adox.com.ar">co2@adox.com.ar</a>
         </p>
       </div>
     </div>
