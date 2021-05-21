@@ -20,8 +20,8 @@ export default function Parameters() {
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        <PeopleSlider min={12} max={26} label="personas" />
-        <InfectedSlider min={1} max={6} label="infectados" />
+        <PeopleSlider min={6} max={26} label="personas" />
+        <InfectedSlider min={1} max={5} label="infectados" />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
         <SurfaceSlider min={10} max={100} label="superficie" unit="m2" />
         <MaskSelector />
