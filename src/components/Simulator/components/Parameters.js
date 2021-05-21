@@ -14,20 +14,14 @@ import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
 
 export default function Parameters() {
-  const { room } = useRoom();
-
   return (
     <div className="room-parameters">
       <div className="parameters-header">
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        <PeopleSlider min={room.infectados} max={26} label="personas" />
-        <InfectedSlider
-          min={1}
-          max={room.totalPersonas - 1}
-          label="infectados"
-        />
+        <PeopleSlider min={12} max={26} label="personas" />
+        <InfectedSlider min={1} max={6} label="infectados" />
         <DurationSlider min={1} max={36} label="duración" unit="hr" />
         <SurfaceSlider min={10} max={100} label="superficie" unit="m2" />
         <MaskSelector />
