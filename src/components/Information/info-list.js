@@ -69,30 +69,34 @@ export const infoList = [
     cName: "post",
     texts: [
       {
-        text: "1) Normativa: ASTM D6245 − 18 Standard Guide for Using Indoor Carbon Dioxid Concentrations to Evaluate Indoor Air Quality and Ventilation.",
+        text: "1) Jorge Aliaga, físico, investigador y principal divulgador científico en la materia.",
+        url: "http://www.jorgealiaga.com.ar/",
+      },
+      {
+        text: "2) Normativa: ASTM D6245 − 18 Standard Guide for Using Indoor Carbon Dioxid Concentrations to Evaluate Indoor Air Quality and Ventilation.",
         url: "",
       },
       {
-        text: "2) Normativa: ANSI/ASHRAE Addendum d to ANSI/ASHRAE Standard 62.1-2016 Ventilation for Acceptable Indoor Air Quality: ",
+        text: "3) Normativa: ANSI/ASHRAE Addendum d to ANSI/ASHRAE Standard 62.1-2016 Ventilation for Acceptable Indoor Air Quality: ",
         url: "https://www.ashrae.org/File%20Library/Technical%20Resources/Standards%20and%20Guidelines/Standards%20Addenda/62.1-2016/62_1_2016_d_20180302.pdf",
       },
       {
-        text: "3) Medición de la concentración de CO2 como indicador de una ventilación adecuada de edificios y locales. COVID19 por Departamento de Salud Ambiental Subdirección General de Salud Pública de Madrid: ",
+        text: "4) Medición de la concentración de CO2 como indicador de una ventilación adecuada de edificios y locales. COVID19 por Departamento de Salud Ambiental Subdirección General de Salud Pública de Madrid: ",
         url: "https://madridsalud.es/wp-content/uploads/2020/11/InfSAM33-2020Ventilacion_interio_como_medida_preventivaCOVID19.pdf",
       },
       {
-        text: "4) Recomendaciones de harvard: ",
+        text: "5) Recomendaciones de harvard: ",
         url: "https://bit.ly/3oxuwSB",
       },
       {
-        text: "5) Documento adjunto: Guía para ventilación en aulas Instituto de Diagnóstico Ambiental y Estudios del Agua, IDAEA-CSIC. Referenciados en este link con documentación respaldatoria del ministerio de ciencia e innovación de España: ",
+        text: "6) Documento adjunto: Guía para ventilación en aulas Instituto de Diagnóstico Ambiental y Estudios del Agua, IDAEA-CSIC. Referenciados en este link con documentación respaldatoria del ministerio de ciencia e innovación de España: ",
         url: "https://www.csic.es/es/actualidad-del-csic/una-guia-del-csic-muestra-como-se-deben-ventilar-las-aulas-para-reducir-el",
       },
       {
-        text: "6) Preprint paper: Exhaled CO2 as COVID-19 infection risk proxy for different indoor environments and activities: ",
+        text: "7) Preprint paper: Exhaled CO2 as COVID-19 infection risk proxy for different indoor environments and activities: ",
         url: "https://www.medrxiv.org/content/10.1101/2020.09.09.20191676v2",
       },
-      { text: "7) Iniciativa: ", url: "https://www.aireamos.org/" },
+      { text: "8) Iniciativa: ", url: "https://www.aireamos.org/" },
     ],
   },
 ];
