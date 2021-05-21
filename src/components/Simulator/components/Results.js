@@ -78,7 +78,7 @@ export default function Results() {
       </div>
       <div className="results-footer">
         <p className="info-text">
-          Versión prototipo (1.2), cualquier observación por favor contáctese
+          Versión prototipo (1.3), cualquier observación por favor contáctese
           vía mail a <a href="mailto:co2@adox.com.ar">co2@adox.com.ar</a>
         </p>
       </div>
