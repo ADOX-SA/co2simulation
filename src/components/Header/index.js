@@ -5,6 +5,7 @@ export default function Header() {
     <div className="menu">
       <h1>
         Simulador de riesgo de contagio por aerosoles en ambientes cerrados
+        desarrollado por ADOX
       </h1>
       <p className="header-text">
         El veneno está en la dosis. Bajo tiempo de exposición a concentraciones

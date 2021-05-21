@@ -12,7 +12,7 @@ export default function Information() {
   );
 }
 
-function Post(props) {
+export function Post(props) {
   return (
     <div className="post-container">
       <PostHeader subtitle={props.post.subtitle} title={props.post.title} />
