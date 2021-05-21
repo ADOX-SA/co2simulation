@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { useRoom } from "../../../context/room-context";
 
 // Imported assets
+// Switch
+import SelPeople from "../../../assets/room/SelPeople.svg";
+import SelInfecteds from "../../../assets/room/SelInfecteds.svg";
+import SelDuration from "../../../assets/room/SelDuration.svg";
+import SelSurf from "../../../assets/room/SelSurface.svg";
+import SelMask from "../../../assets/room/SelBarbijoNO.svg";
+import SelVent from "../../../assets/room/VentCerrada.svg";
 // Barbijos
 import SelBarbijoNO from "../../../assets/masks/SelBarbijoNO.svg";
 import SelBarbijoTela from "../../../assets/masks/SelBarbijoTela.svg";
 import SelBarbijoQuirurgico from "../../../assets/masks/SelBarbijoQuirurgico.svg";
 import SelBarbijoKN95 from "../../../assets/masks/SelBarbijoKN95.svg";
-// ventilación
+// Ventilación
 import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
 import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
 import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
@@ -20,14 +27,66 @@ export default function Parameters() {
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
       <div className="controllers-div">
-        <PeopleSlider min={6} max={26} label="personas" />
-        <InfectedSlider min={1} max={5} label="infectados" />
-        <DurationSlider min={1} max={36} label="duración" unit="hr" />
-        <SurfaceSlider min={10} max={100} label="superficie" unit="m2" />
-        <MaskSelector />
-        <VentilationSelector />
+        <ParameterSwitch />
       </div>
     </div>
+  );
+}
+
+function ParameterSwitch() {
+  const [active, setActive] = useState(0.1);
+
+  const handleClick = (id) => {
+    setActive(id);
+  };
+
+  return (
+    <>
+      <div className="mask-selector-div">
+        <h5>Seleccione el parámetro a modificar:</h5>
+        <ol>
+          <li
+            className={0 === active ? "btn-selected" : null}
+            onClick={() => handleClick(0)}
+          >
+            <ParameterBtn src={SelPeople} label="Personas" id={0} />
+          </li>
+          <li
+            className={1 === active ? "btn-selected" : null}
+            onClick={() => handleClick(1)}
+          >
+            <ParameterBtn src={SelInfecteds} label="Infectados" id={1} />
+          </li>
+          <li
+            className={2 === active ? "btn-selected" : null}
+            onClick={() => handleClick(2)}
+          >
+            <ParameterBtn src={SelDuration} label="Duración" id={2} />
+          </li>
+        </ol>
+        <ol>
+          <li
+            className={3 === active ? "btn-selected" : null}
+            onClick={() => handleClick(3)}
+          >
+            <ParameterBtn src={SelSurf} label="Superficie" id={3} />
+          </li>
+          <li
+            className={4 === active ? "btn-selected" : null}
+            onClick={() => handleClick(4)}
+          >
+            <ParameterBtn src={SelMask} label="Barbijo" id={4} />
+          </li>
+          <li
+            className={5 === active ? "btn-selected" : null}
+            onClick={() => handleClick(5)}
+          >
+            <ParameterBtn src={SelVent} label="Ventilación" id={5} />
+          </li>
+        </ol>
+      </div>
+      <ParameterDisplay show={active} />
+    </>
   );
 }
 
@@ -278,6 +337,38 @@ function VentBtn(props) {
   return (
     <div>
       <img src={props.src} alt="Selector de ventilación"></img>
+      <p>{props.label}</p>
+    </div>
+  );
+}
+
+function ParameterDisplay(props) {
+  const getParameterComponent = (id) => {
+    switch (id) {
+      case 0:
+        return <PeopleSlider min={6} max={26} label="personas" />;
+      case 1:
+        return <InfectedSlider min={1} max={5} label="infectados" />;
+      case 2:
+        return <DurationSlider min={1} max={36} label="duración" unit="hr" />;
+      case 3:
+        return (
+          <SurfaceSlider min={10} max={100} label="superficie" unit="m2" />
+        );
+      case 4:
+        return <MaskSelector />;
+      case 5:
+        return <VentilationSelector />;
+      default:
+        return <></>;
+    }
+  };
+  return <>{getParameterComponent(props.show)}</>;
+}
+function ParameterBtn(props) {
+  return (
+    <div>
+      <img src={props.src} alt="Seleccione parámetro a modificar:"></img>
       <p>{props.label}</p>
     </div>
   );
