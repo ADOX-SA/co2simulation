@@ -34,7 +34,7 @@ export default function Parameters() {
 }
 
 function ParameterSwitch() {
-  const [active, setActive] = useState(0.1);
+  const [active, setActive] = useState(0);
 
   const handleClick = (id) => {
     setActive(id);
