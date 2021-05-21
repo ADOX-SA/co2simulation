@@ -99,4 +99,15 @@ export const infoList = [
       { text: "8) Iniciativa: ", url: "https://www.aireamos.org/" },
     ],
   },
+  {
+    subtitle: "ADOX - DESARROLLANDO INNOVACIÓN",
+    title:
+      "Simulador de riesgo de contagio por aerosoles en ambientes cerrados",
+    cName: "post",
+    texts: [
+      {
+        text: "El veneno está en la dosis. Bajo tiempo de exposición a concentraciones bajas de CO2 exhalado son el marco de un AMBIENTE SALUDABLE.",
+      },
+    ],
+  },
 ];
