@@ -19,3 +19,8 @@
 @mixin gradient {
   background: linear-gradient(315deg, $secondary 0%, $third 100%) !important;
 }
+
+@mixin info-gradient {
+  background-color: $ppmAlto;
+  background-image: linear-gradient(62deg, #ffc04b 0%, $ppmAlto 100%);
+}

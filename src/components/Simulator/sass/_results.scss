@@ -33,6 +33,28 @@
       0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
       0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
   }
+  .results-footer {
+    z-index: 3;
+    @include info-gradient();
+    border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+    box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07),
+      0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
+      0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
+      0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
+      0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
+      0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+
+    .info-text {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      color: $text;
+      font-size: 1.125rem;
+    }
+  }
 
   .results-title {
     margin: 0;
@@ -82,8 +104,16 @@
   .results-subtitle {
     font-size: 0.875rem;
     margin-bottom: 0;
-    padding-top: 15px;
     @include desktop {
+      margin-top: 15px;
+    }
+  }
+
+  .results-def {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    @include desktop {
+      margin-top: 5px;
     }
   }
 
@@ -91,7 +121,6 @@
     font-size: 4rem;
     margin-bottom: 0;
     margin-top: 0;
-    padding-bottom: 15px;
 
     @include desktop {
       font-size: 5rem;
@@ -111,6 +140,7 @@
     background-color: $primary;
     color: $text;
     margin: 0;
+    margin-top: 5px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -120,9 +150,9 @@
     @include desktop {
       margin-left: 10%;
       margin-right: 10%;
-      margin-bottom: 20px;
+      margin-top: 10px;
       padding-top: 1px;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
   }
 

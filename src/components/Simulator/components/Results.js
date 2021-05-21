@@ -19,6 +19,30 @@ export default function Results() {
         <div>
           <div className="ppm-card">
             <h5 className="results-subtitle">
+              Parámetros del ambiente utilizados para la simulación:
+            </h5>
+            <p className="results-def">
+              Cantidad de personas: {room.profesores + room.alumnos}
+            </p>
+            <p className="results-def">
+              Infectados (paciente cero): {room.infectados}
+            </p>
+            <p className="results-def">
+              Habitación: {room.alturaHabitacion}m (alto), {room.superficie}m
+              <sup>2</sup> (superficie), {room.volumenHabitacion}m<sup>3</sup>{" "}
+              (volumen total).
+            </p>
+            <p className="results-def">
+              Separación entre personas: Distribuidas por toda la superficie de
+              manera equidistante.
+            </p>
+            <p className="results-def">
+              Se considera que las personas se encuentran sentadas y hablando
+              con volumen alto.
+            </p>
+          </div>
+          <div className="ppm-card">
+            <h5 className="results-subtitle">
               Total CO<sub>2</sub> presente en el ambiente (partes por millón):
             </h5>
             <h1
@@ -43,6 +67,12 @@ export default function Results() {
           </div>
         </div>
         <Sensor />
+      </div>
+      <div className="results-footer">
+        <p className="info-text">
+          Versión de prototipo, cualquier observación por favor contáctese vía
+          mail a teo@adox.com.ar
+        </p>
       </div>
     </div>
   );

@@ -5,24 +5,27 @@ const RoomContext = React.createContext();
 export function RoomProvider(props) {
   // Propiedades del ambiente
   const [room, setRoom] = useState({
-    teachers: 1,
+    profesores: 1,
     alumnos: 12,
+    totalPersonas: 13,
     infectados: 1,
     eficienciaDeBarbijo: 0, // 0 | 0.5 | 0.65 | 0.9
     poblacionConBarbijo: 1, // Fracción de personas con máscara. Asumimos un 100%
     duracion: 1,
     ventilacion: 0.1, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
     perdidaDePrimerOrden: 1.02, // ventilation + 0.92 // ? Averiguar esto
-    totalCO2ExhaladoPMinuto: 3.32444, // teachers * 0.36812 + people * 0.24636
-    totalCO2ExhaladoPSegundo: 0.05540733333, // anterior pero en litros por segundo
-    totalCO2Ambiente: 1085,
+    tasaEmisionCO2PPersona: 0.005,
+    totalCO2ExhaladoPSegundo: 0.07343083133, // anterior pero en litros por segundo
+    totalCO2Ambiente: 1303,
     alturaHabitacion: 2.4,
     anchoHabitacion: 6,
     largoHabitacion: 10,
+    superficie: 60,
     volumenHabitacion: 144, // Volumen en metros cúbicos
+    separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
     exhalacionDeInfectado: 60, // Tasa de exhalación sentado y hablando fuerte
-    tasaDeEmisionNeta: 60, // Tasa de emisión neta
+    tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
     concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
     cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
     probabilidadDeInfeccion: 7.62,
@@ -42,6 +45,7 @@ export function RoomProvider(props) {
     const _ = undefined;
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       nuevaTasaDeEmisionNeta,
+      _,
       _,
       _
     );
@@ -72,17 +76,20 @@ export function RoomProvider(props) {
    * @param duracion requerido
    */
   const cambioDuracion = (duracion) => {
+    const nuevaDuracion = duracion / 4;
+
     const _ = undefined;
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
-      duracion,
+      nuevaDuracion,
+      _,
       _
     );
 
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
       nuevaConcentracionMediaDeCuantas,
       _,
-      duracion,
+      nuevaDuracion,
       _
     );
 
@@ -90,11 +97,11 @@ export function RoomProvider(props) {
       nuevaCuantasInhaladasPorPersona
     );
 
-    const nuevaTotalCO2 = totalCO2Ambiente(duracion, _);
+    const nuevaTotalCO2 = totalCO2Ambiente(nuevaDuracion, _);
 
     setRoom({
       ...room,
-      duracion: duracion,
+      duracion: nuevaDuracion,
       concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
       cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
       probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
@@ -113,7 +120,8 @@ export function RoomProvider(props) {
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
       _,
-      ventilacion
+      ventilacion,
+      _
     );
 
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
@@ -140,20 +148,126 @@ export function RoomProvider(props) {
     });
   };
 
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas
+   * @param personas requerido
+   */
+  const cambioPersonas = (personas) => {
+    const _ = undefined;
+    const totalesCO2 = totalCO2Ambiente(_, _, personas);
+
+    setRoom({
+      ...room,
+      profesores: 1,
+      alumnos: personas - 1,
+      totalPersonas: personas,
+      totalCO2ExhaladoPSegundo: totalesCO2[0],
+      totalCO2Ambiente: totalesCO2[1],
+    });
+  };
+
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas infectadas
+   * @param infectados requerido
+   */
+  const cambioInfectados = (infectados) => {
+    const _ = undefined;
+
+    const nuevaTasaDeEmisionNeta = tasaDeEmisionNeta(_, infectados);
+
+    const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
+      nuevaTasaDeEmisionNeta,
+      _,
+      _,
+      _
+    );
+
+    const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
+      nuevaConcentracionMediaDeCuantas,
+      _,
+      _,
+      _
+    );
+
+    const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
+      nuevaCuantasInhaladasPorPersona
+    );
+
+    setRoom({
+      ...room,
+      infectados: infectados,
+      tasaDeEmisionNeta: nuevaTasaDeEmisionNeta,
+      concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
+      cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
+      probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+    });
+  };
+
+  /**
+   * Realiza operaciones correspondientes tras cambio de la cantidad de personas infectadas
+   * @param superficie requerido
+   */
+  const cambioSuperficie = (superficie) => {
+    const _ = undefined;
+
+    const nuevoVolumen = room.alturaHabitacion * superficie;
+
+    const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
+      _,
+      _,
+      _,
+      nuevoVolumen
+    );
+
+    const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
+      nuevaConcentracionMediaDeCuantas,
+      _,
+      _,
+      _
+    );
+
+    const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
+      nuevaCuantasInhaladasPorPersona
+    );
+
+    setRoom({
+      ...room,
+      superficie: superficie,
+      volumenHabitacion: nuevoVolumen,
+      concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
+      cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
+      probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+    });
+  };
+
   // Funciones privadas de cálculos secundarios --------------------------------
 
   /**
    * Calcula la tasa de emisión neta
-   * @param eficienciaDeBarbijo requerido
+   * @param nuevaEficienciaDeBarbijo opcional
+   * @param nuevoInfectados opcional
    * @returns tasaDeEmisionNeta
    */
-  const tasaDeEmisionNeta = (eficienciaDeBarbijo) => {
-    const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
-    return (
-      exhalacionDeInfectado *
-      (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
-      infectados
-    );
+  const tasaDeEmisionNeta = (nuevaEficienciaDeBarbijo, nuevoInfectados) => {
+    if (nuevaEficienciaDeBarbijo) {
+      const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
+      return (
+        exhalacionDeInfectado *
+        (1 - nuevaEficienciaDeBarbijo * poblacionConBarbijo) *
+        infectados
+      );
+    } else if (nuevoInfectados) {
+      const {
+        exhalacionDeInfectado,
+        eficienciaDeBarbijo,
+        poblacionConBarbijo,
+      } = room;
+      return (
+        exhalacionDeInfectado *
+        (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
+        nuevoInfectados
+      );
+    }
   };
 
   /**
@@ -161,12 +275,14 @@ export function RoomProvider(props) {
    * @param nuevaTasaDeEmisionNeta opcional
    * @param nuevaDuracion opcional
    * @param nuevaVentilacion opcional
+   * @param nuevoVolumen opcional
    * @returns concentracionMediaDeCuantas
    */
   const concentracionMediaDeCuantas = (
     nuevaTasaDeEmisionNeta,
     nuevaDuracion,
-    nuevaVentilacion
+    nuevaVentilacion,
+    nuevoVolumen
   ) => {
     if (nuevaTasaDeEmisionNeta) {
       const { perdidaDePrimerOrden, duracion, volumenHabitacion } = room;
@@ -193,6 +309,14 @@ export function RoomProvider(props) {
         (1 -
           (1 / nuevaPerdidaDePrimerOrden / duracion) *
             (1 - Math.exp(-nuevaPerdidaDePrimerOrden * duracion)))
+      );
+    } else if (nuevoVolumen) {
+      const { duracion, perdidaDePrimerOrden, tasaDeEmisionNeta } = room;
+      return (
+        (tasaDeEmisionNeta / perdidaDePrimerOrden / nuevoVolumen) *
+        (1 -
+          (1 / perdidaDePrimerOrden / duracion) *
+            (1 - Math.exp(-perdidaDePrimerOrden * duracion)))
       );
     }
   };
@@ -235,6 +359,14 @@ export function RoomProvider(props) {
         duracion *
         (1 - eficienciaDeBarbijo * poblacionConBarbijo)
       );
+    } else {
+      const { duracion, eficienciaDeBarbijo, poblacionConBarbijo } = room;
+      return (
+        concentracionMediaDeCuantas *
+        0.52 *
+        duracion *
+        (1 - eficienciaDeBarbijo * poblacionConBarbijo)
+      );
     }
   };
 
@@ -253,7 +385,7 @@ export function RoomProvider(props) {
    * @param nuevaVentilacion opcional
    * @returns totalCO2Ambiente
    */
-  const totalCO2Ambiente = (nuevaDuracion, nuevaVentilacion) => {
+  const totalCO2Ambiente = (nuevaDuracion, nuevaVentilacion, nuevaPersonas) => {
     if (nuevaDuracion) {
       const {
         totalCO2ExhaladoPSegundo,
@@ -286,6 +418,30 @@ export function RoomProvider(props) {
           1000000 +
         co2Exterior
       );
+    } else if (nuevaPersonas) {
+      const {
+        tasaEmisionCO2PPersona,
+        volumenHabitacion,
+        duracion,
+        co2Exterior,
+        ventilacion,
+      } = room;
+
+      const nuevoTotalCO2ExhaladoPSegundo =
+        (tasaEmisionCO2PPersona * nuevaPersonas * (1 / 0.95) * (273.15 + 20)) /
+        273.15;
+
+      const nuevoTotalCO2Ambiente =
+        ((nuevoTotalCO2ExhaladoPSegundo * 3.6) /
+          ventilacion /
+          volumenHabitacion) *
+          (1 -
+            (1 / ventilacion / duracion) *
+              (1 - Math.exp(-ventilacion * duracion))) *
+          1000000 +
+        co2Exterior;
+
+      return [nuevoTotalCO2ExhaladoPSegundo, nuevoTotalCO2Ambiente];
     }
   };
 
@@ -296,6 +452,9 @@ export function RoomProvider(props) {
     cambioBarbijo,
     cambioDuracion,
     cambioVentilacion,
+    cambioPersonas,
+    cambioInfectados,
+    cambioSuperficie,
   };
 
   return <RoomContext.Provider value={value} {...props} />;
