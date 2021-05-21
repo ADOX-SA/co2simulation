@@ -47,6 +47,7 @@ export default function Results() {
               </a>
               .
             </p>
+            <p className="results-def">El sensor mide hasta 5000ppm.</p>
           </div>
           <div className="ppm-card">
             <h5 className="results-subtitle">
