@@ -26,6 +26,9 @@ export default function Parameters() {
       <div className="parameters-header">
         <h5 className="parameters-title">Parámetros del ambiente</h5>
       </div>
+      <div>
+        <PartialResults />
+      </div>
       <div className="controllers-div">
         <ParameterSwitch />
       </div>
@@ -43,7 +46,7 @@ function ParameterSwitch() {
   return (
     <>
       <div className="mask-selector-div">
-        <h5>Seleccione el parámetro a modificar:</h5>
+        <h5 className="slider-title">Seleccione el parámetro a modificar:</h5>
         <ol>
           <li
             className={0 === active ? "btn-selected" : null}
@@ -371,5 +374,39 @@ function ParameterBtn(props) {
       <img src={props.src} alt="Seleccione parámetro a modificar:"></img>
       <p>{props.label}</p>
     </div>
+  );
+}
+
+function PartialResults() {
+  const { room } = useRoom();
+
+  return (
+    <>
+      <h5 className="slider-title">Resultados parciales:</h5>
+      <div className="partial-results-div">
+        <div className="partial-results-wrapper">
+          <div
+            className={
+              room.totalCO2Ambiente < 800
+                ? "ppmOK pr-ppm"
+                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                ? "ppmAlto pr-ppm"
+                : "ppmPeligro pr-ppm"
+            }
+          >
+            <span className="slider-title">
+              CO<sub>2</sub> total en ambiente (partes por millón):
+            </span>{" "}
+            {parseInt(room.totalCO2Ambiente)} ppm
+          </div>
+          <div className="pr-ppm">
+            <span className="slider-title">
+              Probabilidad de contagio por persona (%):
+            </span>{" "}
+            {room.probabilidadDeInfeccion.toFixed(2)}%
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
