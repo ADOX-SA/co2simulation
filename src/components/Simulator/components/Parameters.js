@@ -19,20 +19,25 @@ import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
 import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
 import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
+//Intro
+import intro from "../../../assets/intro.svg";
 
 export default function Parameters() {
   return (
-    <div className="room-parameters">
-      <div className="parameters-header">
-        <h5 className="parameters-title">Parámetros del ambiente</h5>
+    <>
+      <div className="room-parameters">
+        <img src={intro} alt="introduccion" className="intro"></img>
+        <div className="parameters-header">
+          <h5 className="parameters-title">Parámetros del ambiente</h5>
+        </div>
+        <div className="controllers-div">
+          <ParameterSwitch />
+        </div>
+        <div className="controllers-div">
+          <Precondiciones />
+        </div>
       </div>
-      <div>
-        <PartialResults />
-      </div>
-      <div className="controllers-div">
-        <ParameterSwitch />
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -377,36 +382,41 @@ function ParameterBtn(props) {
   );
 }
 
-function PartialResults() {
+function Precondiciones() {
   const { room } = useRoom();
 
   return (
-    <>
-      <h5 className="slider-title">Resultados parciales:</h5>
-      <div className="partial-results-div">
-        <div className="partial-results-wrapper">
-          <div
-            className={
-              room.totalCO2Ambiente < 800
-                ? "ppmOK pr-ppm"
-                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-                ? "ppmAlto pr-ppm"
-                : "ppmPeligro pr-ppm"
-            }
-          >
-            <span className="slider-title">
-              CO<sub>2</sub> total en ambiente (partes por millón):
-            </span>{" "}
-            {parseInt(room.totalCO2Ambiente)} ppm
-          </div>
-          <div className="pr-ppm">
-            <span className="slider-title">
-              Probabilidad de contagio por persona (%):
-            </span>{" "}
-            {room.probabilidadDeInfeccion.toFixed(2)}%
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="precondiciones">
+      <h5 className="slider-title">
+        Parámetros del ambiente utilizados para la simulación:
+      </h5>
+      <p className="results-def">
+        Cantidad de personas: {room.profesores + room.alumnos}
+      </p>
+      <p className="results-def">
+        Infectados (paciente cero): {room.infectados}
+      </p>
+      <p className="results-def">
+        Habitación: {room.alturaHabitacion}m (alto), {room.superficie}m
+        <sup>2</sup> (superficie), {room.volumenHabitacion.toFixed(2)}m
+        <sup>3</sup> (volumen total).
+      </p>
+      <p className="results-def">
+        Separación entre personas: Distribuidas por toda la superficie de manera
+        equidistante.
+      </p>
+      <p className="results-def">
+        Se considera que las personas se encuentran sentadas y hablando con
+        volumen alto.
+      </p>
+      <p className="results-def">
+        Todos los cálculos se basan en el{" "}
+        <a href="https://cires.colorado.edu/news/covid-19-airborne-transmission-tool-available">
+          modelo de estimación de CIRES
+        </a>
+        .
+      </p>
+      <p className="results-def">El sensor mide hasta 5000ppm.</p>
+    </div>
   );
 }

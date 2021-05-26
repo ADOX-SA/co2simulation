@@ -1,5 +1,19 @@
 // Parameters menu ==========================================
+.intro {
+  width: 100%;
 
+  @include desktop {
+    width: 500px;
+  }
+}
+
+.results-def {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+  @include desktop {
+    margin-top: 5px;
+  }
+}
 .room-parameters {
   background: $primary;
   box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07),
@@ -19,6 +33,7 @@
 
   .parameters-header {
     @include gradient;
+    min-height: 45px;
     color: $primary;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
