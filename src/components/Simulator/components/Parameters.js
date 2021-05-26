@@ -19,17 +19,25 @@ import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
 import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
 import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
+//Intro
+import intro from "../../../assets/intro.svg";
 
 export default function Parameters() {
   return (
-    <div className="room-parameters">
-      <div className="parameters-header">
-        <h5 className="parameters-title">Parámetros del ambiente</h5>
+    <>
+      <div className="room-parameters">
+        <img src={intro} alt="introduccion" className="intro"></img>
+        <div className="parameters-header">
+          <h5 className="parameters-title">Parámetros del ambiente</h5>
+        </div>
+        <div className="controllers-div">
+          <ParameterSwitch />
+        </div>
+        <div className="controllers-div">
+          <Precondiciones />
+        </div>
       </div>
-      <div className="controllers-div">
-        <ParameterSwitch />
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -43,7 +51,7 @@ function ParameterSwitch() {
   return (
     <>
       <div className="mask-selector-div">
-        <h5>Seleccione el parámetro a modificar:</h5>
+        <h5 className="slider-title">Seleccione el parámetro a modificar:</h5>
         <ol>
           <li
             className={0 === active ? "btn-selected" : null}
@@ -370,6 +378,45 @@ function ParameterBtn(props) {
     <div>
       <img src={props.src} alt="Seleccione parámetro a modificar:"></img>
       <p>{props.label}</p>
+    </div>
+  );
+}
+
+function Precondiciones() {
+  const { room } = useRoom();
+
+  return (
+    <div className="precondiciones">
+      <h5 className="slider-title">
+        Parámetros del ambiente utilizados para la simulación:
+      </h5>
+      <p className="results-def">
+        Cantidad de personas: {room.profesores + room.alumnos}
+      </p>
+      <p className="results-def">
+        Infectados (paciente cero): {room.infectados}
+      </p>
+      <p className="results-def">
+        Habitación: {room.alturaHabitacion}m (alto), {room.superficie}m
+        <sup>2</sup> (superficie), {room.volumenHabitacion.toFixed(2)}m
+        <sup>3</sup> (volumen total).
+      </p>
+      <p className="results-def">
+        Separación entre personas: Distribuidas por toda la superficie de manera
+        equidistante.
+      </p>
+      <p className="results-def">
+        Se considera que las personas se encuentran sentadas y hablando con
+        volumen alto.
+      </p>
+      <p className="results-def">
+        Todos los cálculos se basan en el{" "}
+        <a href="https://cires.colorado.edu/news/covid-19-airborne-transmission-tool-available">
+          modelo de estimación de CIRES
+        </a>
+        .
+      </p>
+      <p className="results-def">El sensor mide hasta 5000ppm.</p>
     </div>
   );
 }

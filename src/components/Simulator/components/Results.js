@@ -12,43 +12,11 @@ export default function Results() {
 
   return (
     <div className="results-card">
-      <div className="results-header">
+      {/* <div className="results-header">
         <h3 className="results-title">Resultados</h3>
-      </div>
+      </div> */}
       <div className="results-wrapper">
         <div>
-          <div className="ppm-card">
-            <h5 className="results-subtitle">
-              Parámetros del ambiente utilizados para la simulación:
-            </h5>
-            <p className="results-def">
-              Cantidad de personas: {room.profesores + room.alumnos}
-            </p>
-            <p className="results-def">
-              Infectados (paciente cero): {room.infectados}
-            </p>
-            <p className="results-def">
-              Habitación: {room.alturaHabitacion}m (alto), {room.superficie}m
-              <sup>2</sup> (superficie), {room.volumenHabitacion}m<sup>3</sup>{" "}
-              (volumen total).
-            </p>
-            <p className="results-def">
-              Separación entre personas: Distribuidas por toda la superficie de
-              manera equidistante.
-            </p>
-            <p className="results-def">
-              Se considera que las personas se encuentran sentadas y hablando
-              con volumen alto.
-            </p>
-            <p className="results-def">
-              Todos los cálculos se basan en el{" "}
-              <a href="https://cires.colorado.edu/news/covid-19-airborne-transmission-tool-available">
-                modelo de estimación de CIRES
-              </a>
-              .
-            </p>
-            <p className="results-def">El sensor mide hasta 5000ppm.</p>
-          </div>
           <div className="ppm-card">
             <h5 className="results-subtitle">
               Total CO<sub>2</sub> presente en el ambiente (partes por millón):
@@ -65,20 +33,22 @@ export default function Results() {
               {parseInt(room.totalCO2Ambiente)} ppm
             </h1>
           </div>
-          <div className="ppm-card">
-            <h5 className="results-subtitle">
-              Probabilidad de contagio por persona (%):
-            </h5>
-            <h1 className="results-ppm">
-              {parseFloat(room.probabilidadDeInfeccion).toFixed(2)} %
-            </h1>
-          </div>
         </div>
-        <Sensor />
+        <div className="ppm-card">
+          <h5 className="results-subtitle">
+            Probabilidad de contagio por persona (%):
+          </h5>
+          <h1 className="results-ppm">
+            {parseFloat(room.probabilidadDeInfeccion).toFixed(2)} %
+          </h1>
+        </div>
+        <div className="ppm-card">
+          <Sensor />
+        </div>
       </div>
       <div className="results-footer">
         <p className="info-text">
-          Versión prototipo (1.3), cualquier observación por favor contáctese
+          Versión prototipo (1.4), cualquier observación por favor contáctese
           vía mail a <a href="mailto:co2@adox.com.ar">co2@adox.com.ar</a>
         </p>
       </div>
@@ -119,9 +89,6 @@ function Sensor() {
         {parseInt(room.totalCO2Ambiente)} ppm
       </span>
       {cambiarMedidor(room.totalCO2Ambiente)}
-      <h4>
-        Medidor de CO<sub>2</sub>
-      </h4>
     </div>
   );
 }

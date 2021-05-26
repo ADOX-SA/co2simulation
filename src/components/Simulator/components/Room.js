@@ -1,6 +1,10 @@
 import React from "react";
 import { useRoom } from "../../../context/room-context";
 
+// Imported components
+
+import Results from "./Results";
+
 // Imported assets ========================
 
 import Student10 from "../../../assets/students/Estudiante10.svg";
@@ -35,6 +39,9 @@ export default function Room() {
           <Grid />
           <Walls />
         </div>
+      </div>
+      <div>
+        <Results />
       </div>
     </div>
   );
