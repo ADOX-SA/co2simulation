@@ -351,12 +351,20 @@ function VentBtn(props) {
 }
 
 function ParameterDisplay(props) {
+  const { room } = useRoom();
+
   const getParameterComponent = (id) => {
     switch (id) {
       case 0:
-        return <PeopleSlider min={6} max={26} label="personas" />;
+        return <PeopleSlider min={2} max={26} label="personas" />;
       case 1:
-        return <InfectedSlider min={1} max={5} label="infectados" />;
+        return (
+          <InfectedSlider
+            min={1}
+            max={room.totalPersonas < 6 ? room.totalPersonas - 1 : 6}
+            label="infectados"
+          />
+        );
       case 2:
         return <DurationSlider min={1} max={36} label="duración" unit="hr" />;
       case 3:
