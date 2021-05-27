@@ -229,29 +229,29 @@ function SurfaceSlider({ min, max, label, unit }) {
 }
 
 function MaskSelector() {
-  const [active, setActive] = useState(0);
-  const { cambioBarbijo } = useRoom();
+  const { room, cambioBarbijo } = useRoom();
+  const [active, setActive] = useState(room.eficienciaDeBarbijo);
 
   const handleClick = (id) => {
-    var eficienciaDeBarbijo;
-
-    setActive(id);
     switch (id) {
       default:
       case 0:
-        eficienciaDeBarbijo = 0;
+        cambioBarbijo(0);
+        setActive(0);
         break;
       case 1:
-        eficienciaDeBarbijo = 0.5;
+        cambioBarbijo(0.5);
+        setActive(0.5);
         break;
       case 2:
-        eficienciaDeBarbijo = 0.65;
+        cambioBarbijo(0.65);
+        setActive(0.65);
         break;
       case 3:
-        eficienciaDeBarbijo = 0.9;
+        cambioBarbijo(0.9);
+        setActive(0.9);
         break;
     }
-    cambioBarbijo(eficienciaDeBarbijo);
   };
 
   return (
@@ -265,19 +265,19 @@ function MaskSelector() {
           <MaskBtn src={SelBarbijoNO} label="Ninguno" id={0} />
         </li>
         <li
-          className={1 === active ? "btn-selected" : null}
+          className={0.5 === active ? "btn-selected" : null}
           onClick={() => handleClick(1)}
         >
           <MaskBtn src={SelBarbijoTela} label="De tela" id={1} />
         </li>
         <li
-          className={2 === active ? "btn-selected" : null}
+          className={0.65 === active ? "btn-selected" : null}
           onClick={() => handleClick(2)}
         >
           <MaskBtn src={SelBarbijoQuirurgico} label="Quirúrgico" id={2} />
         </li>
         <li
-          className={3 === active ? "btn-selected" : null}
+          className={0.9 === active ? "btn-selected" : null}
           onClick={() => handleClick(3)}
         >
           <MaskBtn src={SelBarbijoKN95} label="N95" id={3} />
@@ -297,8 +297,8 @@ function MaskBtn(props) {
 }
 
 function VentilationSelector() {
-  const [active, setActive] = useState(0.1);
-  const { cambioVentilacion } = useRoom();
+  const { room, cambioVentilacion } = useRoom();
+  const [active, setActive] = useState(room.ventilacion);
 
   const handleClick = (ventRate) => {
     setActive(ventRate);

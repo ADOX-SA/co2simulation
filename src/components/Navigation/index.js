@@ -18,7 +18,9 @@ export default function NavBar() {
   return (
     <nav className={classNames("navbar-container", { scrolled: scrolled })}>
       <div className="link-container left"></div>
-      <img src={logo} className="logo" alt="logo" width={60} />
+      <a href="https://adox.com.ar">
+        <img src={logo} className="logo" alt="logo" width={60} />
+      </a>
       <div className="link-container right"></div>
     </nav>
   );
