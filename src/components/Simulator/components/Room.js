@@ -34,14 +34,14 @@ import VentSystemD from "../../../assets/ventilation/VentSystemD.svg";
 export default function Room() {
   return (
     <div className="room-container">
+      <div>
+        <Results />
+      </div>
       <div className="room">
         <div className="room-floor floor-shadow">
           <Grid />
           <Walls />
         </div>
-      </div>
-      <div>
-        <Results />
       </div>
     </div>
   );
