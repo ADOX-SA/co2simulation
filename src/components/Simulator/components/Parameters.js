@@ -353,12 +353,18 @@ function ParameterDisplay(props) {
   const getParameterComponent = (id) => {
     switch (id) {
       case 0:
-        return <PeopleSlider min={2} max={26} label="personas" />;
+        return (
+          <PeopleSlider
+            min={room.infectados === 1 ? 2 : room.infectados}
+            max={30}
+            label="personas"
+          />
+        );
       case 1:
         return (
           <InfectedSlider
             min={1}
-            max={room.totalPersonas < 6 ? room.totalPersonas - 1 : 6}
+            max={room.totalPersonas <= 6 ? room.totalPersonas - 1 : 6}
             label="infectados"
           />
         );
