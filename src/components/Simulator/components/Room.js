@@ -35,7 +35,7 @@ export default function Room() {
   return (
     <div className="room-container">
       <div>
-        <Results />
+        <Results /> {/* Resultados en parte superior */}
       </div>
       <div className="room">
         <div className="room-floor floor-shadow">
@@ -43,6 +43,9 @@ export default function Room() {
           <Walls />
         </div>
       </div>
+      {/* <div>
+        <Results />
+      </div> */}
     </div>
   );
 }
