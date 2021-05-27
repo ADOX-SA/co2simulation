@@ -19,14 +19,11 @@ import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
 import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
 import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
-//Intro
-import intro from "../../../assets/intro.svg";
 
 export default function Parameters() {
   return (
     <>
       <div className="room-parameters">
-        <img src={intro} alt="introduccion" className="intro"></img>
         <div className="parameters-header">
           <h5 className="parameters-title">Parámetros del ambiente</h5>
         </div>
