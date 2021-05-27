@@ -20,6 +20,7 @@
 }
 
 .navbar-container .logo {
+  width: 100px;
   transform: translate(0%);
   -webkit-transform: translate(0%);
   -moz-transform: translate(0%);
@@ -73,6 +74,16 @@
   padding-right: 20px;
 }
 
+.menu .header-title {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.menu .header-subtitle {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
 .menu .header-text {
   font-size: 1.125rem;
   padding-left: 20px;
@@ -84,6 +95,14 @@
     margin-left: 60px;
     margin-right: 60px;
   }
+}
+
+.menu .resaltado {
+  background: -webkit-gradient(linear, left top, right top, from(#f85dad), to(#df3a8e));
+  background: linear-gradient(to right, #f85dad, #df3a8e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (min-width: 992px) {
