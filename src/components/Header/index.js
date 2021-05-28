@@ -14,12 +14,12 @@ export default function Header() {
       </h3>
       <p className="header-text">
         Modificá las distintas variables disponibles en la sección de{" "}
-        <b>Parámetros del ambiente</b>. Podrás cambiar la cantidad de personas
-        presentes, los infectados (paciente cero), duración del evento, la
-        superficie del salón, el tipo de barbijo y la ventilación disponible.
-        Dinámicamente verás reflejados estos cambios en los resultados
-        disponibles debajo. Además encontrarás expresadas las distintas
-        precondiciones asumidas para la realización de los cálculos.
+        <b>Parámetros interactivos del ambiente</b>. Podrás cambiar la cantidad
+        de personas presentes, los infectados (paciente cero), duración del
+        evento, la superficie del salón, el tipo de barbijo y la ventilación
+        disponible. Dinámicamente verás reflejados estos cambios en los
+        resultados disponibles debajo. Además encontrarás expresadas las
+        distintas precondiciones asumidas para la realización de los cálculos.
       </p>
     </div>
   );

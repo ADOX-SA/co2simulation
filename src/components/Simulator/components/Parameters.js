@@ -25,7 +25,9 @@ export default function Parameters() {
     <>
       <div className="room-parameters">
         <div className="parameters-header">
-          <h5 className="parameters-title">Parámetros del ambiente</h5>
+          <h5 className="parameters-title">
+            Parámetros interactivos del ambiente
+          </h5>
         </div>
         <div className="controllers-div">
           <ParameterSwitch />
