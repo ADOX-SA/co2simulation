@@ -19,6 +19,11 @@ import SelVentCerrada from "../../../assets/ventilation/SelVentCerrada.svg";
 import SelVentParcial from "../../../assets/ventilation/SelVentParcial.svg";
 import SelVentAbierta from "../../../assets/ventilation/SelVentAbierta.svg";
 import SelVentSystem from "../../../assets/ventilation/SelVentSystem.svg";
+// Volumen de habla
+import SelBajo from "../../../assets/volume/SelSilencio.svg";
+import SelNormal from "../../../assets/volume/SelNormal.svg";
+import SelAlto from "../../../assets/volume/SelAlto.svg";
+import SelGritando from "../../../assets/volume/SelGritando.svg";
 
 export default function Parameters() {
   return (
@@ -75,6 +80,12 @@ function ParameterSwitch() {
             onClick={() => handleClick(2)}
           >
             <ParameterBtn src={SelDuration} label="Duración" id={2} />
+          </li>
+          <li
+            className={6 === active ? "btn-selected" : null}
+            onClick={() => handleClick(6)}
+          >
+            <ParameterBtn src={SelAlto} label="Volumen" id={6} />
           </li>
         </ol>
         <ol>
@@ -386,6 +397,8 @@ function ParameterDisplay(props) {
         return <MaskSelector />;
       case 5:
         return <VentilationSelector />;
+      case 6:
+        return <VolumeSelector />;
       default:
         return <></>;
     }
@@ -425,8 +438,15 @@ function Precondiciones() {
         equidistante.
       </p>
       <p className="results-def">
-        Se considera que las personas se encuentran sentadas y hablando con
-        volumen alto.
+        Se considera que las personas se encuentran sentadas y{" "}
+        {room.exhalacionDeInfectado > 30
+          ? "gritando"
+          : room.exhalacionDeInfectado > 9.4
+          ? "hablando con volumen alto"
+          : room.exhalacionDeInfectado > 2
+          ? "hablando con volumen normal"
+          : "hablando con volumen bajo"}
+        .
       </p>
       <p className="results-def">
         Todos los cálculos se basan en el{" "}
@@ -436,6 +456,47 @@ function Precondiciones() {
         .
       </p>
       <p className="results-def">El sensor mide hasta 5000ppm.</p>
+    </div>
+  );
+}
+
+function VolumeSelector() {
+  const { room, cambioVolumen } = useRoom();
+  const [active, setActive] = useState(room.exhalacionDeInfectado);
+
+  const handleClick = (volumen) => {
+    setActive(volumen);
+    cambioVolumen(volumen);
+  };
+  return (
+    <div className="mask-selector-div">
+      <h5>Selector de volumen:</h5>
+      <ol>
+        <li
+          className={2 === active ? "btn-selected" : null}
+          onClick={() => handleClick(2)}
+        >
+          <VentBtn src={SelBajo} label="Tranquilo" id={0} />
+        </li>
+        <li
+          className={9.4 === active ? "btn-selected" : null}
+          onClick={() => handleClick(9.4)}
+        >
+          <VentBtn src={SelNormal} label="Normal" id={1} />
+        </li>
+        <li
+          className={30 === active ? "btn-selected" : null}
+          onClick={() => handleClick(30)}
+        >
+          <VentBtn src={SelAlto} label="Alto" id={2} />
+        </li>
+        <li
+          className={60 === active ? "btn-selected" : null}
+          onClick={() => handleClick(60)}
+        >
+          <VentBtn src={SelGritando} label="Gritando" id={3} />
+        </li>
+      </ol>
     </div>
   );
 }
