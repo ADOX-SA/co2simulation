@@ -8,14 +8,14 @@ export default function Header() {
       </h1>
       <h2 className="header-subtitle">Desarrollado por ADOX S.A.</h2>
       <h3>
-        ¡Prueba nuestra{" "}
+        ¡Probá nuestra{" "}
         <span className="resaltado">herramienta interactiva</span> y observá los
-        resultado debajo!
+        resultados!
       </h3>
       <p className="header-text">
         Modificá las distintas variables disponibles en la sección de{" "}
         <b>Parámetros del ambiente</b>. Podrás cambiar la cantidad de personas
-        presentes, los infectados (paciente cero), duración de permanencia, la
+        presentes, los infectados (paciente cero), duración del evento, la
         superficie del salón, el tipo de barbijo y la ventilación disponible.
         Dinámicamente verás reflejados estos cambios en los resultados
         disponibles debajo. Además encontrarás expresadas las distintas
