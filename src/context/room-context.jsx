@@ -24,7 +24,7 @@ export function RoomProvider(props) {
     volumenHabitacion: 144, // Volumen en metros cúbicos
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
-    exhalacionDeInfectado: 60, // Tasa de exhalación sentado y hablando fuerte
+    exhalacionDeInfectado: 60, // 2 | 9.4 | 30 | 60
     tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
     concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
     cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
@@ -40,9 +40,9 @@ export function RoomProvider(props) {
    * @param eficienciaDeBarbijo requerido
    */
   const cambioBarbijo = (eficienciaDeBarbijo) => {
-    const nuevaTasaDeEmisionNeta = tasaDeEmisionNeta(eficienciaDeBarbijo);
-
     const _ = undefined;
+    const nuevaTasaDeEmisionNeta = tasaDeEmisionNeta(eficienciaDeBarbijo, _, _);
+
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       nuevaTasaDeEmisionNeta,
       _,
@@ -243,15 +243,56 @@ export function RoomProvider(props) {
     });
   };
 
+  /**
+   * Realiza operaciones correspondientes tras cambio del volumen del habla
+   * @param volumen requerido
+   */
+  const cambioVolumen = (volumen) => {
+    const _ = undefined;
+    const nuevaTasaDeEmisionNeta = tasaDeEmisionNeta(_, _, volumen);
+
+    const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
+      nuevaTasaDeEmisionNeta,
+      _,
+      _,
+      _
+    );
+
+    const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
+      nuevaConcentracionMediaDeCuantas,
+      _,
+      _,
+      _
+    );
+
+    const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
+      nuevaCuantasInhaladasPorPersona
+    );
+
+    setRoom({
+      ...room,
+      exhalacionDeInfectado: volumen,
+      tasaDeEmisionNeta: nuevaTasaDeEmisionNeta,
+      concentracionMediaDeCuantas: nuevaConcentracionMediaDeCuantas,
+      cuantasInhaladasPorPersona: nuevaCuantasInhaladasPorPersona,
+      probabilidadDeInfeccion: nuevaProbabilidadDeInfeccion,
+    });
+  };
+
   // Funciones privadas de cálculos secundarios --------------------------------
 
   /**
    * Calcula la tasa de emisión neta
    * @param nuevaEficienciaDeBarbijo opcional
    * @param nuevoInfectados opcional
+   * @param nuevaExhalacionDeInfectado opcional
    * @returns tasaDeEmisionNeta
    */
-  const tasaDeEmisionNeta = (nuevaEficienciaDeBarbijo, nuevoInfectados) => {
+  const tasaDeEmisionNeta = (
+    nuevaEficienciaDeBarbijo,
+    nuevoInfectados,
+    nuevaExhalacionDeInfectado
+  ) => {
     if (nuevaEficienciaDeBarbijo || nuevaEficienciaDeBarbijo === 0) {
       const { exhalacionDeInfectado, infectados, poblacionConBarbijo } = room;
       return (
@@ -269,6 +310,13 @@ export function RoomProvider(props) {
         exhalacionDeInfectado *
         (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
         nuevoInfectados
+      );
+    } else if (nuevaExhalacionDeInfectado) {
+      const { infectados, eficienciaDeBarbijo, poblacionConBarbijo } = room;
+      return (
+        nuevaExhalacionDeInfectado *
+        (1 - eficienciaDeBarbijo * poblacionConBarbijo) *
+        infectados
       );
     }
   };
@@ -476,6 +524,7 @@ export function RoomProvider(props) {
     cambioPersonas,
     cambioInfectados,
     cambioSuperficie,
+    cambioVolumen,
   };
 
   useEffect(() => {
