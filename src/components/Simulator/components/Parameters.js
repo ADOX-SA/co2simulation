@@ -436,8 +436,15 @@ function Precondiciones() {
         equidistante.
       </p>
       <p className="results-def">
-        Se considera que las personas se encuentran sentadas y hablando con
-        volumen alto.
+        Se considera que las personas se encuentran sentadas y{" "}
+        {room.exhalacionDeInfectado > 30
+          ? "gritando"
+          : room.exhalacionDeInfectado > 9.4
+          ? "hablando con volumen alto"
+          : room.exhalacionDeInfectado > 2
+          ? "hablando con volumen normal"
+          : "hablando con volumen bajo"}
+        .
       </p>
       <p className="results-def">
         Todos los cálculos se basan en el{" "}
