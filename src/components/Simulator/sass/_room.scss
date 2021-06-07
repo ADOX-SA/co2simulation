@@ -10,6 +10,16 @@
     align-items: center;
     justify-content: center;
 
+    #particles-js {
+      position: absolute;
+      background-color: #ff03c000;
+      z-index: 20;
+
+      @include desktop {
+        margin-bottom: 120px;
+      }
+    }
+
     .room-floor {
       background-color: white;
       transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);

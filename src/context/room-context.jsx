@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const RoomContext = React.createContext();
 
@@ -526,10 +526,6 @@ export function RoomProvider(props) {
     cambioSuperficie,
     cambioVolumen,
   };
-
-  useEffect(() => {
-    console.log(room);
-  });
 
   return <RoomContext.Provider value={value} {...props} />;
 }

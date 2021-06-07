@@ -4,6 +4,7 @@ import { useRoom } from "../../../context/room-context";
 // Imported components
 
 import Results from "./Results";
+//import Particles from "react-particles-js";
 
 // Imported assets ========================
 
@@ -33,20 +34,20 @@ import VentSystemD from "../../../assets/ventilation/VentSystemD.svg";
 
 export default function Room() {
   return (
-    <div className="room-container">
-      <div>
-        <Results /> {/* Resultados en parte superior */}
-      </div>
-      <div className="room">
-        <div className="room-floor floor-shadow">
-          <Grid />
-          <Walls />
+    <>
+      <div className="room-container">
+        <div>
+          <Results />
+        </div>
+        <div className="room">
+          {/* <Aerosoles /> */}
+          <div className="room-floor floor-shadow">
+            <Grid />
+            <Walls />
+          </div>
         </div>
       </div>
-      {/* <div>
-        <Results />
-      </div> */}
-    </div>
+    </>
   );
 }
 
@@ -54,7 +55,7 @@ function Grid() {
   const { room } = useRoom();
 
   return (
-    <div className="room-grid">
+    <div id="floor" className="room-grid">
       <Shelf />
       <StudentDesk tipo={Student6} />
       <StudentDesk tipo={Student2} />
@@ -198,3 +199,54 @@ function TeacherDesk() {
     </div>
   );
 }
+/* class Aerosoles extends Component {
+  render() {
+    const foto = document.createElementNS(
+      "../../../assets/particles/room-mask.svg",
+      "path"
+    );
+
+    return (
+      <Particles
+        id="particles-js"
+        height="330px"
+        width="420px"
+        params={{
+          particles: {
+            number: {
+              value: 1000,
+              density: {
+                enable: true,
+                value_area: 100,
+              },
+            },
+            color: {
+              value: "#df3a8e",
+            },
+            opacity: {
+              value: 1,
+              anim: {
+                enable: true,
+              },
+            },
+            size: {
+              value: 2,
+              random: true,
+              anim: {
+                enable: true,
+                speed: 3,
+              },
+            },
+            line_linked: {
+              enable: false,
+            },
+            move: {
+              speed: 0.2,
+            },
+          },
+        }}
+      />
+    );
+  }
+}
+ */

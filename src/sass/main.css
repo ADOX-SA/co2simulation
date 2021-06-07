@@ -130,6 +130,18 @@
           justify-content: center;
 }
 
+.room-container .room #particles-js {
+  position: absolute;
+  background-color: #ff03c000;
+  z-index: 20;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room #particles-js {
+    margin-bottom: 120px;
+  }
+}
+
 .room-container .room .room-floor {
   background-color: white;
   transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
