@@ -33,6 +33,8 @@ import VentSystemD from "../../../assets/ventilation/VentSystemD.svg";
 // ========================================
 
 export default function Room() {
+  const { room } = useRoom();
+
   return (
     <>
       <div className="room-container">
@@ -41,7 +43,15 @@ export default function Room() {
         </div>
         <div className="room">
           {/* <Aerosoles /> */}
-          <div className="room-floor floor-shadow">
+          <div
+            className={
+              room.totalCO2Ambiente < 800
+                ? "room-floor floor-shadow-green"
+                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                ? "room-floor floor-shadow-yellow"
+                : "room-floor floor-shadow-red"
+            }
+          >
             <Grid />
             <Walls />
           </div>
