@@ -6,29 +6,29 @@ export function RoomProvider(props) {
   // Propiedades del ambiente
   const [room, setRoom] = useState({
     profesores: 1,
-    alumnos: 12,
-    totalPersonas: 13,
+    alumnos: 3,
+    totalPersonas: 4,
     infectados: 1,
-    eficienciaDeBarbijo: 0, // 0 | 0.5 | 0.65 | 0.9
+    eficienciaDeBarbijo: 0.5, // 0 | 0.5 | 0.65 | 0.9
     poblacionConBarbijo: 1, // Fracción de personas con máscara. Asumimos un 100%
-    duracion: 1,
-    ventilacion: 0.1, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
-    perdidaDePrimerOrden: 1.02, // ventilation + 0.92 // ? Averiguar esto
+    duracion: 0.25,
+    ventilacion: 3, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
+    perdidaDePrimerOrden: 3.92, // ventilation + 0.92
     tasaEmisionCO2PPersona: 0.005,
     totalCO2ExhaladoPSegundo: 0.07343083133, // anterior pero en litros por segundo
-    totalCO2Ambiente: 1303,
+    totalCO2Ambiente: 582,
     alturaHabitacion: 2.4,
-    anchoHabitacion: 6,
-    largoHabitacion: 10,
-    superficie: 60,
-    volumenHabitacion: 144, // Volumen en metros cúbicos
+    anchoHabitacion: 4,
+    largoHabitacion: 5,
+    superficie: 20,
+    volumenHabitacion: 48, // Volumen en metros cúbicos
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
-    exhalacionDeInfectado: 60, // 2 | 9.4 | 30 | 60
+    exhalacionDeInfectado: 9.4, // 2 | 9.4 | 30 | 60
     tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
     concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
     cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
-    probabilidadDeInfeccion: 7.62,
+    probabilidadDeInfeccion: 0.06,
   });
 
   // ============================ FUNCIONES PARA REALIZACIÓN DE CÁLCULOS ======================
