@@ -130,6 +130,18 @@
           justify-content: center;
 }
 
+.room-container .room #particles-js {
+  position: absolute;
+  background-color: #ff03c000;
+  z-index: 20;
+}
+
+@media only screen and (min-width: 992px) {
+  .room-container .room #particles-js {
+    margin-bottom: 120px;
+  }
+}
+
 .room-container .room .room-floor {
   background-color: white;
   transform: rotateX(60deg) rotateY(0deg) rotate(-45deg);
@@ -398,6 +410,21 @@
 .room-container .room .floor-shadow {
   -webkit-box-shadow: -100px 100px 80px rgba(0, 0, 0, 0.07), -41.8px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), -22.34px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), -12.6px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), -2.8px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
           box-shadow: -100px 100px 80px rgba(0, 0, 0, 0.07), -41.8px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), -22.34px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), -12.6px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), -2.8px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+}
+
+.room-container .room .floor-shadow-red {
+  -webkit-box-shadow: -100px 100px 80px rgba(255, 0, 0, 0.2), -41.8px 41.7776px 33.4221px rgba(255, 0, 0, 0.05), -22.34px 22.3363px 17.869px rgba(255, 0, 0, 0.042), -12.6px 12.5216px 10.0172px rgba(255, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(255, 0, 0, 0.028), -2.8px 2.76726px 2.21381px rgba(255, 0, 0, 0.02);
+          box-shadow: -100px 100px 80px rgba(255, 0, 0, 0.2), -41.8px 41.7776px 33.4221px rgba(255, 0, 0, 0.05), -22.34px 22.3363px 17.869px rgba(255, 0, 0, 0.042), -12.6px 12.5216px 10.0172px rgba(255, 0, 0, 0.035), -6.7px 6.6501px 5.32008px rgba(255, 0, 0, 0.028), -2.8px 2.76726px 2.21381px rgba(255, 0, 0, 0.02);
+}
+
+.room-container .room .floor-shadow-yellow {
+  -webkit-box-shadow: -100px 100px 80px rgba(236, 166, 34, 0.4), -41.8px 41.7776px 33.4221px rgba(236, 166, 34, 0.05), -22.34px 22.3363px 17.869px rgba(236, 166, 34, 0.042), -12.6px 12.5216px 10.0172px rgba(236, 166, 34, 0.035), -6.7px 6.6501px 5.32008px rgba(236, 166, 34, 0.028), -2.8px 2.76726px 2.21381px rgba(236, 166, 34, 0.02);
+          box-shadow: -100px 100px 80px rgba(236, 166, 34, 0.4), -41.8px 41.7776px 33.4221px rgba(236, 166, 34, 0.05), -22.34px 22.3363px 17.869px rgba(236, 166, 34, 0.042), -12.6px 12.5216px 10.0172px rgba(236, 166, 34, 0.035), -6.7px 6.6501px 5.32008px rgba(236, 166, 34, 0.028), -2.8px 2.76726px 2.21381px rgba(236, 166, 34, 0.02);
+}
+
+.room-container .room .floor-shadow-green {
+  -webkit-box-shadow: -100px 100px 80px rgba(32, 197, 39, 0.2), -41.8px 41.7776px 33.4221px rgba(32, 197, 39, 0.05), -22.34px 22.3363px 17.869px rgba(32, 197, 39, 0.042), -12.6px 12.5216px 10.0172px rgba(32, 197, 39, 0.035), -6.7px 6.6501px 5.32008px rgba(32, 197, 39, 0.028), -2.8px 2.76726px 2.21381px rgba(32, 197, 39, 0.02);
+          box-shadow: -100px 100px 80px rgba(32, 197, 39, 0.2), -41.8px 41.7776px 33.4221px rgba(32, 197, 39, 0.05), -22.34px 22.3363px 17.869px rgba(32, 197, 39, 0.042), -12.6px 12.5216px 10.0172px rgba(32, 197, 39, 0.035), -6.7px 6.6501px 5.32008px rgba(32, 197, 39, 0.028), -2.8px 2.76726px 2.21381px rgba(32, 197, 39, 0.02);
 }
 
 .room-container .room .wall {
