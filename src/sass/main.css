@@ -1029,6 +1029,10 @@
   }
 }
 
+.results-card .alerta {
+  font-size: 2rem;
+}
+
 .results-card .ppm-card {
   z-index: 2;
   background: #ecf0f1;

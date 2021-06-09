@@ -35,11 +35,21 @@ export default function Results() {
           </div>
         </div>
         <div className="ppm-card">
-          <h5 className="results-subtitle">
-            Probabilidad de contagio por persona (%):
-          </h5>
-          <h1 className="results-ppm">
-            {parseFloat(room.probabilidadDeInfeccion).toFixed(2)} %
+          <h5 className="results-subtitle">Nivel de alerta:</h5>
+          <h1
+            className={
+              room.totalCO2Ambiente < 800
+                ? "ppmOK alerta"
+                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                ? "ppmAlto alerta"
+                : "ppmPeligro alerta"
+            }
+          >
+            {room.totalCO2Ambiente < 800
+              ? "Normal"
+              : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+              ? "Alto"
+              : "Peligro"}
           </h1>
         </div>
         <div className="ppm-card">
