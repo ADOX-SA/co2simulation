@@ -16,8 +16,8 @@ export function RoomProvider(props) {
     ventilacion: 3, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
     perdidaDePrimerOrden: 3.92, // ventilation + 0.92
     tasaEmisionCO2PPersona: 0.005,
-    totalCO2ExhaladoPSegundo: 0.07343083133, // anterior pero en litros por segundo
-    totalCO2Ambiente: 582,
+    totalCO2ExhaladoPSegundo: 0.0225941019489966, // anterior pero en litros por segundo
+    totalCO2Ambiente: 582.472418755914,
     alturaHabitacion: 2.4,
     anchoHabitacion: 4,
     largoHabitacion: 5,
@@ -26,10 +26,10 @@ export function RoomProvider(props) {
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
     exhalacionDeInfectado: 9.4, // 2 | 9.4 | 30 | 60
-    tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
-    concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
-    cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
-    probabilidadDeInfeccion: 0.06,
+    tasaDeEmisionNeta: 4.7, // Tasa de emisión neta infectada
+    concentracionMediaDeCuantas: 0.00905635111130767, // Concentración media de quantas
+    cuantasInhaladasPorPersona: 0.000584134646679345, // Quantas inhaladas por persona
+    probabilidadDeInfeccion: 0.0583964073250898,
   });
 
   // ============================ FUNCIONES PARA REALIZACIÓN DE CÁLCULOS ======================
@@ -117,6 +117,8 @@ export function RoomProvider(props) {
   const cambioVentilacion = (ventilacion) => {
     const nuevaPerdidaDePrimerOrden = ventilacion + 0.92;
 
+    console.log(nuevaPerdidaDePrimerOrden);
+
     const _ = undefined;
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
@@ -125,6 +127,8 @@ export function RoomProvider(props) {
       _
     );
 
+    console.log(nuevaConcentracionMediaDeCuantas);
+
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
       nuevaConcentracionMediaDeCuantas,
       _,
@@ -132,11 +136,17 @@ export function RoomProvider(props) {
       ventilacion
     );
 
+    console.log(nuevaCuantasInhaladasPorPersona);
+
     const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
       nuevaCuantasInhaladasPorPersona
     );
 
+    console.log(nuevaProbabilidadDeInfeccion);
+
     const nuevaTotalCO2 = totalCO2Ambiente(_, ventilacion, _, _);
+
+    console.log(nuevaTotalCO2);
 
     setRoom({
       ...room,
@@ -156,6 +166,8 @@ export function RoomProvider(props) {
   const cambioPersonas = (personas) => {
     const _ = undefined;
     const totalesCO2 = totalCO2Ambiente(_, _, personas, _);
+
+    console.log(totalesCO2);
 
     setRoom({
       ...room,
@@ -529,7 +541,7 @@ export function RoomProvider(props) {
   };
 
   useEffect(() => {
-    console.log(room);
+    console.log("ACTUALIZACIÓN", room);
   });
 
   return <RoomContext.Provider value={value} {...props} />;
