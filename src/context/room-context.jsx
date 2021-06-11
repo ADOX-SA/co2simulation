@@ -117,8 +117,6 @@ export function RoomProvider(props) {
   const cambioVentilacion = (ventilacion) => {
     const nuevaPerdidaDePrimerOrden = ventilacion + 0.92;
 
-    console.log(nuevaPerdidaDePrimerOrden);
-
     const _ = undefined;
     const nuevaConcentracionMediaDeCuantas = concentracionMediaDeCuantas(
       _,
@@ -127,8 +125,6 @@ export function RoomProvider(props) {
       _
     );
 
-    console.log(nuevaConcentracionMediaDeCuantas);
-
     const nuevaCuantasInhaladasPorPersona = cuantasInhaladasPorPersona(
       nuevaConcentracionMediaDeCuantas,
       _,
@@ -136,17 +132,11 @@ export function RoomProvider(props) {
       ventilacion
     );
 
-    console.log(nuevaCuantasInhaladasPorPersona);
-
     const nuevaProbabilidadDeInfeccion = probabilidadDeInfeccion(
       nuevaCuantasInhaladasPorPersona
     );
 
-    console.log(nuevaProbabilidadDeInfeccion);
-
     const nuevaTotalCO2 = totalCO2Ambiente(_, ventilacion, _, _);
-
-    console.log(nuevaTotalCO2);
 
     setRoom({
       ...room,
@@ -166,8 +156,6 @@ export function RoomProvider(props) {
   const cambioPersonas = (personas) => {
     const _ = undefined;
     const totalesCO2 = totalCO2Ambiente(_, _, personas, _);
-
-    console.log(totalesCO2);
 
     setRoom({
       ...room,
@@ -539,10 +527,6 @@ export function RoomProvider(props) {
     cambioSuperficie,
     cambioVolumen,
   };
-
-  useEffect(() => {
-    console.log("ACTUALIZACIÓN", room);
-  });
 
   return <RoomContext.Provider value={value} {...props} />;
 }
