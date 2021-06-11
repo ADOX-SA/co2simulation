@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+/* import { useEffect } from "react"; */
 
 const RoomContext = React.createContext();
 
@@ -527,6 +527,10 @@ export function RoomProvider(props) {
     cambioSuperficie,
     cambioVolumen,
   };
+
+  /* useEffect(() => {
+    console.log(room.probabilidadDeInfeccion);
+  }); */
 
   return <RoomContext.Provider value={value} {...props} />;
 }
