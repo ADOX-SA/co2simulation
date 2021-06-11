@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+/* import { useEffect } from "react"; */
 
 const RoomContext = React.createContext();
 
@@ -16,8 +16,8 @@ export function RoomProvider(props) {
     ventilacion: 3, // Renovaciones de aire por hora: 7 | 5 | 3 | 0.1
     perdidaDePrimerOrden: 3.92, // ventilation + 0.92
     tasaEmisionCO2PPersona: 0.005,
-    totalCO2ExhaladoPSegundo: 0.07343083133, // anterior pero en litros por segundo
-    totalCO2Ambiente: 582,
+    totalCO2ExhaladoPSegundo: 0.0225941019489966, // anterior pero en litros por segundo
+    totalCO2Ambiente: 582.472418755914,
     alturaHabitacion: 2.4,
     anchoHabitacion: 4,
     largoHabitacion: 5,
@@ -26,10 +26,10 @@ export function RoomProvider(props) {
     separacionEntrePersonas: 1.5,
     co2Exterior: 415, // Calibración exterior
     exhalacionDeInfectado: 9.4, // 2 | 9.4 | 30 | 60
-    tasaDeEmisionNeta: 60, // Tasa de emisión neta infectada
-    concentracionMediaDeCuantas: 0.1524233228, // Concentración media de quantas
-    cuantasInhaladasPorPersona: 0.07926012787, // Quantas inhaladas por persona
-    probabilidadDeInfeccion: 0.06,
+    tasaDeEmisionNeta: 4.7, // Tasa de emisión neta infectada
+    concentracionMediaDeCuantas: 0.00905635111130767, // Concentración media de quantas
+    cuantasInhaladasPorPersona: 0.000584134646679345, // Quantas inhaladas por persona
+    probabilidadDeInfeccion: 0.0583964073250898,
   });
 
   // ============================ FUNCIONES PARA REALIZACIÓN DE CÁLCULOS ======================
@@ -528,9 +528,9 @@ export function RoomProvider(props) {
     cambioVolumen,
   };
 
-  useEffect(() => {
-    console.log(room);
-  });
+  /* useEffect(() => {
+    console.log(room.probabilidadDeInfeccion);
+  }); */
 
   return <RoomContext.Provider value={value} {...props} />;
 }
