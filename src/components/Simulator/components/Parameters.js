@@ -40,7 +40,7 @@ export default function Parameters() {
         </div>
         <div className="results-footer">
           <p className="info-text">
-            Versión prototipo (1.6), cualquier observación por favor contáctese
+            Versión prototipo (1.7), cualquier observación por favor contáctese
             vía mail a <a href="mailto:co2@adox.com.ar">co2@adox.com.ar</a>
           </p>
         </div>

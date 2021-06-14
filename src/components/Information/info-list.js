@@ -110,4 +110,22 @@ export const infoList = [
       },
     ],
   },
+  {
+    subtitle: "PROBABILIDAD DE INFECCIÓN",
+    title: "¿QUÉ VALOR DE RIESGO DE INFECCIÓN ES ACEPTABLE?",
+    image:
+      "https://i.ibb.co/Stc3zGw/Doctor-with-antiseptic-Coronavirus-theme.jpg",
+    cName: "post",
+    texts: [
+      {
+        text: "Primero, tenga en cuenta que las incertidumbres son altas, dado que tenemos información limitada sobre las emisiones de cuantas en particular, y no debe sobreinterpretar los resultados. Si obtiene 1% para un caso, en realidad puede ser 0.3% o 4%, pero no será 0.001% o 100%.",
+      },
+      {
+        text: "En segundo lugar, qué riesgo de infección es tolerable es una cuestión para las personas involucradas. Es decir, todos hacemos actividades que implican algún riesgo y lo toleramos porque el riesgo es lo suficientemente bajo en comparación con el beneficio. Por ejemplo, vamos a lugares en automóviles y aviones, aunque hay una pequeña posibilidad de muerte o lesiones al hacer esas cosas, porque valoramos más el viaje. Por ejemplo, dadas las probabilidades de morir en un viaje en automóvil o avión, estamos aceptando un riesgo de 0.00006% y 0.00001% cada vez que viajamos, respectivamente (estimado a partir de las probabilidades de muerte de https://www.nsc.org/work-safety/tools-resources/injury-facts/chart, suponiendo viajar en automóvil la mitad de los días, en avión 8 veces al año, durante una vida útil de 75 años).",
+      },
+      {
+        text: "Para aspectos como el riesgo de cáncer, la EPA de EE.UU. utiliza una probabilidad de 1 en un millón (0,0001%) como límite. Algunos investigadores han sugerido que las personas pueden estar dispuestas a tolerar una probabilidad de 1 en 1000 (0,1%) de infección por COVID-19 en todas sus actividades (no solo en una actividad que puede simular con el estimador, como ir a clase). Pero debe ser usted quien determine esto por sí mismo y por su situación.",
+      },
+    ],
+  },
 ];

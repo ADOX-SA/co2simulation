@@ -32,25 +32,50 @@ export default function Results() {
             >
               {parseInt(room.totalCO2Ambiente)} ppm
             </h1>
+            <h5 className="results-subtitle">
+              Nivel de alerta:{" "}
+              <span
+                className={
+                  room.totalCO2Ambiente < 800
+                    ? "ppmOK alerta"
+                    : room.totalCO2Ambiente >= 800 &&
+                      room.totalCO2Ambiente < 1400
+                    ? "ppmAlto alerta"
+                    : "ppmPeligro alerta"
+                }
+              >
+                {room.totalCO2Ambiente < 800
+                  ? "Normal"
+                  : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
+                  ? "Alto"
+                  : "Peligro"}
+              </span>
+            </h5>
           </div>
         </div>
         <div className="ppm-card">
-          <h5 className="results-subtitle">Nivel de alerta:</h5>
-          <h1
-            className={
-              room.totalCO2Ambiente < 800
-                ? "ppmOK alerta"
-                : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-                ? "ppmAlto alerta"
-                : "ppmPeligro alerta"
-            }
-          >
-            {room.totalCO2Ambiente < 800
-              ? "Normal"
-              : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-              ? "Alto"
-              : "Peligro"}
+          <h5 className="results-subtitle">
+            Probabilidad de infección (por persona):
+          </h5>
+          <h1 className="results-ppm">
+            {room.probabilidadDeInfeccion < 1
+              ? room.probabilidadDeInfeccion.toFixed(3)
+              : room.probabilidadDeInfeccion.toFixed(2)}
+            %
           </h1>
+          <div className="iprob-footer">
+            <p className="info-text">
+              ATENCIÓN: Tener en cuenta estas{" "}
+              <a
+                href="https://docs.google.com/spreadsheets/d/1eenE74xfR9j9YQl0wjXYZI1O_NH5KM1VskbnIZE8q0U/edit#gid=154529406&range=A93"
+                target="_blank"
+                rel="noreferrer"
+              >
+                consideraciones importantes
+              </a>{" "}
+              sobre la estimación calculada
+            </p>
+          </div>
         </div>
         <div className="ppm-card">
           <Sensor />
