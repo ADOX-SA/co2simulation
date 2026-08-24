@@ -48,8 +48,8 @@ export default function Room() {
               room.totalCO2Ambiente < 800
                 ? "room-floor floor-shadow-green"
                 : room.totalCO2Ambiente >= 800 && room.totalCO2Ambiente < 1400
-                ? "room-floor floor-shadow-yellow"
-                : "room-floor floor-shadow-red"
+                  ? "room-floor floor-shadow-yellow"
+                  : "room-floor floor-shadow-red"
             }
           >
             <Grid />

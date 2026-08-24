@@ -43,6 +43,7 @@
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(4, 1fr);
       gap: 1em;
+      transform-style: preserve-3d;
     }
 
     .doble {
@@ -50,6 +51,7 @@
     }
 
     .iso-element {
+      transform-style: preserve-3d;
       border-radius: 20px;
       background-color: $primary;
       -webkit-border-radius: 20px;
@@ -97,17 +99,27 @@
         height: 0;
         left: -4px;
         top: 27px;
-        transition: opacity 0.3s, transform 0.3s;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
         transform: rotate(45deg) rotateX(-90deg);
         transform-origin: left top;
         -webkit-transform: rotate(45deg) rotateX(-90deg);
         -moz-transform: rotate(45deg) rotateX(-90deg);
         -ms-transform: rotate(45deg) rotateX(-90deg);
         -o-transform: rotate(45deg) rotateX(-90deg);
-        -webkit-transition: opacity 0.3s, transform 0.3s;
-        -moz-transition: opacity 0.3s, transform 0.3s;
-        -ms-transition: opacity 0.3s, transform 0.3s;
-        -o-transition: opacity 0.3s, transform 0.3s;
+        -webkit-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -moz-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -ms-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -o-transition:
+          opacity 0.3s,
+          transform 0.3s;
 
         @include desktop {
           top: 40px;
@@ -133,17 +145,27 @@
         height: 0;
         left: 0px;
         top: 15px;
-        transition: opacity 0.3s, transform 0.3s;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
         transform: rotate(45deg) rotateX(-90deg);
         transform-origin: left top;
         -webkit-transform: rotate(45deg) rotateX(-90deg);
         -moz-transform: rotate(45deg) rotateX(-90deg);
         -ms-transform: rotate(45deg) rotateX(-90deg);
         -o-transform: rotate(45deg) rotateX(-90deg);
-        -webkit-transition: opacity 0.3s, transform 0.3s;
-        -moz-transition: opacity 0.3s, transform 0.3s;
-        -ms-transition: opacity 0.3s, transform 0.3s;
-        -o-transition: opacity 0.3s, transform 0.3s;
+        -webkit-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -moz-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -ms-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -o-transition:
+          opacity 0.3s,
+          transform 0.3s;
 
         @include desktop {
           top: 25px;
@@ -168,17 +190,27 @@
         height: 0;
         left: -10px;
         top: 15px;
-        transition: opacity 0.3s, transform 0.3s;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
         transform: rotate(45deg) rotateX(-90deg);
         transform-origin: left top;
         -webkit-transform: rotate(45deg) rotateX(-90deg);
         -moz-transform: rotate(45deg) rotateX(-90deg);
         -ms-transform: rotate(45deg) rotateX(-90deg);
         -o-transform: rotate(45deg) rotateX(-90deg);
-        -webkit-transition: opacity 0.3s, transform 0.3s;
-        -moz-transition: opacity 0.3s, transform 0.3s;
-        -ms-transition: opacity 0.3s, transform 0.3s;
-        -o-transition: opacity 0.3s, transform 0.3s;
+        -webkit-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -moz-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -ms-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -o-transition:
+          opacity 0.3s,
+          transform 0.3s;
 
         @include desktop {
           top: 25px;
@@ -205,17 +237,27 @@
         height: 0;
         left: 10px;
         top: 40px;
-        transition: opacity 0.3s, transform 0.3s;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
         transform: rotate(45deg) rotateX(-90deg);
         transform-origin: left top;
         -webkit-transform: rotate(45deg) rotateX(-90deg);
         -moz-transform: rotate(45deg) rotateX(-90deg);
         -ms-transform: rotate(45deg) rotateX(-90deg);
         -o-transform: rotate(45deg) rotateX(-90deg);
-        -webkit-transition: opacity 0.3s, transform 0.3s;
-        -moz-transition: opacity 0.3s, transform 0.3s;
-        -ms-transition: opacity 0.3s, transform 0.3s;
-        -o-transition: opacity 0.3s, transform 0.3s;
+        -webkit-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -moz-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -ms-transition:
+          opacity 0.3s,
+          transform 0.3s;
+        -o-transition:
+          opacity 0.3s,
+          transform 0.3s;
 
         @include desktop {
           top: 65px;
@@ -229,7 +271,8 @@
     }
 
     .floor-shadow {
-      box-shadow: -100px 100px 80px rgba(0, 0, 0, 0.07),
+      box-shadow:
+        -100px 100px 80px rgba(0, 0, 0, 0.07),
         -41.8px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
         -22.34px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
         -12.6px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
@@ -238,7 +281,8 @@
     }
 
     .floor-shadow-red {
-      box-shadow: -100px 100px 80px rgba(255, 0, 0, 0.2),
+      box-shadow:
+        -100px 100px 80px rgba(255, 0, 0, 0.2),
         -41.8px 41.7776px 33.4221px rgba(255, 0, 0, 0.05),
         -22.34px 22.3363px 17.869px rgba(255, 0, 0, 0.042),
         -12.6px 12.5216px 10.0172px rgba(255, 0, 0, 0.035),
@@ -246,7 +290,8 @@
         -2.8px 2.76726px 2.21381px rgba(255, 0, 0, 0.02);
     }
     .floor-shadow-yellow {
-      box-shadow: -100px 100px 80px rgba(236, 166, 34, 0.4),
+      box-shadow:
+        -100px 100px 80px rgba(236, 166, 34, 0.4),
         -41.8px 41.7776px 33.4221px rgba(236, 166, 34, 0.05),
         -22.34px 22.3363px 17.869px rgba(236, 166, 34, 0.042),
         -12.6px 12.5216px 10.0172px rgba(236, 166, 34, 0.035),
@@ -254,7 +299,8 @@
         -2.8px 2.76726px 2.21381px rgba(236, 166, 34, 0.02);
     }
     .floor-shadow-green {
-      box-shadow: -100px 100px 80px rgba(32, 197, 39, 0.2),
+      box-shadow:
+        -100px 100px 80px rgba(32, 197, 39, 0.2),
         -41.8px 41.7776px 33.4221px rgba(32, 197, 39, 0.05),
         -22.34px 22.3363px 17.869px rgba(32, 197, 39, 0.042),
         -12.6px 12.5216px 10.0172px rgba(32, 197, 39, 0.035),
