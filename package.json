@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.7",
-    "isometricsass": "^1.0.6"
+    "isometricsass": "^1.0.6",
+    "eslint-plugin-jest": "25.7.0"
   }
 }
